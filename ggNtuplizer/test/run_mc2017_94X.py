@@ -19,7 +19,7 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-        'file:/data4/cmkuo/testfiles/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIIFall17MiniAODv2.root'
+        'file:WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-MINIAODSIM_PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_62E9E342-1D63-E811-8179-F04DA27541B7.root'
         ))
 
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
@@ -52,6 +52,28 @@ runMetCorAndUncFromMiniAOD (
         postfix = "ModifiedMET"
 )
 
+
+##########  rerun the tau Id sequence
+#https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID#Rerunning_of_the_tau_ID_on_M_AN1
+from ggAnalysis.ggNtuplizer.runTauIdMVA import *
+na = TauIDEmbedder(process, cms, # pass tour process object
+    debug=True,
+    toKeep = ["2017v2"] # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1"]
+)
+na.runTauID()
+
+
+
+# # rerun MVA ID on boosted taus
+#from ggAnalysis.ggNtuplizer.runBoostedTauIdMVA import BoostedTauIDEmbedder
+#naboost = BoostedTauIDEmbedder(process, cms, # pass our process object
+#     debug=True,
+#     toKeep = ["2017v2"] # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1"]
+# )
+#naboost.runTauID()
+
+
+
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
 process.ggNtuplizer.year=cms.int32(2017)
 process.ggNtuplizer.doGenParticles=cms.bool(True)
@@ -59,13 +81,25 @@ process.ggNtuplizer.dumpPFPhotons=cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons=cms.bool(False)
 process.ggNtuplizer.dumpJets=cms.bool(True)
 process.ggNtuplizer.dumpAK8Jets=cms.bool(False)
-process.ggNtuplizer.dumpSoftDrop= cms.bool(True)
-process.ggNtuplizer.dumpTaus=cms.bool(False)
+process.ggNtuplizer.dumpSoftDrop= cms.bool(False)
+process.ggNtuplizer.dumpTaus=cms.bool(True)
+process.ggNtuplizer.dumpBoostedTaus=cms.bool(True)
 process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "PAT")
+
+
+
+
 
 process.p = cms.Path(
     process.fullPatMetSequenceModifiedMET *
     process.egammaPostRecoSeq *
+
+     process.rerunMvaIsolationSequence*
+     process.NewTauIDsEmbedded* # *getattr(process, "NewTauIDsEmbedded")
+
+#  process.rerunBoostedMvaIsolationSequence * 
+#  process.NewBoostedTauIDsEmbedded *
+
     process.ggNtuplizer
     )
 

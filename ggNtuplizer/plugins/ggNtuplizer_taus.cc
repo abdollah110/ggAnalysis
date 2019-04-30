@@ -97,6 +97,12 @@ vector<float> taudz_;
 vector<float> taudxy_;
 
 
+vector<float>        tauByIsolationMVArun2v2DBoldDMwLTraw_;
+vector<bool>        tauByVTightIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>        tauByTightIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>        tauByMediumIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>        tauByLooseIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>        tauByVLooseIsolationMVArun2v2DBoldDMwLT_;
 
 
 
@@ -191,7 +197,15 @@ void ggNtuplizer::branchesTaus(TTree* tree)
     tree->Branch("tauphotonPtSumOutsideSignalCone"  ,&tauphotonPtSumOutsideSignalCone_);
     tree->Branch("taudz"  ,&taudz_);
     tree->Branch("taudxy"  ,&taudxy_);
-    
+   
+    tree->Branch("tauByIsolationMVArun2v2DBoldDMwLTraw", &tauByIsolationMVArun2v2DBoldDMwLTraw_);
+    tree->Branch("tauByVTightIsolationMVArun2v2DBoldDMwLT", &tauByVTightIsolationMVArun2v2DBoldDMwLT_);
+    tree->Branch("tauByTightIsolationMVArun2v2DBoldDMwLT", &tauByTightIsolationMVArun2v2DBoldDMwLT_);
+    tree->Branch("tauByMediumIsolationMVArun2v2DBoldDMwLT", &tauByMediumIsolationMVArun2v2DBoldDMwLT_);
+    tree->Branch("tauByLooseIsolationMVArun2v2DBoldDMwLT", &tauByLooseIsolationMVArun2v2DBoldDMwLT_);
+    tree->Branch("tauByVLooseIsolationMVArun2v2DBoldDMwLT", &tauByVLooseIsolationMVArun2v2DBoldDMwLT_);
+
+ 
     
 }
 
@@ -282,12 +296,23 @@ void ggNtuplizer::fillTaus(const edm::Event& e)
     taudz_.clear();
     taudxy_.clear();
     
+    tauByIsolationMVArun2v2DBoldDMwLTraw_.clear();
+    tauByVTightIsolationMVArun2v2DBoldDMwLT_.clear();
+    tauByTightIsolationMVArun2v2DBoldDMwLT_.clear();
+    tauByMediumIsolationMVArun2v2DBoldDMwLT_.clear();
+    tauByLooseIsolationMVArun2v2DBoldDMwLT_.clear();
+    tauByVLooseIsolationMVArun2v2DBoldDMwLT_.clear();
+
     
     nTau_ = 0;
     
-    edm::Handle<vector<pat::Tau> > tauHandle;
+    edm::Handle<vector<pat::Tau> > tauHandle, tauHandle_v2;
     e.getByToken(tauCollection_, tauHandle);
-    
+    e.getByToken(tauCollection_v2_, tauHandle_v2);
+
+
+
+
     if (!tauHandle.isValid()) {
         edm::LogWarning("ggNtuplizer") << "no pat::Tau in event";
         return;
@@ -338,7 +363,7 @@ void ggNtuplizer::fillTaus(const edm::Event& e)
         tauByVTightIsolationMVArun2v1DBoldDMwLT_.push_back(itau->tauID("byVTightIsolationMVArun2v1DBoldDMwLT"));
         tauByVTightIsolationMVArun2v1PWnewDMwLT_.push_back(itau->tauID("byVTightIsolationMVArun2v1PWnewDMwLT"));
         tauByVTightIsolationMVArun2v1PWoldDMwLT_.push_back(itau->tauID("byVTightIsolationMVArun2v1PWoldDMwLT"));
-    
+
         
         //Tau Kinematics
         tauEta_.push_back(itau->eta());
@@ -394,6 +419,17 @@ void ggNtuplizer::fillTaus(const edm::Event& e)
         
         ++nTau_;
         
-    } // loop over tau candidates
-    
+   
+   } // loop over tau candidates
+
+    for(vector<pat::Tau>::const_iterator itau = tauHandle_v2->begin(); itau != tauHandle_v2->end(); ++itau) {
+        tauByIsolationMVArun2v2DBoldDMwLTraw_.push_back(itau->tauID("byIsolationMVArun2017v2DBoldDMwLTraw2017"));
+        tauByVTightIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byVTightIsolationMVArun2017v2DBoldDMwLT2017"));
+        tauByTightIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byTightIsolationMVArun2017v2DBoldDMwLT2017"));
+        tauByMediumIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byMediumIsolationMVArun2017v2DBoldDMwLT2017"));
+        tauByLooseIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byLooseIsolationMVArun2017v2DBoldDMwLT2017"));
+        tauByVLooseIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byVLooseIsolationMVArun2017v2DBoldDMwLT2017"));
+    }
+
+ 
 }

@@ -12,6 +12,7 @@ ggNtuplizer = cms.EDAnalyzer("ggNtuplizer",
                              dumpJets             = cms.bool(False),
                              dumpAK8Jets          = cms.bool(False),
                              dumpTaus             = cms.bool(False),
+ dumpBoostedTaus = cms.bool(False),
                              dumpPDFSystWeight    = cms.bool(False),
                              dumpHFElectrons      = cms.bool(True),
                              development          = cms.bool(False),
@@ -61,6 +62,21 @@ ggNtuplizer = cms.EDAnalyzer("ggNtuplizer",
                              #boostedDoubleSVLabel      = cms.InputTag("pfBoostedDoubleSecondaryVertexAK8BJetTags"),
                              tauSrc                    = cms.InputTag("slimmedTaus"),
                              #pfLooseId                 = pfJetIDSelector.clone(),
+
+ tauRefSrc = cms.InputTag("NewTauIDsEmbedded"), # Done for data
+ boostedTauSrc             = cms.InputTag("slimmedTausBoosted"),
+ boostedTauReSrc = cms.InputTag("NewBoostedTauIDsEmbedded"),
+
+
+byIsolationMVArun2017v2DBoldDMwLTraw2017 = cms.string('byIsolationMVArun2017v2DBoldDMwLTraw2017'),
+byVVLooseIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byVVLooseIsolationMVArun2017v2DBoldDMwLT2017'),
+byVLooseIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byVLooseIsolationMVArun2017v2DBoldDMwLT2017'),
+byLooseIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byLooseIsolationMVArun2017v2DBoldDMwLT2017'),
+byMediumIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byMediumIsolationMVArun2017v2DBoldDMwLT2017'),
+byTightIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byTightIsolationMVArun2017v2DBoldDMwLT2017'),
+byVTightIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byVTightIsolationMVArun2017v2DBoldDMwLT2017'),
+byVVTightIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byVVTightIsolationMVArun2017v2DBoldDMwLT2017'),
+
 
                              packedPFCands             = cms.InputTag("packedPFCandidates"),
                              elePFClusEcalIsoProducer  = cms.InputTag("electronEcalPFClusterIsolationProducer"),

@@ -61,6 +61,11 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   tracklabel_                = consumes<reco::TrackCollection>         (ps.getParameter<InputTag>("TrackLabel"));
   gsfElectronlabel_          = consumes<reco::GsfElectronCollection>   (ps.getParameter<InputTag>("gsfElectronLabel"));
   tauCollection_             = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("tauSrc"));
+  tauCollection_v2_             = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("tauRefSrc"));
+
+boostedTauCollection_      = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("boostedTauSrc"));
+boostedTauCollection_v2_ = consumes<vector<pat::Tau> > (ps.getParameter<InputTag>("boostedTauReSrc"));
+ 
   pfAllParticles_            = consumes<reco::PFCandidateCollection>   (ps.getParameter<InputTag>("PFAllCandidates"));
   pckPFCandidateCollection_  = consumes<pat::PackedCandidateCollection>(ps.getParameter<InputTag>("packedPFCands"));
   pckPFCdsLabel_             = consumes<vector<pat::PackedCandidate>>  (ps.getParameter<InputTag>("packedPFCands"));
@@ -88,7 +93,7 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   }
 
   branchesMET(tree_);
-  branchesPhotons(tree_);
+//  branchesPhotons(tree_);
   branchesElectrons(tree_);
   branchesMuons(tree_);
   if (dumpPFPhotons_)   branchesPFPhotons(tree_);
@@ -96,6 +101,7 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   if (dumpTaus_)        branchesTaus(tree_);
   if (dumpJets_)        branchesJets(tree_);
   if (dumpAK8Jets_)     branchesAK8Jets(tree_);
+if (dumpBoostedTaus_) branchesBoostedTaus(tree_);
 }
 
 ggNtuplizer::~ggNtuplizer() {
@@ -145,11 +151,12 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
   fillMET(e, es);
   fillElectrons(e, es, pv);
   fillMuons(e, pv, vtx);
-  fillPhotons(e, es); 
+//  fillPhotons(e, es); 
   if (dumpPFPhotons_)    fillPFPhotons(e, es);
   if (dumpHFElectrons_ ) fillHFElectrons(e);
   if (dumpTaus_)         fillTaus(e);
   if (dumpJets_)         fillJets(e,es);
+ if (dumpBoostedTaus_) fillBoostedTaus(e);
   if (dumpAK8Jets_)      fillAK8Jets(e,es);
 
   hEvents_->Fill(1.5);

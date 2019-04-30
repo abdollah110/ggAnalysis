@@ -20,7 +20,7 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-        'file:/data4/cmkuo/testfiles/DoubleEG_Run2017E_31Mar2018.root'
+        'file:Run2017F_JetHT_MINIAOD_31Mar2018-v1_1A3E800D-CB37-E811-8C05-002590207E3C.root'
         )
                             )
 
@@ -32,6 +32,10 @@ process.load( "PhysicsTools.PatAlgos.selectionLayer1.selectedPatCandidates_cff" 
 
 ### fix a bug in the ECAL-Tracker momentum combination when applying the scale and smearing
 from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+#setupEgammaPostRecoSeq(process,
+#                       runVID=True,
+#                       era='2017-Nov17ReReco'
+#                       )
 setupEgammaPostRecoSeq(process,
                        runVID=True,
                        era='2017-Nov17ReReco',
@@ -51,6 +55,27 @@ runOnData( process,  names=['Photons', 'Electrons','Muons','Taus','Jets'], outpu
 
 process.TFileService = cms.Service("TFileService", fileName = cms.string('ggtree_data.root'))
 
+
+##########  rerun the tau Id sequence
+#https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID#Rerunning_of_the_tau_ID_on_M_AN1
+#from ggAnalysis.ggNtuplizer.runTauIdMVA import *
+#na = TauIDEmbedder(process, cms, # pass tour process object
+#    debug=True,
+#    toKeep = ["2017v2"] # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1"]
+#)
+#na.runTauID()
+
+
+##########  rerun the tau Id sequence
+#https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID#Rerunning_of_the_tau_ID_on_M_AN1
+from ggAnalysis.ggNtuplizer.runTauIdMVA import *
+na = TauIDEmbedder(process, cms, # pass tour process object
+    debug=True,
+    toKeep = ["2017v2"] # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1"]
+)
+na.runTauID()
+
+
 ### reduce effect of high eta EE noise on the PF MET measurement
 from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
 runMetCorAndUncFromMiniAOD (
@@ -68,13 +93,20 @@ process.ggNtuplizer.dumpPFPhotons=cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons=cms.bool(False)
 process.ggNtuplizer.dumpJets=cms.bool(True)
 process.ggNtuplizer.dumpAK8Jets=cms.bool(False)
-process.ggNtuplizer.dumpSoftDrop= cms.bool(True)
-process.ggNtuplizer.dumpTaus=cms.bool(False)
+process.ggNtuplizer.dumpSoftDrop= cms.bool(False)
+process.ggNtuplizer.dumpTaus=cms.bool(True)
+process.ggNtuplizer.dumpBoostedTaus=cms.bool(True)
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
+
+#process.load("RecoTauTag.Configuration.RecoPFTauTag_cff")
 
 process.p = cms.Path(
     process.fullPatMetSequenceModifiedMET *
     process.egammaPostRecoSeq *
+
+     process.rerunMvaIsolationSequence*
+     process.NewTauIDsEmbedded* # *getattr(process, "NewTauIDsEmbedded")
+
     process.ggNtuplizer
     )
 

@@ -387,6 +387,13 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
       else if (name.find("HLT_PFHT750_4JetPt50_v")                                     != string::npos) bitJet = 34;
       else if (name.find("HLT_PFHT750_4JetPt70_v")                                     != string::npos) bitJet = 35;
       else if (name.find("HLT_PFHT800_4JetPt50_v")                                     != string::npos) bitJet = 36;
+
+
+else if (name.find("HLT_AK8PFHT800_TrimMass50_v")                                     != string::npos) bitJet = 37;
+else if (name.find("HLT_PFHT1050_v")                                                  != string::npos) bitJet = 38;
+else if (name.find("HLT_PFHT500_PFMET100_PFMHT100_IDTight_v")                         != string::npos) bitJet = 39;
+else if (name.find("HLT_AK8PFJet400_TrimMass30_v")                                    != string::npos) bitJet = 40;
+
     }
 
     // indicates prescaling and whether trigger was fired or not
