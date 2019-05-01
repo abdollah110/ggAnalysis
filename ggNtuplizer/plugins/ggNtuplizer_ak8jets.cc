@@ -349,9 +349,9 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
       if (!(ijetAK8->neutralEmEnergyFraction() < 0.99))                           AK8jetID = false;
       if (!((ijetAK8->chargedMultiplicity() + ijetAK8->neutralMultiplicity()) > 1))  AK8jetID = false;
       if (fabs(ijetAK8->eta()) <= 2.4) {
-	if (!(ijetAK8->chargedHadronEnergyFraction() > 0))  AK8jetID = false;
-	if (!(ijetAK8->chargedMultiplicity() > 0))          AK8jetID = false;
-	if (!(ijetAK8->chargedEmEnergyFraction() < 0.99))   AK8jetID = false;
+	      if (!(ijetAK8->chargedHadronEnergyFraction() > 0))  AK8jetID = false;
+	      if (!(ijetAK8->chargedMultiplicity() > 0))          AK8jetID = false;
+	      if (!(ijetAK8->chargedEmEnergyFraction() < 0.99))   AK8jetID = false;
       }
     } else if (fabs(ijetAK8->eta()) > 2.7 && fabs(ijetAK8->eta()) <= 3.0) {
       if (!(ijetAK8->neutralEmEnergyFraction() > 0.01))     AK8jetID = false;
@@ -370,9 +370,9 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
       if (!((ijetAK8->chargedMultiplicity() + ijetAK8->neutralMultiplicity()) > 1))  AK8jetIDTightLepVeto = false;
       if (!(ijetAK8->muonEnergyFraction()<0.8))                                   AK8jetIDTightLepVeto = false;
       if (fabs(ijetAK8->eta()) <= 2.4) {
-	if (!(ijetAK8->chargedHadronEnergyFraction() > 0))  AK8jetIDTightLepVeto = false;
-	if (!(ijetAK8->chargedMultiplicity() > 0))          AK8jetIDTightLepVeto = false;
-	if (!(ijetAK8->chargedEmEnergyFraction() < 0.90))   AK8jetIDTightLepVeto = false;
+	      if (!(ijetAK8->chargedHadronEnergyFraction() > 0))  AK8jetIDTightLepVeto = false;
+	      if (!(ijetAK8->chargedMultiplicity() > 0))          AK8jetIDTightLepVeto = false;
+	      if (!(ijetAK8->chargedEmEnergyFraction() < 0.90))   AK8jetIDTightLepVeto = false;
       }
     }
     AK8JetPFTightLepVetoId_.push_back(AK8jetIDTightLepVeto);
@@ -398,8 +398,8 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
     //AK8JetSoftDropMassCorr_.push_back(corr*(ijetAK8->userFloat("ak8PFJetsCHSSoftDropMass")));
     //AK8JetPrunedMassCorr_.push_back(corr*(ijetAK8->userFloat("ak8PFJetsCHSPrunedMass")));
 //AM 
-AK8JetSoftDropMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSSoftDropMass"));
-AK8JetPrunedMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSPrunedMass")); 
+    AK8JetSoftDropMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSSoftDropMass"));
+    AK8JetPrunedMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSPrunedMass")); 
 
 
  
@@ -424,14 +424,14 @@ AK8JetPrunedMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCH
     float AK8JetGenPhi = -999.;
     if (doGenParticles_ && genParticlesHandle.isValid() ) {
       if ((*ijetAK8).genParton()) {
-	AK8JetGenPartonID = (*ijetAK8).genParton()->pdgId();
-	AK8JetGenEn = (*ijetAK8).genParton()->energy();
-	AK8JetGenPt = (*ijetAK8).genParton()->pt();
-	AK8JetGenEta = (*ijetAK8).genParton()->eta();
-	AK8JetGenPhi = (*ijetAK8).genParton()->phi();
-	if ((*ijetAK8).genParton()->mother()) {
-	  AK8JetGenPartonMomID = (*ijetAK8).genParton()->mother()->pdgId();
-	}
+	      AK8JetGenPartonID = (*ijetAK8).genParton()->pdgId();
+	      AK8JetGenEn = (*ijetAK8).genParton()->energy();
+	      AK8JetGenPt = (*ijetAK8).genParton()->pt();
+	      AK8JetGenEta = (*ijetAK8).genParton()->eta();
+	      AK8JetGenPhi = (*ijetAK8).genParton()->phi();
+	      if ((*ijetAK8).genParton()->mother()) {
+	        AK8JetGenPartonMomID = (*ijetAK8).genParton()->mother()->pdgId();
+	      }
       }
     }
     AK8JetGenPartonID_.push_back(AK8JetGenPartonID);
@@ -447,11 +447,11 @@ AK8JetPrunedMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCH
     float AK8JetGenJetPhi = -999.;
     if (doGenParticles_ && genParticlesHandle.isValid() ) {
       if ((*ijetAK8).genJet()) {
-	AK8JetGenJetIndex = 1;
-	AK8JetGenJetEn = (*ijetAK8).genJet()->energy();
-	AK8JetGenJetPt = (*ijetAK8).genJet()->pt();
-	AK8JetGenJetEta = (*ijetAK8).genJet()->eta();
-	AK8JetGenJetPhi = (*ijetAK8).genJet()->phi();
+	      AK8JetGenJetIndex = 1;
+	      AK8JetGenJetEn = (*ijetAK8).genJet()->energy();
+	      AK8JetGenJetPt = (*ijetAK8).genJet()->pt();
+	      AK8JetGenJetEta = (*ijetAK8).genJet()->eta();
+	      AK8JetGenJetPhi = (*ijetAK8).genJet()->phi();
       }
       // access AK8jet resolution       
       JME::JetParameters AK8parameters;
@@ -471,13 +471,13 @@ AK8JetPrunedMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCH
       float AK8JetP4SmearUp = -1.;
       float AK8JetP4SmearDo = -1.;
       if (AK8JetGenJetPt > 0 && deltaR(ijetAK8->eta(), ijetAK8->phi(), AK8JetGenJetEta, AK8JetGenJetPhi) < 0.4 && fabs(ijetAK8->pt()-AK8JetGenJetPt) < 3*AK8jetResolution*ijetAK8->pt()) {
-	AK8JetP4Smear   = 1. + (AK8jetResolutionSF   - 1.)*(ijetAK8->pt() - AK8JetGenJetPt)/ijetAK8->pt();
-	AK8JetP4SmearUp = 1. + (AK8jetResolutionSFUp - 1.)*(ijetAK8->pt() - AK8JetGenJetPt)/ijetAK8->pt();
-	AK8JetP4SmearDo = 1. + (AK8jetResolutionSFDo - 1.)*(ijetAK8->pt() - AK8JetGenJetPt)/ijetAK8->pt();
+	      AK8JetP4Smear   = 1. + (AK8jetResolutionSF   - 1.)*(ijetAK8->pt() - AK8JetGenJetPt)/ijetAK8->pt();
+	      AK8JetP4SmearUp = 1. + (AK8jetResolutionSFUp - 1.)*(ijetAK8->pt() - AK8JetGenJetPt)/ijetAK8->pt();
+	      AK8JetP4SmearDo = 1. + (AK8jetResolutionSFDo - 1.)*(ijetAK8->pt() - AK8JetGenJetPt)/ijetAK8->pt();
       } else {
-	AK8JetP4Smear   = 1. + rnd*sqrt(max(pow(AK8jetResolutionSF,   2)-1, 0.));
-	AK8JetP4SmearUp = 1. + rnd*sqrt(max(pow(AK8jetResolutionSFUp, 2)-1, 0.));
-	AK8JetP4SmearDo = 1. + rnd*sqrt(max(pow(AK8jetResolutionSFDo, 2)-1, 0.));
+	      AK8JetP4Smear   = 1. + rnd*sqrt(max(pow(AK8jetResolutionSF,   2)-1, 0.));
+	      AK8JetP4SmearUp = 1. + rnd*sqrt(max(pow(AK8jetResolutionSFUp, 2)-1, 0.));
+	      AK8JetP4SmearDo = 1. + rnd*sqrt(max(pow(AK8jetResolutionSFDo, 2)-1, 0.));
       }
       AK8JetP4Smear_  .push_back(AK8JetP4Smear);
       AK8JetP4SmearUp_.push_back(AK8JetP4SmearUp);
@@ -502,15 +502,15 @@ AK8JetPrunedMass_.push_back(ijetAK8->userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCH
     if (dumpSoftDrop_) {
       auto const & sdSubjets = ijetAK8->subjets("SoftDrop");
       for ( auto const & SDSJ : sdSubjets ) {
-	nsubjets++;
-	vecSDSJpt.push_back(SDSJ->pt());
-	vecSDSJeta.push_back(SDSJ->eta());
-	vecSDSJmass.push_back(SDSJ->mass());
-	vecSDSJphi.push_back(SDSJ->phi());
-	vecSDSJe.push_back(SDSJ->energy());
-	vecSDSJflavour.push_back(abs(SDSJ->partonFlavour()));
-	vecSDSJcharge.push_back(SDSJ->charge());
-	vecSDSJcsv.push_back(SDSJ->bDiscriminator("pfCombinedInclusiveSecondaryVertexV2BJetTags") );
+	      nsubjets++;
+	      vecSDSJpt.push_back(SDSJ->pt());
+	      vecSDSJeta.push_back(SDSJ->eta());
+	      vecSDSJmass.push_back(SDSJ->mass());
+	      vecSDSJphi.push_back(SDSJ->phi());
+	      vecSDSJe.push_back(SDSJ->energy());
+	      vecSDSJflavour.push_back(abs(SDSJ->partonFlavour()));
+	      vecSDSJcharge.push_back(SDSJ->charge());
+	      vecSDSJcsv.push_back(SDSJ->bDiscriminator("pfCombinedInclusiveSecondaryVertexV2BJetTags") );
       }
     }
     nAK8SDSJ_.push_back(nsubjets);

@@ -110,9 +110,6 @@ vector<bool>        tauByVLooseIsolationMVArun2v2DBoldDMwLT_;
 void ggNtuplizer::branchesTaus(TTree* tree)
 {
     
-    
-    
-    
     tree->Branch("nTau", &nTau_);
     
     //Tau Id & Isolation
@@ -205,8 +202,6 @@ void ggNtuplizer::branchesTaus(TTree* tree)
     tree->Branch("tauByLooseIsolationMVArun2v2DBoldDMwLT", &tauByLooseIsolationMVArun2v2DBoldDMwLT_);
     tree->Branch("tauByVLooseIsolationMVArun2v2DBoldDMwLT", &tauByVLooseIsolationMVArun2v2DBoldDMwLT_);
 
- 
-    
 }
 
 void ggNtuplizer::fillTaus(const edm::Event& e)
@@ -413,9 +408,6 @@ void ggNtuplizer::fillTaus(const edm::Event& e)
             tauLeadChargedHadronPhi_.push_back(packedLeadTauCand->phi());
             tauLeadChargedHadronPt_.push_back(packedLeadTauCand->pt());
         }
-        
-        
-        
         
         ++nTau_;
         

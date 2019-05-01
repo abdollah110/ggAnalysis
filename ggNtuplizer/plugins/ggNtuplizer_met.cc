@@ -102,11 +102,11 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     for (unsigned iF = 0; iF < 9; ++iF) {
       unsigned index = filterNames.triggerIndex(filterNamesToCheck[iF]);
       if ( index == filterNames.size() ) 
-	LogDebug("METFilters") << filterNamesToCheck[iF] << " is missing, exiting";
-      else {
-	if ( !patFilterResults.accept(index) ) {
-	  metFilters_ += pow(2, iF+1);
-	}
+	      LogDebug("METFilters") << filterNamesToCheck[iF] << " is missing, exiting";
+            else {
+	      if ( !patFilterResults.accept(index) ) {
+	        metFilters_ += pow(2, iF+1);
+	      }
       }
     }
   } 

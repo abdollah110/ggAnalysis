@@ -375,7 +375,7 @@ void ggNtuplizer::fillElectrons(const edm::Event &e, const edm::EventSetup &es, 
       if (recVtxs->size() > 0)
         eleTrkdxy_.push_back(gsfTrackRef->dxy(recVtxs->front().position()));
       else
-	eleTrkdxy_.push_back(-999);
+	      eleTrkdxy_.push_back(-999);
     } else {
       eleGSFChi2_.push_back(999.);
       eleTrkdxy_.push_back(-999);
@@ -403,20 +403,19 @@ void ggNtuplizer::fillElectrons(const edm::Event &e, const edm::EventSetup &es, 
       vector<int>   ESS;
       vector<float> ESE;
       for (CaloClusterPtrVector::const_iterator ips = iEle->superCluster()->preshowerClustersBegin(); ips != iEle->superCluster()->preshowerClustersEnd(); ++ips) {
+	      ESDetId esid = ESDetId((*ips)->seed());
+	      if (esid.plane() == 1) ESp1 += (*ips)->energy();
+	      if (esid.plane() == 2) ESp2 += (*ips)->energy();
 
-	ESDetId esid = ESDetId((*ips)->seed());
-	if (esid.plane() == 1) ESp1 += (*ips)->energy();
-	if (esid.plane() == 2) ESp2 += (*ips)->energy();
+	      ESZ.push_back(esid.zside());
+	      ESP.push_back(esid.plane());
+	      ESX.push_back(esid.six());
+	      ESY.push_back(esid.siy());
+	      ESS.push_back(esid.strip());
 
-	ESZ.push_back(esid.zside());
-	ESP.push_back(esid.plane());
-	ESX.push_back(esid.six());
-	ESY.push_back(esid.siy());
-	ESS.push_back(esid.strip());
-
-	ESEta.push_back((*ips)->eta());
-	ESPhi.push_back((*ips)->phi());
-	ESE.push_back((*ips)->energy());
+	      ESEta.push_back((*ips)->eta());
+	      ESPhi.push_back((*ips)->phi());
+	      ESE.push_back((*ips)->energy());
       }
 
       eleESEnP1Raw_.push_back(ESp1);

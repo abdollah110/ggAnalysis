@@ -64,19 +64,19 @@ void ggNtuplizer::fillPFPhotons(const edm::Event& e, const edm::EventSetup& es) 
       int nEle_     = 0;
       int eleIndex_ = -1;
       for (edm::View<pat::Electron>::const_iterator iEle = electronHandle->begin(); iEle != electronHandle->end(); ++iEle) {
-	for (const edm::Ref<pat::PackedCandidateCollection> & refEle : iEle->associatedPackedPFCandidates()) {
-	  if (reco::deltaR(pf.p4(), refEle->p4()) < 0.0001) eleIndex_ = nEle_;
-	}
-	nEle_++;
+	      for (const edm::Ref<pat::PackedCandidateCollection> & refEle : iEle->associatedPackedPFCandidates()) {
+	        if (reco::deltaR(pf.p4(), refEle->p4()) < 0.0001) eleIndex_ = nEle_;
+	      }
+	      nEle_++;
       }
       
       int nPho_     = 0;
       int phoIndex_ = -1;
       for (edm::View<pat::Photon>::const_iterator iPho = photonHandle->begin(); iPho != photonHandle->end(); ++iPho) {
-	for (const edm::Ref<pat::PackedCandidateCollection> & refPho : iPho->associatedPackedPFCandidates()) {
-	  if (reco::deltaR(pf.p4(), refPho->p4()) < 0.0001) phoIndex_ = nPho_;
-	}
-	nPho_++;
+	      for (const edm::Ref<pat::PackedCandidateCollection> & refPho : iPho->associatedPackedPFCandidates()) {
+	        if (reco::deltaR(pf.p4(), refPho->p4()) < 0.0001) phoIndex_ = nPho_;
+	      }
+	      nPho_++;
       }
 
       float chiso_  = 0;
@@ -85,22 +85,22 @@ void ggNtuplizer::fillPFPhotons(const edm::Event& e, const edm::EventSetup& es) 
       float dR_     = 0;
 
       for (unsigned int j = 0; j< cands->size(); ++j) {
-	const pat::PackedCandidate &pff = (*cands)[j];
+	      const pat::PackedCandidate &pff = (*cands)[j];
 
-	if (abs(pff.pdgId()) == 211 && pff.pt() > 0.2) {
-	  dR_ = reco::deltaR(pf.p4(), pff.p4());
-	  if (dR_ < 0.3 && dR_ > 0.0001) chiso_ += pff.pt(); 	    
-	}
+	      if (abs(pff.pdgId()) == 211 && pff.pt() > 0.2) {
+	        dR_ = reco::deltaR(pf.p4(), pff.p4());
+	        if (dR_ < 0.3 && dR_ > 0.0001) chiso_ += pff.pt(); 	    
+	      }
 
-	if (abs(pff.pdgId()) == 22  && pff.pt() > 0.5) {
-	  dR_ = reco::deltaR(pf.p4(), pff.p4());
-	  if (dR_ < 0.3 && dR_ > 0.01) phoiso_ += pff.pt(); 	    
-	}
+	      if (abs(pff.pdgId()) == 22  && pff.pt() > 0.5) {
+	        dR_ = reco::deltaR(pf.p4(), pff.p4());
+	        if (dR_ < 0.3 && dR_ > 0.01) phoiso_ += pff.pt(); 	    
+	      }
 
-	if (abs(pff.pdgId()) == 130 && pff.pt() > 0.5) {
-	  dR_ = reco::deltaR(pf.p4(), pff.p4());
-	  if (dR_ < 0.3 && dR_ > 0.01) neuiso_ += pff.pt(); 	    
-	}
+	      if (abs(pff.pdgId()) == 130 && pff.pt() > 0.5) {
+	        dR_ = reco::deltaR(pf.p4(), pff.p4());
+	        if (dR_ < 0.3 && dR_ > 0.01) neuiso_ += pff.pt(); 	    
+	      }
 
       }
 

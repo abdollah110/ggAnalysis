@@ -61,10 +61,10 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   tracklabel_                = consumes<reco::TrackCollection>         (ps.getParameter<InputTag>("TrackLabel"));
   gsfElectronlabel_          = consumes<reco::GsfElectronCollection>   (ps.getParameter<InputTag>("gsfElectronLabel"));
   tauCollection_             = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("tauSrc"));
-  tauCollection_v2_             = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("tauRefSrc"));
+  tauCollection_v2_          = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("tauRefSrc"));
 
-boostedTauCollection_      = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("boostedTauSrc"));
-boostedTauCollection_v2_ = consumes<vector<pat::Tau> > (ps.getParameter<InputTag>("boostedTauReSrc"));
+  boostedTauCollection_      = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("boostedTauSrc"));
+  boostedTauCollection_v2_   = consumes<vector<pat::Tau> >             (ps.getParameter<InputTag>("boostedTauReSrc"));
  
   pfAllParticles_            = consumes<reco::PFCandidateCollection>   (ps.getParameter<InputTag>("PFAllCandidates"));
   pckPFCandidateCollection_  = consumes<pat::PackedCandidateCollection>(ps.getParameter<InputTag>("packedPFCands"));
@@ -101,7 +101,7 @@ boostedTauCollection_v2_ = consumes<vector<pat::Tau> > (ps.getParameter<InputTag
   if (dumpTaus_)        branchesTaus(tree_);
   if (dumpJets_)        branchesJets(tree_);
   if (dumpAK8Jets_)     branchesAK8Jets(tree_);
-if (dumpBoostedTaus_) branchesBoostedTaus(tree_);
+  if (dumpBoostedTaus_) branchesBoostedTaus(tree_);
 }
 
 ggNtuplizer::~ggNtuplizer() {
@@ -156,7 +156,7 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
   if (dumpHFElectrons_ ) fillHFElectrons(e);
   if (dumpTaus_)         fillTaus(e);
   if (dumpJets_)         fillJets(e,es);
- if (dumpBoostedTaus_) fillBoostedTaus(e);
+  if (dumpBoostedTaus_) fillBoostedTaus(e);
   if (dumpAK8Jets_)      fillAK8Jets(e,es);
 
   hEvents_->Fill(1.5);

@@ -76,7 +76,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void branchesHFElectrons(TTree*);
   void branchesMuons      (TTree*);
   void branchesTaus       (TTree*);
- void branchesBoostedTaus (TTree*);
+  void branchesBoostedTaus (TTree*);
   void branchesJets       (TTree*);
   void branchesAK8Jets    (TTree*);
 
@@ -90,7 +90,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void fillHFElectrons(const edm::Event&);
   void fillMuons      (const edm::Event&, math::XYZPoint&, const reco::Vertex);
   void fillTaus       (const edm::Event&);
- void fillBoostedTaus (const edm::Event&);
+  void fillBoostedTaus (const edm::Event&);
 
   void fillJets       (const edm::Event&, const edm::EventSetup&);
   void fillAK8Jets    (const edm::Event&, const edm::EventSetup&);
@@ -106,7 +106,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   bool runOnSherpa_;
   bool dumpPFPhotons_;
   bool dumpTaus_;
- bool dumpBoostedTaus_;
+  bool dumpBoostedTaus_;
 
   bool dumpJets_;
   bool dumpAK8Jets_;
@@ -138,9 +138,9 @@ class ggNtuplizer : public edm::EDAnalyzer {
   edm::EDGetTokenT<edm::View<pat::Photon> >        photonCollection_;
   edm::EDGetTokenT<edm::View<pat::Muon> >          muonCollection_;
   edm::EDGetTokenT<vector<pat::Tau> >              tauCollection_;
-edm::EDGetTokenT<vector<pat::Tau> >              tauCollection_v2_;
- edm::EDGetTokenT<vector<pat::Tau> >              boostedTauCollection_;
- edm::EDGetTokenT<vector<pat::Tau> > boostedTauCollection_v2_;
+  edm::EDGetTokenT<vector<pat::Tau> >              tauCollection_v2_;
+  edm::EDGetTokenT<vector<pat::Tau> >              boostedTauCollection_;
+  edm::EDGetTokenT<vector<pat::Tau> >              boostedTauCollection_v2_;
 
   edm::EDGetTokenT<EcalRecHitCollection>           ebReducedRecHitCollection_;
   edm::EDGetTokenT<EcalRecHitCollection>           eeReducedRecHitCollection_;
