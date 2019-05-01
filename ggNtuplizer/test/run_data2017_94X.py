@@ -20,7 +20,7 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-        'file:Run2017F_JetHT_MINIAOD_31Mar2018-v1_1A3E800D-CB37-E811-8C05-002590207E3C.root'
+        'file:E27125B5-0F37-E811-BE08-90B11C0BDC6F.root'
         )
                             )
 
@@ -92,7 +92,7 @@ process.ggNtuplizer.doGenParticles=cms.bool(False)
 process.ggNtuplizer.dumpPFPhotons=cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons=cms.bool(False)
 process.ggNtuplizer.dumpJets=cms.bool(True)
-process.ggNtuplizer.dumpAK8Jets=cms.bool(False)
+process.ggNtuplizer.dumpAK8Jets=cms.bool(True)
 process.ggNtuplizer.dumpSoftDrop= cms.bool(False)
 process.ggNtuplizer.dumpTaus=cms.bool(True)
 process.ggNtuplizer.dumpBoostedTaus=cms.bool(True)
