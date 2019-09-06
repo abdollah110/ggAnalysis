@@ -254,6 +254,7 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
   AK8puppiSDSJFlavour_.clear();
   AK8puppiSDSJCSV_    .clear();
 
+
   edm::Handle<vector<reco::GenParticle> > genParticlesHandle;
   if(doGenParticles_)e.getByToken(genParticlesCollection_, genParticlesHandle);
   
@@ -411,7 +412,6 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
     } else {
       AK8JetJECUnc_.push_back(-1.);
     }
-    
     //save gen-info for ak8 jets
     //parton id                                                                                                                                                           
     AK8JetPartonID_.push_back(ijetAK8->partonFlavour());
@@ -429,11 +429,12 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 	      AK8JetGenPt = (*ijetAK8).genParton()->pt();
 	      AK8JetGenEta = (*ijetAK8).genParton()->eta();
 	      AK8JetGenPhi = (*ijetAK8).genParton()->phi();
-	      if ((*ijetAK8).genParton()->mother()) {
-	        AK8JetGenPartonMomID = (*ijetAK8).genParton()->mother()->pdgId();
-	      }
+	    //  if ((*ijetAK8).genParton()->mother()) {
+	    //    AK8JetGenPartonMomID = (*ijetAK8).genParton()->mother()->pdgId();
+	//	}
       }
     }
+
     AK8JetGenPartonID_.push_back(AK8JetGenPartonID);
     AK8JetGenPartonMomID_.push_back(AK8JetGenPartonMomID);
     AK8JetGenEn_ .push_back(AK8JetGenEn);
@@ -445,6 +446,7 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
     float AK8JetGenJetPt = -999.;
     float AK8JetGenJetEta = -999.;
     float AK8JetGenJetPhi = -999.;
+/*
     if (doGenParticles_ && genParticlesHandle.isValid() ) {
       if ((*ijetAK8).genJet()) {
 	      AK8JetGenJetIndex = 1;
@@ -453,7 +455,9 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 	      AK8JetGenJetEta = (*ijetAK8).genJet()->eta();
 	      AK8JetGenJetPhi = (*ijetAK8).genJet()->phi();
       }
-      // access AK8jet resolution       
+
+      // access AK8jet resolution  
+     
       JME::JetParameters AK8parameters;
       AK8parameters.setJetPt(ijetAK8->pt()).setJetEta(ijetAK8->eta()).setRho(rho);
       float AK8jetResolution = AK8jetResolution_.getResolution(AK8parameters);
@@ -489,6 +493,7 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
     AK8JetGenJetEta_.push_back(AK8JetGenJetEta);
     AK8JetGenJetPhi_.push_back(AK8JetGenJetPhi);
     
+*/
     //save Softdrop subjet info Lvdp
     vecSDSJcsv.clear();
     vecSDSJpt.clear();
