@@ -65,11 +65,10 @@ public:
     void FrixioneIso(float conesize, int nrings, reco::PFCandidate::ParticleType pftype, std::vector<double>&IsoRings);
     //double FootPrint(reco::PFCandidate::ParticleType pftype);
     void setConstSlope(float c, float s, reco::PFCandidate::ParticleType, WP wp);
-        void defaultCuts(){
-    for(int i=0; i<3; ++i){ Chgs[i]=0.0;}
-	bool isEB=pho_->isEB();
-        if(isEB){
-
+    void defaultCuts() {
+      for(int i=0; i<3; ++i){ Chgs[i]=0.0; }
+	    bool isEB=pho_->isEB();
+      if(isEB) {
         Chgc[0]=2.6; Chgc[1]=1.5;Chgc[2]=0.7;
 
         Neuc[0]=3.5; Neuc[1]=1.0; Neuc[2]=0.4;
@@ -77,8 +76,7 @@ public:
 
         Phoc[0]=1.3; Phoc[1]=0.7; Phoc[2]=0.3;
         Phos[0]=0.005; Phos[1]=0.005; Phos[2]=0.005;
-      }
-        else{
+      } else {
         Chgc[0]=2.3; Chgc[1]=1.2;Chgc[2]=0.5;
 
         Neuc[0]=2.9; Neuc[1]=1.5; Neuc[2]=1.5;
@@ -87,31 +85,31 @@ public:
         Phoc[0]=0; Phoc[1]=1.0; Phoc[2]=1.0;
         Phos[0]=0; Phos[1]=0.005; Phos[2]=0.005;
       }
-
     }
+
 private:
-    void getEffArea(float eta){
-	if(fabs(eta)<1.0 ){
-	   EAChg_=0.012; EANeu_=0.030; EAPho_=0.148; 	
-        }
-	if(fabs(eta)>1.0 &&  fabs(eta)<1.479 ){
-	EAChg_=0.010; EANeu_=0.057; EAPho_= 0.130;  
-        }
-	if(fabs(eta)>1.479 &&  fabs(eta)<2.0 ){
-	EAChg_=0.014; EANeu_=0.039; EAPho_= 0.112; 
-        }
-        if(fabs(eta)>2.0 &&  fabs(eta)<2.2 ){
+    void getEffArea(float eta) {
+	    if (fabs(eta) < 1.0 ) {
+	      EAChg_=0.012; EANeu_=0.030; EAPho_=0.148; 	
+      }
+	    if (fabs(eta) > 1.0 &&  fabs(eta) < 1.479 ) {
+	      EAChg_=0.010; EANeu_=0.057; EAPho_= 0.130;  
+      }
+	    if (fabs(eta) > 1.479 &&  fabs(eta) < 2.0 ) {
+	      EAChg_=0.014; EANeu_=0.039; EAPho_= 0.112; 
+      }
+      if (fabs(eta) > 2.0 &&  fabs(eta) < 2.2 ) {
         EAChg_=0.012; EANeu_=0.015; EAPho_= 0.216; 
-        }
-        if(fabs(eta)>2.2 &&  fabs(eta)<2.3 ){
+      }
+      if (fabs(eta) > 2.2 &&  fabs(eta) < 2.3 ) {
         EAChg_=0.016; EANeu_=0.024; EAPho_= 0.262; 
-        }
-        if(fabs(eta)>2.3 &&  fabs(eta)<2.4 ){
+      }
+      if (fabs(eta) > 2.3 &&  fabs(eta) < 2.4 ) {
         EAChg_=0.020; EANeu_=0.039; EAPho_= 0.260; 
-        }
-	 if(fabs(eta)>2.4){
+      }
+	    if (fabs(eta) > 2.4) {
         EAChg_=0.012; EANeu_=0.072; EAPho_= 0.266; 
-        }
+      }
     }
     float Chgc[3]; float Chgs[3];
     float Phoc[3]; float Phos[3];

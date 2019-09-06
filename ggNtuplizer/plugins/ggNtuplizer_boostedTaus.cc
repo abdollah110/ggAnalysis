@@ -29,40 +29,40 @@ vector<bool>   boostedTauByTightMuonRejection3_;
 vector<bool>   boostedTauByLooseCombinedIsolationDeltaBetaCorr3Hits_;
 vector<bool>   boostedTauByMediumCombinedIsolationDeltaBetaCorr3Hits_;
 vector<bool>   boostedTauByTightCombinedIsolationDeltaBetaCorr3Hits_;
-vector<float>   boostedTauCombinedIsolationDeltaBetaCorrRaw3Hits_;
+vector<float>  boostedTauCombinedIsolationDeltaBetaCorrRaw3Hits_;
 
-vector<float>        boostedTauByIsolationMVArun2v1DBnewDMwLTraw_;
-vector<float>        boostedTauByIsolationMVArun2v1DBoldDMwLTraw_;
-vector<float>        boostedTauByIsolationMVArun2v1PWnewDMwLTraw_;
-vector<float>        boostedTauByIsolationMVArun2v1PWoldDMwLTraw_;
-vector<bool>        boostedTauByVTightIsolationMVArun2v1DBnewDMwLT_;
-vector<bool>        boostedTauByVTightIsolationMVArun2v1DBoldDMwLT_;
-vector<bool>        boostedTauByVTightIsolationMVArun2v1PWnewDMwLT_;
-vector<bool>        boostedTauByVTightIsolationMVArun2v1PWoldDMwLT_;
-vector<bool>        boostedTauByTightIsolationMVArun2v1DBnewDMwLT_;
-vector<bool>        boostedTauByTightIsolationMVArun2v1DBoldDMwLT_;
-vector<bool>        boostedTauByTightIsolationMVArun2v1PWnewDMwLT_;
-vector<bool>        boostedTauByTightIsolationMVArun2v1PWoldDMwLT_;
-vector<bool>        boostedTauByMediumIsolationMVArun2v1DBnewDMwLT_;
-vector<bool>        boostedTauByMediumIsolationMVArun2v1DBoldDMwLT_;
-vector<bool>        boostedTauByMediumIsolationMVArun2v1PWnewDMwLT_;
-vector<bool>        boostedTauByMediumIsolationMVArun2v1PWoldDMwLT_;
-vector<bool>        boostedTauByLooseIsolationMVArun2v1DBnewDMwLT_;
-vector<bool>        boostedTauByLooseIsolationMVArun2v1DBoldDMwLT_;
-vector<bool>        boostedTauByLooseIsolationMVArun2v1PWnewDMwLT_;
-vector<bool>        boostedTauByLooseIsolationMVArun2v1PWoldDMwLT_;
-vector<bool>        boostedTauByVLooseIsolationMVArun2v1DBnewDMwLT_;
-vector<bool>        boostedTauByVLooseIsolationMVArun2v1DBoldDMwLT_;
-vector<bool>        boostedTauByVLooseIsolationMVArun2v1PWnewDMwLT_;
-vector<bool>        boostedTauByVLooseIsolationMVArun2v1PWoldDMwLT_;
+vector<float>  boostedTauByIsolationMVArun2v1DBnewDMwLTraw_;
+vector<float>  boostedTauByIsolationMVArun2v1DBoldDMwLTraw_;
+vector<float>  boostedTauByIsolationMVArun2v1PWnewDMwLTraw_;
+vector<float>  boostedTauByIsolationMVArun2v1PWoldDMwLTraw_;
+vector<bool>   boostedTauByVTightIsolationMVArun2v1DBnewDMwLT_;
+vector<bool>   boostedTauByVTightIsolationMVArun2v1DBoldDMwLT_;
+vector<bool>   boostedTauByVTightIsolationMVArun2v1PWnewDMwLT_;
+vector<bool>   boostedTauByVTightIsolationMVArun2v1PWoldDMwLT_;
+vector<bool>   boostedTauByTightIsolationMVArun2v1DBnewDMwLT_;
+vector<bool>   boostedTauByTightIsolationMVArun2v1DBoldDMwLT_;
+vector<bool>   boostedTauByTightIsolationMVArun2v1PWnewDMwLT_;
+vector<bool>   boostedTauByTightIsolationMVArun2v1PWoldDMwLT_;
+vector<bool>   boostedTauByMediumIsolationMVArun2v1DBnewDMwLT_;
+vector<bool>   boostedTauByMediumIsolationMVArun2v1DBoldDMwLT_;
+vector<bool>   boostedTauByMediumIsolationMVArun2v1PWnewDMwLT_;
+vector<bool>   boostedTauByMediumIsolationMVArun2v1PWoldDMwLT_;
+vector<bool>   boostedTauByLooseIsolationMVArun2v1DBnewDMwLT_;
+vector<bool>   boostedTauByLooseIsolationMVArun2v1DBoldDMwLT_;
+vector<bool>   boostedTauByLooseIsolationMVArun2v1PWnewDMwLT_;
+vector<bool>   boostedTauByLooseIsolationMVArun2v1PWoldDMwLT_;
+vector<bool>   boostedTauByVLooseIsolationMVArun2v1DBnewDMwLT_;
+vector<bool>   boostedTauByVLooseIsolationMVArun2v1DBoldDMwLT_;
+vector<bool>   boostedTauByVLooseIsolationMVArun2v1PWnewDMwLT_;
+vector<bool>   boostedTauByVLooseIsolationMVArun2v1PWoldDMwLT_;
 
 // rerun boostedTau ID
-vector<float>        boostedTauByIsolationMVArun2v2DBoldDMwLTraw_;
-vector<bool>        boostedTauByVTightIsolationMVArun2v2DBoldDMwLT_;
-vector<bool>        boostedTauByTightIsolationMVArun2v2DBoldDMwLT_;
-vector<bool>        boostedTauByMediumIsolationMVArun2v2DBoldDMwLT_;
-vector<bool>        boostedTauByLooseIsolationMVArun2v2DBoldDMwLT_;
-vector<bool>        boostedTauByVLooseIsolationMVArun2v2DBoldDMwLT_;
+vector<float>  boostedTauByIsolationMVArun2v2DBoldDMwLTraw_;
+vector<bool>   boostedTauByVTightIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>   boostedTauByTightIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>   boostedTauByMediumIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>   boostedTauByLooseIsolationMVArun2v2DBoldDMwLT_;
+vector<bool>   boostedTauByVLooseIsolationMVArun2v2DBoldDMwLT_;
 
 //Tau Kinematics
 vector<float> boostedTauEta_;
@@ -85,14 +85,14 @@ vector<float> boostedTauZImpact_;
 vector<float> boostedTauChargedIsoPtSum_;
 vector<float> boostedTauNeutralIsoPtSum_;
 vector<float> boostedTauPuCorrPtSum_;
-vector<int> boostedTauNumSignalPFChargedHadrCands_;
-vector<int> boostedTauNumSignalPFNeutrHadrCands_;
-vector<int> boostedTauNumSignalPFGammaCands_;
-vector<int> boostedTauNumSignalPFCands_;
-vector<int> boostedTauNumIsolationPFChargedHadrCands_;
-vector<int> boostedTauNumIsolationPFNeutrHadrCands_;
-vector<int> boostedTauNumIsolationPFGammaCands_;
-vector<int> boostedTauNumIsolationPFCands_;
+vector<int>   boostedTauNumSignalPFChargedHadrCands_;
+vector<int>   boostedTauNumSignalPFNeutrHadrCands_;
+vector<int>   boostedTauNumSignalPFGammaCands_;
+vector<int>   boostedTauNumSignalPFCands_;
+vector<int>   boostedTauNumIsolationPFChargedHadrCands_;
+vector<int>   boostedTauNumIsolationPFNeutrHadrCands_;
+vector<int>   boostedTauNumIsolationPFGammaCands_;
+vector<int>   boostedTauNumIsolationPFCands_;
 vector<bool>  boostedTauLeadChargedHadronExists_;
 vector<float> boostedTauLeadChargedHadronEta_;
 vector<float> boostedTauLeadChargedHadronPhi_;
@@ -110,10 +110,6 @@ vector<float> boostedTaudxy_;
 
 void ggNtuplizer::branchesBoostedTaus(TTree* tree)
 {
-    
-    
-    
-    
     tree->Branch("nBoostedTau", &nBoostedTau_);
     
     //Tau Id & Isolation
@@ -201,13 +197,10 @@ void ggNtuplizer::branchesBoostedTaus(TTree* tree)
     tree->Branch("boostedTauNumIsolationPFGammaCands"  ,&boostedTauNumIsolationPFGammaCands_);
     tree->Branch("boostedTauNumIsolationPFCands"  ,&boostedTauNumIsolationPFCands_);
     
-    
     tree->Branch("boostedTaufootprintCorrection"  ,&boostedTaufootprintCorrection_);
     tree->Branch("boostedTauphotonPtSumOutsideSignalCone"  ,&boostedTauphotonPtSumOutsideSignalCone_);
     tree->Branch("boostedTaudz"  ,&boostedTaudz_);
     tree->Branch("boostedTaudxy"  ,&boostedTaudxy_);
-    
-    
 }
 
 void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
@@ -416,9 +409,6 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
             boostedTauLeadChargedHadronPhi_.push_back(packedLeadTauCand->phi());
             boostedTauLeadChargedHadronPt_.push_back(packedLeadTauCand->pt());
         }
-        
-        
-        
         
         ++nBoostedTau_;
         

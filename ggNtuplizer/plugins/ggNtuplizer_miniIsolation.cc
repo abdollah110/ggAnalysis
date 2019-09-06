@@ -33,27 +33,27 @@ Double_t ggNtuplizer::getMiniIsolation(edm::Handle<pat::PackedCandidateCollectio
     //////////////////  NEUTRALS  /////////////////////////
     if (pfc.charge()==0){
       if (pfc.pt()>ptThresh) {
-	/////////// PHOTONS ////////////
-	if (abs(pfc.pdgId())==22) {
-	  if(dr < deadcone_ph) continue;
-	  iso_ph += pfc.pt();
-	  /////////// NEUTRAL HADRONS ////////////
-	} else if (abs(pfc.pdgId())==130) {
-	  if(dr < deadcone_nh) continue;
-	  iso_nh += pfc.pt();
-	}
+	      /////////// PHOTONS ////////////
+	      if (abs(pfc.pdgId())==22) {
+	        if(dr < deadcone_ph) continue;
+	        iso_ph += pfc.pt();
+	        /////////// NEUTRAL HADRONS ////////////
+	      } else if (abs(pfc.pdgId())==130) {
+	        if(dr < deadcone_nh) continue;
+	        iso_nh += pfc.pt();
+	      }
       }
       //////////////////  CHARGED from PV  /////////////////////////
     } else if (pfc.fromPV()>1){
       if (abs(pfc.pdgId())==211) {
-	if(dr < deadcone_ch) continue;
-	iso_ch += pfc.pt();
+	      if(dr < deadcone_ch) continue;
+	      iso_ch += pfc.pt();
       }
-      //////////////////  CHARGED from PU  /////////////////////////
+    //////////////////  CHARGED from PU  /////////////////////////
     } else {
       if (pfc.pt()>ptThresh){
-	if(dr < deadcone_pu) continue;
-	iso_pu += pfc.pt();
+	      if(dr < deadcone_pu) continue;
+	      iso_pu += pfc.pt();
       }
     }
   }

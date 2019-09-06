@@ -86,12 +86,12 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
     for (vector<reco::Vertex>::const_iterator v = vtxHandle->begin(); v != vtxHandle->end(); ++v) {
 
       if (nVtx_ == 0) {
-	vtx_     = v->x();
-	vty_     = v->y();
-	vtz_     = v->z();
+	      vtx_     = v->x();
+	      vty_     = v->y();
+	      vtz_     = v->z();
 
-	isPVGood_ = false;
-	if (!v->isFake() && v->ndof() > 4. && fabs(v->z()) <= 24. && fabs(v->position().rho()) <= 2.) isPVGood_ = true;
+	      isPVGood_ = false;
+	      if (!v->isFake() && v->ndof() > 4. && fabs(v->z()) <= 24. && fabs(v->position().rho()) <= 2.) isPVGood_ = true;
       }
 
       if (!v->isFake() && v->ndof() > 4. && fabs(v->z()) <= 24. && fabs(v->position().rho()) <= 2.) nGoodVtx_++;
@@ -388,11 +388,10 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
       else if (name.find("HLT_PFHT750_4JetPt70_v")                                     != string::npos) bitJet = 35;
       else if (name.find("HLT_PFHT800_4JetPt50_v")                                     != string::npos) bitJet = 36;
 
-
-else if (name.find("HLT_AK8PFHT800_TrimMass50_v")                                     != string::npos) bitJet = 37;
-else if (name.find("HLT_PFHT1050_v")                                                  != string::npos) bitJet = 38;
-else if (name.find("HLT_PFHT500_PFMET100_PFMHT100_IDTight_v")                         != string::npos) bitJet = 39;
-else if (name.find("HLT_AK8PFJet400_TrimMass30_v")                                    != string::npos) bitJet = 40;
+      else if (name.find("HLT_AK8PFHT800_TrimMass50_v")                                     != string::npos) bitJet = 37;
+      else if (name.find("HLT_PFHT1050_v")                                                  != string::npos) bitJet = 38;
+      else if (name.find("HLT_PFHT500_PFMET100_PFMHT100_IDTight_v")                         != string::npos) bitJet = 39;
+      else if (name.find("HLT_AK8PFJet400_TrimMass30_v")                                    != string::npos) bitJet = 40;
 
     }
 

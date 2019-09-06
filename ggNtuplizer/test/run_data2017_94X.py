@@ -20,7 +20,7 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-        'file:Run2017F_JetHT_MINIAOD_31Mar2018-v1_1A3E800D-CB37-E811-8C05-002590207E3C.root'
+        'file:E27125B5-0F37-E811-BE08-90B11C0BDC6F.root'
         )
                             )
 

@@ -15,9 +15,7 @@ config.Data.unitsPerJob = 20
 config.Data.splitting = 'LumiBased'
 config.Data.lumiMask = 'Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt' 
 config.Data.runRange = '294927-306462'
-#config.Data.outLFNDirBase = '/store/user/abdollah/Moriond18/Data/'
-#config.Data.outLFNDirBase = '/store/user/abdollah/Moriond18/PreFire'
-config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/An2017/Data/'
+config.Data.outLFNDirBase = '/store/user/tmitchel/BoostedH/An2017/Data_v2/'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')
@@ -32,7 +30,7 @@ if __name__ == '__main__':
 
     # We want to put all the CRAB project directories from the tasks we submit here into one common directory.
     # That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-    config.General.workArea = 'Data_Boosted'
+    config.General.workArea = 'Data_Boosted_v2'
 
     def submit(config):
         try:
@@ -46,22 +44,14 @@ if __name__ == '__main__':
     ## From now on that's what users should modify: this is the a-la-CRAB2 configuration part. ##
     #############################################################################################
 
-    config.General.requestName = "JetHT_Run2017B-31Mar2018-v1"
-    config.Data.inputDataset = "/JetHT/Run2017B-31Mar2018-v1/MINIAOD"
-    submit(config)
+    samples = [
+      "/SingleMuon/Run2017B-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017C-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017D-31Mar2018-v1/MINIAOD",
+      "/SingleMuon/Run2017E-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017F-31Mar2018-v1/MINIAOD"
+    ]
 
-    config.General.requestName = "JetHT_Run2017C-31Mar2018-v1"
-    config.Data.inputDataset = "/JetHT/Run2017C-31Mar2018-v1/MINIAOD"
-    submit(config)
+    for sample in samples:
+      name = sample[1:].replace('/MINIAOD', '').replace('/', '_')
+      config.General.requestName = name
+      config.Data.inputDataset = sample
+      submit(config)
 
-#    config.General.requestName ="JetHT_Run2017D-31Mar2018-v1"
-#    config.Data.inputDataset = "/JetHT/Run2017D-31Mar2018-v1/MINIAOD"
-#    submit(config)
- 
-    config.General.requestName = "JetHT_Run2017E-31Mar2018-v1"
-    config.Data.inputDataset = "/JetHT/Run2017E-31Mar2018-v1/MINIAOD"
-    submit(config)
-
-    config.General.requestName = "JetHT_Run2017F-31Mar2018-v1"
-    config.Data.inputDataset = "/JetHT/Run2017F-31Mar2018-v1/MINIAOD"
-    submit(config)

@@ -223,15 +223,15 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
       int absPdgId = TMath::Abs(lheEvent.IDUP[idxParticle]);
       int status = lheEvent.ISTUP[idxParticle];
       if (status == 1 && ((absPdgId >= 1 && absPdgId <= 6) || absPdgId == 21) ) { // quarks and gluons
-	lheHt += TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.)); // first entry is px, second py
+	      lheHt += TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.)); // first entry is px, second py
       } 
       if (status == 1 && absPdgId == 22 && nMCPho == 0) { // first photon
-	lhePho1 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
-	nMCPho++;
+	      lhePho1 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
+	      nMCPho++;
       }
       if (status == 1 && absPdgId == 22 && nMCPho == 1) { // first photon
-	lhePho2 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
-	nMCPho++;
+	      lhePho2 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
+	      nMCPho++;
       }
 
       typedef std::vector<std::string>::const_iterator comments_const_iterator;
@@ -241,10 +241,10 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 
       TString model_params;
       for(comments_const_iterator cit=c_begin; cit!=c_end; ++cit) {
-	size_t found = (*cit).find("model");
-	if(found != std::string::npos)   { 
-	  model_params = *cit;
-	}
+	      size_t found = (*cit).find("model");
+	      if(found != std::string::npos)   { 
+	        model_params = *cit;
+	      }
       }
       EventTag_ = model_params;
     }
@@ -252,7 +252,7 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
     if (dumpPDFSystWeight_) {
       pdfWeight_ = lheEventProduct->originalXWGTUP(); // PDF weight of this event !
       for (unsigned i = 0; i < lheEventProduct->weights().size(); ++i) {
-	pdfSystWeight_.push_back(lheEventProduct->weights()[i].wgt);
+	      pdfSystWeight_.push_back(lheEventProduct->weights()[i].wgt);
       }
     }
   }
@@ -397,53 +397,53 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
       float mcMomPhi_   = -999.;
       if (!runOnSherpa_) {
 	
-	reco::GenParticleRef partRef = reco::GenParticleRef(genParticlesHandle,
-							    ip-genParticlesHandle->begin());
-	genpartparentage::GenParticleParentage particleHistory(partRef);
-	
-	mcParentage.push_back(particleHistory.hasLeptonParent()*16   +
-			      particleHistory.hasBosonParent()*8     +
-			      particleHistory.hasNonPromptParent()*4 +
-			      particleHistory.hasQCDParent()*2       +
-			      particleHistory.hasExoticParent());      
-	
-	if ( particleHistory.hasRealParent() ) {
-	  reco::GenParticleRef momRef = particleHistory.parent();
-	  if ( momRef.isNonnull() && momRef.isAvailable() ) {
-	    mcMomPID_  = momRef->pdgId();
-	    mcMomPt_   = momRef->pt();
-	    mcMomMass_ = momRef->mass();
-	    mcMomEta_  = momRef->eta();
-	    mcMomPhi_  = momRef->phi();
-	    
-	    // get Granny
-	    genpartparentage::GenParticleParentage motherParticle(momRef);
-	    if ( motherParticle.hasRealParent() ) {
-	      reco::GenParticleRef granny = motherParticle.parent();
-	      mcGMomPID_ = granny->pdgId();
-	    }
-	  }
-	}
-	mcGMomPID.push_back(mcGMomPID_);
-	mcMomPID.push_back(mcMomPID_);
-	mcMomPt.push_back(mcMomPt_);
-	mcMomMass.push_back(mcMomMass_);
-	mcMomEta.push_back(mcMomEta_);
-	mcMomPhi.push_back(mcMomPhi_);
+	      reco::GenParticleRef partRef = reco::GenParticleRef(genParticlesHandle,
+	      						    ip-genParticlesHandle->begin());
+	      genpartparentage::GenParticleParentage particleHistory(partRef);
+	      
+	      mcParentage.push_back(particleHistory.hasLeptonParent()*16   +
+	      		      particleHistory.hasBosonParent()*8     +
+	      		      particleHistory.hasNonPromptParent()*4 +
+	      		      particleHistory.hasQCDParent()*2       +
+	      		      particleHistory.hasExoticParent());      
+	      
+	      if ( particleHistory.hasRealParent() ) {
+	        reco::GenParticleRef momRef = particleHistory.parent();
+	        if ( momRef.isNonnull() && momRef.isAvailable() ) {
+	          mcMomPID_  = momRef->pdgId();
+	          mcMomPt_   = momRef->pt();
+	          mcMomMass_ = momRef->mass();
+	          mcMomEta_  = momRef->eta();
+	          mcMomPhi_  = momRef->phi();
+	          
+	          // get Granny
+	          genpartparentage::GenParticleParentage motherParticle(momRef);
+	          if ( motherParticle.hasRealParent() ) {
+	            reco::GenParticleRef granny = motherParticle.parent();
+	            mcGMomPID_ = granny->pdgId();
+	          }
+	        }
+	      }
+	      mcGMomPID.push_back(mcGMomPID_);
+	      mcMomPID.push_back(mcMomPID_);
+	      mcMomPt.push_back(mcMomPt_);
+	      mcMomMass.push_back(mcMomMass_);
+	      mcMomEta.push_back(mcMomEta_);
+	      mcMomPhi.push_back(mcMomPhi_);
       }
 
       //mcIndex.push_back(genIndex-1);
 
       if (photonOrLepton) {
-	mcCalIsoDR03.push_back( getGenCalIso(genParticlesHandle, ip, 0.3, false, false) );
-	mcTrkIsoDR03.push_back( getGenTrkIso(genParticlesHandle, ip, 0.3) );
-	mcCalIsoDR04.push_back( getGenCalIso(genParticlesHandle, ip, 0.4, false, false) );
-	mcTrkIsoDR04.push_back( getGenTrkIso(genParticlesHandle, ip, 0.4) );
+	      mcCalIsoDR03.push_back( getGenCalIso(genParticlesHandle, ip, 0.3, false, false) );
+	      mcTrkIsoDR03.push_back( getGenTrkIso(genParticlesHandle, ip, 0.3) );
+	      mcCalIsoDR04.push_back( getGenCalIso(genParticlesHandle, ip, 0.4, false, false) );
+	      mcTrkIsoDR04.push_back( getGenTrkIso(genParticlesHandle, ip, 0.4) );
       } else {
-	mcCalIsoDR03.push_back( -999. );
-	mcTrkIsoDR03.push_back( -999. );
-	mcCalIsoDR04.push_back( -999. );
-	mcTrkIsoDR04.push_back( -999. );
+	      mcCalIsoDR03.push_back( -999. );
+	      mcTrkIsoDR03.push_back( -999. );
+	      mcCalIsoDR04.push_back( -999. );
+	      mcTrkIsoDR04.push_back( -999. );
       }
 
       nMC_++;

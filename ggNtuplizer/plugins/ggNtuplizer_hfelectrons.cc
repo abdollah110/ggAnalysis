@@ -102,12 +102,12 @@ void ggNtuplizer::fillHFElectrons(const edm::Event &e) {
 		      0);
       double dr = pf.DeltaR(core);
       if ( dr < 0.15 ) {
-	core += pf;
-	ecalEnergy += pfCandidate.energy()*(1.0 - pfCandidate.hcalFraction());
-	hcalEnergy += pfCandidate.energy()*pfCandidate.hcalFraction();
+	      core += pf;
+	      ecalEnergy += pfCandidate.energy()*(1.0 - pfCandidate.hcalFraction());
+	      hcalEnergy += pfCandidate.energy()*pfCandidate.hcalFraction();
       }
       if ( dr >= 0.15 && dr < 0.3 ) {
-	isolation += pf;
+	      isolation += pf;
       }
     } // Looped over constituents
 

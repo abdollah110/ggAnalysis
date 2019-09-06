@@ -304,26 +304,26 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
       /// cout << "matrix " << deId.rawId() << endl;
       auto rh = rechits->find(deId);
       if( rh != rechits->end() ) {
-	nSaturated += rh->checkFlag( EcalRecHit::kSaturated );
-	nLeRecovered += rh->checkFlag( EcalRecHit::kLeadingEdgeRecovered );
-	nNeighRecovered += rh->checkFlag( EcalRecHit::kNeighboursRecovered );
-	nGain1 += rh->checkFlag( EcalRecHit::kHasSwitchToGain1 );
-	nGain6 += rh->checkFlag( EcalRecHit::kHasSwitchToGain6 );
-	nWeired += rh->checkFlag( EcalRecHit::kWeird ) || rh->checkFlag( EcalRecHit::kDiWeird );
-	
-	if( rh->checkFlag( EcalRecHit::kHasSwitchToGain1 ) && rh->checkFlag( EcalRecHit::kSaturated ) && !isSaturated){ //this is to fill only once, i.e. only if xtal has this, no need to check for other xtals
+	      nSaturated += rh->checkFlag( EcalRecHit::kSaturated );
+	      nLeRecovered += rh->checkFlag( EcalRecHit::kLeadingEdgeRecovered );
+	      nNeighRecovered += rh->checkFlag( EcalRecHit::kNeighboursRecovered );
+	      nGain1 += rh->checkFlag( EcalRecHit::kHasSwitchToGain1 );
+	      nGain6 += rh->checkFlag( EcalRecHit::kHasSwitchToGain6 );
+	      nWeired += rh->checkFlag( EcalRecHit::kWeird ) || rh->checkFlag( EcalRecHit::kDiWeird );
+	      
+	      if( rh->checkFlag( EcalRecHit::kHasSwitchToGain1 ) && rh->checkFlag( EcalRecHit::kSaturated ) && !isSaturated){ //this is to fill only once, i.e. only if xtal has this, no need to check for other xtals
 
-	  setbit(tmpxtalbit, 0);
-	  isSaturated = 1;
-	  //break;
-	}
-	
-	if( rh->checkFlag( EcalRecHit::kHasSwitchToGain6 ) && rh->checkFlag( EcalRecHit::kSaturated ) && !isSaturated_gain6){ //this is to fill only once, i.e. only if xtal has this, no need to check for other xtals
+	        setbit(tmpxtalbit, 0);
+	        isSaturated = 1;
+	        //break;
+	      }
+	      
+	      if( rh->checkFlag( EcalRecHit::kHasSwitchToGain6 ) && rh->checkFlag( EcalRecHit::kSaturated ) && !isSaturated_gain6){ //this is to fill only once, i.e. only if xtal has this, no need to check for other xtals
 
-	  setbit(tmpxtalbit, 1);
-	  isSaturated_gain6 = 1;
-	  //break;
-	}
+	        setbit(tmpxtalbit, 1);
+	        isSaturated_gain6 = 1;
+	        //break;
+	      }
 	
       }//if( rh != rechits->end() ) 
        

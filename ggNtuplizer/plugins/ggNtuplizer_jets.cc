@@ -277,20 +277,20 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
       const edm::Ptr<reco::Candidate> daughter = iJet->getJetConstituents().at(id);
 
       if (daughter.isNonnull() && daughter.isAvailable()) {
-	if (daughter->charge() != 0 && daughter->pt() > leadTrkPt) {
-	  leadTrkPt  = daughter->pt();
-	  leadTrkEta = daughter->eta();
-	  leadTrkPhi = daughter->phi();
-	}
+	      if (daughter->charge() != 0 && daughter->pt() > leadTrkPt) {
+	        leadTrkPt  = daughter->pt();
+	        leadTrkEta = daughter->eta();
+	        leadTrkPhi = daughter->phi();
+	      }
 
-	if (abs(daughter->pdgId()) == 11 || abs(daughter->pdgId()) == 13) {
-	  if (daughter->pt() > lepTrkPt) {
-	    lepTrkPID = daughter->pdgId();
-	    lepTrkPt  = daughter->pt();
-	    lepTrkEta = daughter->eta();
-	    lepTrkPhi = daughter->phi();
-	  }
-	}
+	      if (abs(daughter->pdgId()) == 11 || abs(daughter->pdgId()) == 13) {
+	        if (daughter->pt() > lepTrkPt) {
+	          lepTrkPID = daughter->pdgId();
+	          lepTrkPt  = daughter->pt();
+	          lepTrkEta = daughter->eta();
+	          lepTrkPhi = daughter->phi();
+	        }
+	      }
       }
     }
 
@@ -358,14 +358,14 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
       float jetGenEta       = -999.;
       float jetGenPhi       = -999.;      
       if ((*iJet).genParton()) {
-	jetGenPartonID = (*iJet).genParton()->pdgId();
-	jetGenEn = (*iJet).genParton()->energy();
-	jetGenPt = (*iJet).genParton()->pt();
-	jetGenEta = (*iJet).genParton()->eta();
-	jetGenPhi = (*iJet).genParton()->phi();
-	if ((*iJet).genParton()->mother()) {
-	  jetGenPartonMomID = (*iJet).genParton()->mother()->pdgId();
-	}
+	      jetGenPartonID = (*iJet).genParton()->pdgId();
+	      jetGenEn = (*iJet).genParton()->energy();
+	      jetGenPt = (*iJet).genParton()->pt();
+	      jetGenEta = (*iJet).genParton()->eta();
+	      jetGenPhi = (*iJet).genParton()->phi();
+	      if ((*iJet).genParton()->mother()) {
+	        jetGenPartonMomID = (*iJet).genParton()->mother()->pdgId();
+	      }
       }
       
       jetGenPartonID_.push_back(jetGenPartonID);
@@ -380,10 +380,10 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
       float jetGenJetEta = -999.;
       float jetGenJetPhi = -999.;
       if ((*iJet).genJet()) {
-	jetGenJetEn = (*iJet).genJet()->energy();
-	jetGenJetPt = (*iJet).genJet()->pt();
-	jetGenJetEta = (*iJet).genJet()->eta();
-	jetGenJetPhi = (*iJet).genJet()->phi();
+	      jetGenJetEn = (*iJet).genJet()->energy();
+	      jetGenJetPt = (*iJet).genJet()->pt();
+	      jetGenJetEta = (*iJet).genJet()->eta();
+	      jetGenJetPhi = (*iJet).genJet()->phi();
       }
       jetGenJetEn_.push_back(jetGenJetEn);
       jetGenJetPt_.push_back(jetGenJetPt);
