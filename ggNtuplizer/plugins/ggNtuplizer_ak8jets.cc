@@ -122,7 +122,7 @@ void ggNtuplizer::branchesAK8Jets(TTree* tree) {
   tree->Branch("AK8JetPrunedMass",         &AK8JetPrunedMass_);
   tree->Branch("AK8JetPrunedMassCorr",     &AK8JetPrunedMassCorr_);
   tree->Branch("AK8JetpfBoostedDSVBTag",   &AK8JetpfBoostedDSVBTag_);
-//  tree->Branch("AK8JetDSVnewV4",           &AK8JetDSVnewV4_); //empty
+//  tree->Branch("AK8JetDSVnewV4",           &AK8JetDSVnewV4_);
   tree->Branch("AK8JetCSV",                &AK8JetCSV_);
   tree->Branch("AK8JetJECUnc",             &AK8JetJECUnc_);
   tree->Branch("AK8JetL2L3corr",           &AK8JetL2L3corr_);
@@ -130,9 +130,9 @@ void ggNtuplizer::branchesAK8Jets(TTree* tree) {
   tree->Branch("AK8puppiMass",             &AK8puppiMass_);
   tree->Branch("AK8puppiEta",              &AK8puppiEta_);
   tree->Branch("AK8puppiPhi",              &AK8puppiPhi_);
-  tree->Branch("AK8puppiTau1",             &AK8puppiTau1_);
-  tree->Branch("AK8puppiTau2",             &AK8puppiTau2_);
-  tree->Branch("AK8puppiTau3",             &AK8puppiTau3_);
+  //tree->Branch("AK8puppiTau1",             &AK8puppiTau1_);
+  //tree->Branch("AK8puppiTau2",             &AK8puppiTau2_);
+  //tree->Branch("AK8puppiTau3",             &AK8puppiTau3_);
   tree->Branch("AK8puppiSDL2L3corr",       &AK8puppiSDL2L3corr_);
   tree->Branch("AK8puppiSDMass",           &AK8puppiSDMass_);
   tree->Branch("AK8puppiSDMassL2L3Corr",   &AK8puppiSDMassL2L3Corr_);
@@ -210,9 +210,9 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
   AK8puppiMass_          .clear();
   AK8puppiEta_           .clear();
   AK8puppiPhi_           .clear();
-  AK8puppiTau1_          .clear();
-  AK8puppiTau2_          .clear();
-  AK8puppiTau3_          .clear();
+  //AK8puppiTau1_          .clear();
+  //AK8puppiTau2_          .clear();
+  //AK8puppiTau3_          .clear();
   AK8puppiSDL2L3corr_    .clear();
   AK8puppiSDMass_        .clear();
   AK8puppiSDMassL2L3Corr_.clear();
