@@ -138,9 +138,9 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
 
   tree->Branch("nMC",          &nMC_);
   tree->Branch("mcPID",        &mcPID);
-  tree->Branch("mcVtx",        &mcVtx);
-  tree->Branch("mcVty",        &mcVty);
-  tree->Branch("mcVtz",        &mcVtz);
+//  tree->Branch("mcVtx",        &mcVtx);
+//  tree->Branch("mcVty",        &mcVty);
+//  tree->Branch("mcVtz",        &mcVtz);
   tree->Branch("mcPt",         &mcPt);
   tree->Branch("mcMass",       &mcMass);
   tree->Branch("mcEta",        &mcEta);
@@ -157,10 +157,10 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
   tree->Branch("mcStatusFlag", &mcStatusFlag); //-999:non W or Z, 1:hardronic, 2:e, 3:mu, 4:tau
   tree->Branch("mcParentage",  &mcParentage);  // 16*lepton + 8*boson + 4*non-prompt + 2*qcd + exotics
   tree->Branch("mcStatus",     &mcStatus);     // status of the particle
-  tree->Branch("mcCalIsoDR03", &mcCalIsoDR03);
-  tree->Branch("mcTrkIsoDR03", &mcTrkIsoDR03);
-  tree->Branch("mcCalIsoDR04", &mcCalIsoDR04);
-  tree->Branch("mcTrkIsoDR04", &mcTrkIsoDR04);
+//  tree->Branch("mcCalIsoDR03", &mcCalIsoDR03);
+//  tree->Branch("mcTrkIsoDR03", &mcTrkIsoDR03);
+//  tree->Branch("mcCalIsoDR04", &mcCalIsoDR04);
+//  tree->Branch("mcTrkIsoDR04", &mcTrkIsoDR04);
 }
 
 void ggNtuplizer::fillGenInfo(const edm::Event& e) {

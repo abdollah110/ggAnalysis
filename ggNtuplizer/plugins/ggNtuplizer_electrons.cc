@@ -119,23 +119,23 @@ void ggNtuplizer::branchesElectrons(TTree* tree) {
   tree->Branch("elePtError",              &elePtError_);
   tree->Branch("eleEta",                  &eleEta_);
   tree->Branch("elePhi",                  &elePhi_);
-  tree->Branch("eleR9",                   &eleR9_);
-  tree->Branch("eleCalibPt",              &eleCalibPt_);
-  tree->Branch("eleCalibEn",              &eleCalibEn_);
+//  tree->Branch("eleR9",                   &eleR9_);
+//  tree->Branch("eleCalibPt",              &eleCalibPt_);
+//  tree->Branch("eleCalibEn",              &eleCalibEn_);
   tree->Branch("eleSCEta",                &eleSCEta_);
   tree->Branch("eleSCPhi",                &eleSCPhi_);
-  tree->Branch("eleSCRawEn",              &eleSCRawEn_);
-  tree->Branch("eleSCEtaWidth",           &eleSCEtaWidth_);
-  tree->Branch("eleSCPhiWidth",           &eleSCPhiWidth_);
-  tree->Branch("eleHoverE",               &eleHoverE_);
-  tree->Branch("eleEoverP",               &eleEoverP_);
-  tree->Branch("eleEoverPout",            &eleEoverPout_);
-  tree->Branch("eleEoverPInv",            &eleEoverPInv_);
-  tree->Branch("eleBrem",                 &eleBrem_);
-  tree->Branch("eledEtaAtVtx",            &eledEtaAtVtx_);
-  tree->Branch("eledPhiAtVtx",            &eledPhiAtVtx_);
-  tree->Branch("eleSigmaIEtaIEtaFull5x5", &eleSigmaIEtaIEtaFull5x5_);
-  tree->Branch("eleSigmaIPhiIPhiFull5x5", &eleSigmaIPhiIPhiFull5x5_);
+//  tree->Branch("eleSCRawEn",              &eleSCRawEn_);
+//  tree->Branch("eleSCEtaWidth",           &eleSCEtaWidth_);
+//  tree->Branch("eleSCPhiWidth",           &eleSCPhiWidth_);
+//  tree->Branch("eleHoverE",               &eleHoverE_);
+//  tree->Branch("eleEoverP",               &eleEoverP_);
+//  tree->Branch("eleEoverPout",            &eleEoverPout_);
+//  tree->Branch("eleEoverPInv",            &eleEoverPInv_);
+//  tree->Branch("eleBrem",                 &eleBrem_);
+//  tree->Branch("eledEtaAtVtx",            &eledEtaAtVtx_);
+//  tree->Branch("eledPhiAtVtx",            &eledPhiAtVtx_);
+//  tree->Branch("eleSigmaIEtaIEtaFull5x5", &eleSigmaIEtaIEtaFull5x5_);
+//  tree->Branch("eleSigmaIPhiIPhiFull5x5", &eleSigmaIPhiIPhiFull5x5_);
   tree->Branch("eleConvVeto",             &eleConvVeto_);
   tree->Branch("eleMissHits",             &eleMissHits_);
   tree->Branch("eleESEffSigmaRR",         &eleESEffSigmaRR_);
@@ -147,53 +147,54 @@ void ggNtuplizer::branchesElectrons(TTree* tree) {
   tree->Branch("elePFClusHcalIso",        &elePFClusHcalIso_);
   tree->Branch("eleIDMVAIso",             &eleIDMVAIso_);
   tree->Branch("eleIDMVANoIso",           &eleIDMVANoIso_);
-  tree->Branch("eleR9Full5x5",                &eleR9Full5x5_);
-  tree->Branch("eleEcalDrivenSeed",           &eleEcalDrivenSeed_);
-  tree->Branch("eleTrkdxy",                   &eleTrkdxy_);
-  tree->Branch("eleKFHits",                   &eleKFHits_);
-  tree->Branch("eleKFChi2",                   &eleKFChi2_);
-  tree->Branch("eleGSFChi2",                  &eleGSFChi2_);
-  tree->Branch("eleGSFPt",                    &eleGSFPt_);
-  tree->Branch("eleGSFEta",                   &eleGSFEta_);
-  tree->Branch("eleGSFPhi",                   &eleGSFPhi_);
-  tree->Branch("eleGSFCharge",                &eleGSFCharge_);
-  tree->Branch("eleGSFHits",                  &eleGSFHits_);
-  tree->Branch("eleGSFMissHits",              &eleGSFMissHits_);
-  tree->Branch("eleGSFNHitsMax",              &eleGSFNHitsMax_);
-  tree->Branch("eleGSFVtxProb",               &eleGSFVtxProb_);
-  tree->Branch("eleGSFlxyPV",                 &eleGSFlxyPV_);
-  tree->Branch("eleGSFlxyBS",                 &eleGSFlxyBS_);
+//  tree->Branch("eleR9Full5x5",                &eleR9Full5x5_);
+//  tree->Branch("eleEcalDrivenSeed",           &eleEcalDrivenSeed_);
+//  tree->Branch("eleTrkdxy",                   &eleTrkdxy_);
+//  tree->Branch("eleKFHits",                   &eleKFHits_);
+//  tree->Branch("eleKFChi2",                   &eleKFChi2_);
+//  tree->Branch("eleGSFChi2",                  &eleGSFChi2_);
+//  tree->Branch("eleGSFPt",                    &eleGSFPt_);
+//  tree->Branch("eleGSFEta",                   &eleGSFEta_);
+//  tree->Branch("eleGSFPhi",                   &eleGSFPhi_);
+//  tree->Branch("eleGSFCharge",                &eleGSFCharge_);
+//  tree->Branch("eleGSFHits",                  &eleGSFHits_);
+//  tree->Branch("eleGSFMissHits",              &eleGSFMissHits_);
+//  tree->Branch("eleGSFNHitsMax",              &eleGSFNHitsMax_);
+//  tree->Branch("eleGSFVtxProb",               &eleGSFVtxProb_);
+//  tree->Branch("eleGSFlxyPV",                 &eleGSFlxyPV_);
+//  tree->Branch("eleGSFlxyBS",                 &eleGSFlxyBS_);
   tree->Branch("eleFiredSingleTrgs",          &eleFiredSingleTrgs_);
   tree->Branch("eleFiredDoubleTrgs",          &eleFiredDoubleTrgs_);
   tree->Branch("eleFiredL1Trgs",              &eleFiredL1Trgs_);
   tree->Branch("eleIDbit",                    &eleIDbit_);
-  tree->Branch("eleScale_stat_up",            &eleScale_stat_up_);
-  tree->Branch("eleScale_stat_dn",            &eleScale_stat_dn_);
-  tree->Branch("eleScale_syst_up",            &eleScale_syst_up_);
-  tree->Branch("eleScale_syst_dn",            &eleScale_syst_dn_);
-  tree->Branch("eleScale_gain_up",            &eleScale_gain_up_);
-  tree->Branch("eleScale_gain_dn",            &eleScale_gain_dn_);
-  tree->Branch("eleResol_rho_up",             &eleResol_rho_up_);
-  tree->Branch("eleResol_rho_dn",             &eleResol_rho_dn_);
-  tree->Branch("eleResol_phi_up",             &eleResol_phi_up_);
-  tree->Branch("eleResol_phi_dn",             &eleResol_phi_dn_);
+//  tree->Branch("eleScale_stat_up",            &eleScale_stat_up_);
+//  tree->Branch("eleScale_stat_dn",            &eleScale_stat_dn_);
+//  tree->Branch("eleScale_syst_up",            &eleScale_syst_up_);
+//  tree->Branch("eleScale_syst_dn",            &eleScale_syst_dn_);
+//  tree->Branch("eleScale_gain_up",            &eleScale_gain_up_);
+//  tree->Branch("eleScale_gain_dn",            &eleScale_gain_dn_);
+//  tree->Branch("eleResol_rho_up",             &eleResol_rho_up_);
+//  tree->Branch("eleResol_rho_dn",             &eleResol_rho_dn_);
+//  tree->Branch("eleResol_phi_up",             &eleResol_phi_up_);
+//  tree->Branch("eleResol_phi_dn",             &eleResol_phi_dn_);
 
-  if (development_) {
-    tree->Branch("eleESEnP1Raw",              &eleESEnP1Raw_);
-    tree->Branch("eleESEnP2Raw",              &eleESEnP2Raw_);
-    tree->Branch("eleESEnEta",                &eleESEnEta_);
-    tree->Branch("eleESEnPhi",                &eleESEnPhi_);
-    tree->Branch("eleESEnZ",                  &eleESEnZ_);
-    tree->Branch("eleESEnP",                  &eleESEnP_);
-    tree->Branch("eleESEnX",                  &eleESEnX_);
-    tree->Branch("eleESEnY",                  &eleESEnY_);
-    tree->Branch("eleESEnS",                  &eleESEnS_);
-    tree->Branch("eleESEnE",                  &eleESEnE_);
-    tree->Branch("nGSFTrk",                   &nGSFTrk_);
-    tree->Branch("gsfPt",                     &gsfPt_);
-    tree->Branch("gsfEta",                    &gsfEta_);
-    tree->Branch("gsfPhi",                    &gsfPhi_);
-  }
+// commended by AM
+//  if (development_) {
+//    tree->Branch("eleESEnP1Raw",              &eleESEnP1Raw_);
+//    tree->Branch("eleESEnP2Raw",              &eleESEnP2Raw_);
+//    tree->Branch("eleESEnEta",                &eleESEnEta_);
+//    tree->Branch("eleESEnPhi",                &eleESEnPhi_);
+//    tree->Branch("eleESEnZ",                  &eleESEnZ_);
+//    tree->Branch("eleESEnP",                  &eleESEnP_);
+//    tree->Branch("eleESEnX",                  &eleESEnX_);
+//    tree->Branch("eleESEnY",                  &eleESEnY_);
+//    tree->Branch("eleESEnS",                  &eleESEnS_);
+//    tree->Branch("eleESEnE",                  &eleESEnE_);
+//    tree->Branch("nGSFTrk",                   &nGSFTrk_);
+//    tree->Branch("gsfPt",                     &gsfPt_);
+//    tree->Branch("gsfEta",                    &gsfEta_);
+//    tree->Branch("gsfPhi",                    &gsfPhi_);
+//  }
   
 }
 
@@ -418,16 +419,17 @@ void ggNtuplizer::fillElectrons(const edm::Event &e, const edm::EventSetup &es, 
 	      ESE.push_back((*ips)->energy());
       }
 
-      eleESEnP1Raw_.push_back(ESp1);
-      eleESEnP2Raw_.push_back(ESp2);
-      eleESEnEta_.push_back(ESEta);
-      eleESEnPhi_.push_back(ESPhi);
-      eleESEnZ_.push_back(ESZ);
-      eleESEnP_.push_back(ESP);
-      eleESEnX_.push_back(ESX);
-      eleESEnY_.push_back(ESY);
-      eleESEnS_.push_back(ESS);
-      eleESEnE_.push_back(ESE);
+//Commened by AM
+//      eleESEnP1Raw_.push_back(ESp1);
+//      eleESEnP2Raw_.push_back(ESp2);
+//      eleESEnEta_.push_back(ESEta);
+//      eleESEnPhi_.push_back(ESPhi);
+//      eleESEnZ_.push_back(ESZ);
+//      eleESEnP_.push_back(ESP);
+//      eleESEnX_.push_back(ESX);
+//      eleESEnY_.push_back(ESY);
+//      eleESEnS_.push_back(ESS);
+//      eleESEnE_.push_back(ESE);
     }
 
     // VID decisions 

@@ -61,9 +61,9 @@ void ggNtuplizer::branchesMuons(TTree* tree) {
   tree->Branch("muChi2NDF",     &muChi2NDF_);
   tree->Branch("muInnerD0",     &muInnerD0_);
   tree->Branch("muInnerDz",     &muInnerDz_);
-  tree->Branch("muTrkLayers",   &muTrkLayers_);
-  tree->Branch("muPixelLayers", &muPixelLayers_);
-  tree->Branch("muPixelHits",   &muPixelHits_);
+//  tree->Branch("muTrkLayers",   &muTrkLayers_);
+//  tree->Branch("muPixelLayers", &muPixelLayers_);
+//  tree->Branch("muPixelHits",   &muPixelHits_);
   tree->Branch("muMuonHits",    &muMuonHits_);
   tree->Branch("muStations",    &muStations_);
   tree->Branch("muMatches",     &muMatches_);
@@ -79,13 +79,13 @@ void ggNtuplizer::branchesMuons(TTree* tree) {
   tree->Branch("muPFPUIso03",   &muPFPUIso03_);
   tree->Branch("muFiredTrgs",   &muFiredTrgs_);
   tree->Branch("muFiredL1Trgs", &muFiredL1Trgs_);
-  tree->Branch("muInnervalidFraction",   &muInnervalidFraction_);
-  tree->Branch("musegmentCompatibility", &musegmentCompatibility_);
-  tree->Branch("muchi2LocalPosition",    &muchi2LocalPosition_);
-  tree->Branch("mutrkKink",              &mutrkKink_);
-  tree->Branch("muBestTrkPtError",       &muBestTrkPtError_);
-  tree->Branch("muBestTrkPt",            &muBestTrkPt_);
-  tree->Branch("muBestTrkType",          &muBestTrkType_);
+//  tree->Branch("muInnervalidFraction",   &muInnervalidFraction_);
+//  tree->Branch("musegmentCompatibility", &musegmentCompatibility_);
+//  tree->Branch("muchi2LocalPosition",    &muchi2LocalPosition_);
+//  tree->Branch("mutrkKink",              &mutrkKink_);
+//  tree->Branch("muBestTrkPtError",       &muBestTrkPtError_);
+//  tree->Branch("muBestTrkPt",            &muBestTrkPt_);
+//  tree->Branch("muBestTrkType",          &muBestTrkType_);
 }
 
 void ggNtuplizer::fillMuons(const edm::Event& e, math::XYZPoint& pv, reco::Vertex vtx) {

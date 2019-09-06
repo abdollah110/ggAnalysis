@@ -100,20 +100,20 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   if (doGenParticles_){
     tree->Branch("jetPartonID",       &jetPartonID_);
     tree->Branch("jetHadFlvr",        &jetHadFlvr_);
-    tree->Branch("jetGenJetEn",       &jetGenJetEn_);
-    tree->Branch("jetGenJetPt",       &jetGenJetPt_);
-    tree->Branch("jetGenJetEta",      &jetGenJetEta_);
-    tree->Branch("jetGenJetPhi",      &jetGenJetPhi_);
-    tree->Branch("jetGenPartonID",    &jetGenPartonID_);
-    tree->Branch("jetGenEn",          &jetGenEn_);
-    tree->Branch("jetGenPt",          &jetGenPt_);
-    tree->Branch("jetGenEta",         &jetGenEta_);
-    tree->Branch("jetGenPhi",         &jetGenPhi_);
-    tree->Branch("jetGenPartonMomID", &jetGenPartonMomID_);
-    tree->Branch("jetP4Smear",        &jetP4Smear_);
-    tree->Branch("jetP4SmearUp",      &jetP4SmearUp_);
-    tree->Branch("jetP4SmearDo",      &jetP4SmearDo_);
-  }  
+//    tree->Branch("jetGenJetEn",       &jetGenJetEn_);
+//    tree->Branch("jetGenJetPt",       &jetGenJetPt_);
+//    tree->Branch("jetGenJetEta",      &jetGenJetEta_);
+//    tree->Branch("jetGenJetPhi",      &jetGenJetPhi_);
+//    tree->Branch("jetGenPartonID",    &jetGenPartonID_);
+//    tree->Branch("jetGenEn",          &jetGenEn_);
+//    tree->Branch("jetGenPt",          &jetGenPt_);
+//    tree->Branch("jetGenEta",         &jetGenEta_);
+//    tree->Branch("jetGenPhi",         &jetGenPhi_);
+//    tree->Branch("jetGenPartonMomID", &jetGenPartonMomID_);
+//    tree->Branch("jetP4Smear",        &jetP4Smear_);
+//    tree->Branch("jetP4SmearUp",      &jetP4SmearUp_);
+//    tree->Branch("jetP4SmearDo",      &jetP4SmearDo_);
+  }
   tree->Branch("jetPFLooseId", &jetPFLooseId_);
   tree->Branch("jetID",        &jetID_);
   tree->Branch("jetPUID",      &jetPUID_);
@@ -127,11 +127,11 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   tree->Branch("jetNCH",       &jetNCH_);
   tree->Branch("jetNNP",       &jetNNP_);
   tree->Branch("jetMUF",       &jetMUF_);
-  tree->Branch("jetVtxPt",     &jetVtxPt_);
-  tree->Branch("jetVtxMass",   &jetVtxMass_);
-  tree->Branch("jetVtxNtrks",  &jetVtxNtrks_);
-  tree->Branch("jetVtx3DVal",  &jetVtx3DVal_);
-  tree->Branch("jetVtx3DSig",  &jetVtx3DSig_);
+//  tree->Branch("jetVtxPt",     &jetVtxPt_);
+//  tree->Branch("jetVtxMass",   &jetVtxMass_);
+//  tree->Branch("jetVtxNtrks",  &jetVtxNtrks_);
+//  tree->Branch("jetVtx3DVal",  &jetVtx3DVal_);
+//  tree->Branch("jetVtx3DSig",  &jetVtx3DSig_);
   if (development_) {
     tree->Branch("jetHFHAE",         &jetHFHAE_);
     tree->Branch("jetHFEME",         &jetHFEME_);
@@ -374,21 +374,22 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
       jetGenPt_ .push_back(jetGenPt);
       jetGenEta_ .push_back(jetGenEta);
       jetGenPhi_ .push_back(jetGenPhi);
-      
-      float jetGenJetEn  = -999.;
-      float jetGenJetPt  = -999.;
-      float jetGenJetEta = -999.;
-      float jetGenJetPhi = -999.;
-      if ((*iJet).genJet()) {
-	      jetGenJetEn = (*iJet).genJet()->energy();
-	      jetGenJetPt = (*iJet).genJet()->pt();
-	      jetGenJetEta = (*iJet).genJet()->eta();
-	      jetGenJetPhi = (*iJet).genJet()->phi();
-      }
-      jetGenJetEn_.push_back(jetGenJetEn);
-      jetGenJetPt_.push_back(jetGenJetPt);
-      jetGenJetEta_.push_back(jetGenJetEta);
-      jetGenJetPhi_.push_back(jetGenJetPhi);
+
+commented by AM
+//      float jetGenJetEn  = -999.;
+//      float jetGenJetPt  = -999.;
+//      float jetGenJetEta = -999.;
+//      float jetGenJetPhi = -999.;
+//      if ((*iJet).genJet()) {
+//          jetGenJetEn = (*iJet).genJet()->energy();
+//          jetGenJetPt = (*iJet).genJet()->pt();
+//          jetGenJetEta = (*iJet).genJet()->eta();
+//          jetGenJetPhi = (*iJet).genJet()->phi();
+//      }
+//      jetGenJetEn_.push_back(jetGenJetEn);
+//      jetGenJetPt_.push_back(jetGenJetPt);
+//      jetGenJetEta_.push_back(jetGenJetEta);
+//      jetGenJetPhi_.push_back(jetGenJetPhi);
       
       // access jet resolution       
       /*
