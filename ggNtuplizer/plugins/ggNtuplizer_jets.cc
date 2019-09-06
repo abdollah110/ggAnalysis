@@ -375,7 +375,7 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
       jetGenEta_ .push_back(jetGenEta);
       jetGenPhi_ .push_back(jetGenPhi);
 
-commented by AM
+//commented by AM
 //      float jetGenJetEn  = -999.;
 //      float jetGenJetPt  = -999.;
 //      float jetGenJetEta = -999.;
