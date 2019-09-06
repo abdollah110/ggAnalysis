@@ -36,9 +36,9 @@ void ggNtuplizer::branchesGlobalEvent(TTree* tree) {
   tree->Branch("nVtx",                 &nVtx_);
   tree->Branch("nGoodVtx",             &nGoodVtx_);
   tree->Branch("isPVGood",             &isPVGood_);
-  tree->Branch("vtx",                  &vtx_); 
-  tree->Branch("vty",                  &vty_); 
-  tree->Branch("vtz",                  &vtz_); 
+  tree->Branch("vtx",                  &vtx_);
+  tree->Branch("vty",                  &vty_);
+  tree->Branch("vtz",                  &vtz_);
   tree->Branch("rho",                  &rho_);
   tree->Branch("rhoCentral",           &rhoCentral_);
   tree->Branch("HLTEleMuX",            &HLTEleMuX_);

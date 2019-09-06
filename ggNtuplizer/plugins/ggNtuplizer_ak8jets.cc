@@ -151,9 +151,9 @@ void ggNtuplizer::branchesAK8Jets(TTree* tree) {
     tree->Branch("AK8JetGenEta",         &AK8JetGenEta_);
     tree->Branch("AK8JetGenPhi",         &AK8JetGenPhi_);
     tree->Branch("AK8JetGenPartonMomID", &AK8JetGenPartonMomID_);
-    tree->Branch("AK8JetP4Smear",        &AK8JetP4Smear_);
-    tree->Branch("AK8JetP4SmearUp",      &AK8JetP4SmearUp_);
-    tree->Branch("AK8JetP4SmearDo",      &AK8JetP4SmearDo_);
+//    tree->Branch("AK8JetP4Smear",        &AK8JetP4Smear_);
+//    tree->Branch("AK8JetP4SmearUp",      &AK8JetP4SmearUp_);
+//    tree->Branch("AK8JetP4SmearDo",      &AK8JetP4SmearDo_);
   }
   tree->Branch("nAK8SDSJ",            &nAK8SDSJ_);
   tree->Branch("AK8SDSJPt",           &AK8SDSJPt_);
