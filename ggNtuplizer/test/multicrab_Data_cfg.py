@@ -44,10 +44,15 @@ if __name__ == '__main__':
     ## From now on that's what users should modify: this is the a-la-CRAB2 configuration part. ##
     #############################################################################################
 
+#    samples = [
+#      "/SingleMuon/Run2017B-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017C-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017D-31Mar2018-v1/MINIAOD",
+#      "/SingleMuon/Run2017E-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017F-31Mar2018-v1/MINIAOD"
+#    ]
     samples = [
-      "/SingleMuon/Run2017B-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017C-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017D-31Mar2018-v1/MINIAOD",
-      "/SingleMuon/Run2017E-31Mar2018-v1/MINIAOD", "/SingleMuon/Run2017F-31Mar2018-v1/MINIAOD"
+      "/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD", "/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD", "/SingleElectron/Run2017D-31Mar2018-v1/MINIAOD",
+      "/SingleElectron/Run2017E-31Mar2018-v1/MINIAOD", "/SingleElectron/Run2017F-31Mar2018-v1/MINIAOD"
     ]
+
 
     for sample in samples:
       name = sample[1:].replace('/MINIAOD', '').replace('/', '_')
