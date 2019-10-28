@@ -13,7 +13,8 @@ git cms-merge-topic cms-met:METFixEE2017_949_v2 <br>
 scram b -j 8 <br>
 cd $CMSSW_BASE/src <br>
 git clone https://github.com/cmkuo/HiggsAnalysis.git <br>
-git clone -b 94X https://github.com/cmkuo/ggAnalysis.git <br>
+git clone -b 94X https://github.com/abdollah110/ggAnalysis.git <br>
+git checkout 94X
 scram b -j8 <br>
 
 The above code stores the decision in 64 integer. Each bit represents a decision<br>
