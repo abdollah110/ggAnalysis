@@ -97,8 +97,8 @@ void ggNtuplizer::branchesMET(TTree* tree) {
 
 }
 
-//void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es, RecoilCorrector recoilPFMetCorrector) {
-void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
+void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es, RecoilCorrector recoilPFMetCorrector) {
+//void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 
 //    // use this RooT file when correcting Type I PF MET
 //    // RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/TypeIPFMET_2016BCD.root"); // Type I PF MET 2016
