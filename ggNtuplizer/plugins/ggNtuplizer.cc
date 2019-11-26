@@ -9,7 +9,8 @@ void setbit(UShort_t& x, UShort_t bit) {
 }
 
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
-hltPrescaleProvider_(ps, consumesCollector(), *this)
+hltPrescaleProvider_(ps, consumesCollector(), *this),
+recoilPFMetCorrectorXXX("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root") // Type I PF MET 2017
 {
 
   development_               = ps.getParameter<bool>("development");
@@ -103,7 +104,7 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   if (dumpAK8Jets_)     branchesAK8Jets(tree_);
   if (dumpBoostedTaus_) branchesBoostedTaus(tree_);
 
-//    recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017
+    recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017
 
         // use this RooT file when correcting Type I PF MET
     //    // RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/TypeIPFMET_2016BCD.root"); // Type I PF MET 2016
