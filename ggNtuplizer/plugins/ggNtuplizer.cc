@@ -104,7 +104,7 @@ recoilPFMetCorrectorXXX("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.r
   if (dumpAK8Jets_)     branchesAK8Jets(tree_);
   if (dumpBoostedTaus_) branchesBoostedTaus(tree_);
 
-    recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017
+//    recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017
 
         // use this RooT file when correcting Type I PF MET
     //    // RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/TypeIPFMET_2016BCD.root"); // Type I PF MET 2016
