@@ -10,7 +10,7 @@ void setbit(UShort_t& x, UShort_t bit) {
 
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
 hltPrescaleProvider_(ps, consumesCollector(), *this),
-recoilPFMetCorrectorXXX("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root") // Type I PF MET 2017
+recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root") // Type I PF MET 2017
 {
 
   development_               = ps.getParameter<bool>("development");

@@ -194,7 +194,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   //std::vector<std::string> jecAK8PayloadNames_;
   HLTPrescaleProvider hltPrescaleProvider_;
   
-  RecoilCorrector recoilPFMetCorrectorXXX;
+  RecoilCorrector recoilPFMetCorrector;
   
 };
 
