@@ -46,6 +46,73 @@ vector<float>    mcTrkIsoDR03;
 vector<float>    mcCalIsoDR04;
 vector<float>    mcTrkIsoDR04;
 
+//Tau visible daugthers
+vector<float> taudaugPt ;
+vector<float> taudaugEta;
+vector<float> taudaugPhi;
+vector<float> taudaugMass;
+
+//using namespace std;
+
+std::vector<reco::Candidate::LorentzVector>  ggNtuplizer::buildGenTaus(const edm::Event& e) {
+    bool include_leptonic = false;
+    std::vector< reco::Candidate::LorentzVector > genTauJets;
+
+
+    edm::Handle<vector<reco::GenParticle> > genParticlesHandle;
+    e.getByToken(genParticlesCollection_, genParticlesHandle);
+
+    if (!genParticlesHandle.isValid()) {
+      edm::LogWarning("ggNtuplizer") << "no reco::GenParticles in event";
+//      return 0;
+    }
+    
+    
+    for (vector<reco::GenParticle>::const_iterator ip = genParticlesHandle->begin(); ip != genParticlesHandle->end(); ++ip) {
+
+          size_t id = abs(ip->pdgId());
+          if (id == 15) {
+            bool prompt = ip->statusFlags().isPrompt();
+            if (prompt) {
+              if (ip->numberOfDaughters() > 0) {
+                bool has_tau_daughter = false;
+                bool has_lepton_daughter = false;
+                for (unsigned j = 0; j < ip->numberOfDaughters(); ++j) {
+                  if (abs(ip->daughterRef(j)->pdgId()) == 15) has_tau_daughter = true;
+                  if (abs(ip->daughterRef(j)->pdgId()) == 11 || abs(ip->daughterRef(j)->pdgId()) == 13) has_lepton_daughter = true;
+                }
+                if (has_tau_daughter) {
+                  //std::cout << "Has Tau Daughter" << std::endl;
+                  continue;}
+                if (has_lepton_daughter && !include_leptonic) {
+                  //std::cout << "Has E/Mu Daughter" << std::endl;
+                  continue;}
+
+                reco::Candidate::LorentzVector genTau;
+                for(size_t dau = 0; dau != ip->numberOfDaughters(); ++dau) {
+                  size_t id_d = abs(ip->daughterRef( dau )->pdgId());
+                  //if (id_d == 11 || id_d == 12 || id_d == 13 || id_d == 14 || id_d == 16) continue; //exclude neutrinos
+                  if (id_d == 12 || id_d == 14 || id_d == 16) continue; //exclude neutrinos
+                  genTau += ip->daughterRef( dau )->p4();
+                  //std::cout << " ------- " << dau << ": " << genTau.Pt() << std::endl;
+                } // daughers loop
+                genTauJets.push_back( genTau );
+              } // daughers > 0
+            } // prompt
+          } // tau ID
+        } // gen Loop
+        //std::cout << "Total # of Gen Taus Jets: " << genTauJets.size() << std::endl;
+//    std::cout<<"genTauJets  size "<<genTauJets.size()<<"\n";
+    return genTauJets;
+}
+
+
+
+
+
+
+
+
 float getGenCalIso(edm::Handle<reco::GenParticleCollection> handle,
                    reco::GenParticleCollection::const_iterator thisPart,
                    float dRMax, bool removeMu, bool removeNu) {
@@ -161,6 +228,16 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
 //  tree->Branch("mcTrkIsoDR03", &mcTrkIsoDR03);
 //  tree->Branch("mcCalIsoDR04", &mcCalIsoDR04);
 //  tree->Branch("mcTrkIsoDR04", &mcTrkIsoDR04);
+
+
+
+    //Tau visible daugthers
+    tree->Branch("taudaugPt" ,&taudaugPt   );
+    tree->Branch("taudaugEta" ,&taudaugEta  );
+    tree->Branch("taudaugPhi" ,&taudaugPhi );
+    tree->Branch("taudaugMass" ,&taudaugMass  );
+    
+    
 }
 
 void ggNtuplizer::fillGenInfo(const edm::Event& e) {
@@ -311,6 +388,13 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
   mcTrkIsoDR03.clear();
   mcCalIsoDR04.clear();
   mcTrkIsoDR04.clear();
+  
+  taudaugPt.clear();
+  taudaugEta.clear();
+  taudaugPhi.clear();
+  taudaugMass.clear();
+
+
 
   nMC_ = 0;
 
@@ -387,7 +471,31 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
         }
       }
       if (ip->isLastCopy())  setbit(tmpStatusFlag, 8);
+      
+      
+//      closest.statusFlags().isDirectPromptTauDecayProduct() ) return 4.0;
+
+      if (ip->statusFlags().isPrompt())  setbit(tmpStatusFlag, 9);
+      if (ip->statusFlags().isDirectPromptTauDecayProduct())  setbit(tmpStatusFlag, 10);
+      
+      
+      
       mcStatusFlag.push_back(tmpStatusFlag);
+
+
+
+        //  // Get rebuilt gen taus w/o neutrino energy
+          std::vector<reco::Candidate::LorentzVector> genTaus = buildGenTaus(e);
+          
+  for ( auto vec : genTaus ) {
+  
+  taudaugPt.push_back(vec.Pt());
+  taudaugEta.push_back(vec.Eta());
+  taudaugPhi.push_back(vec.Phi());
+  taudaugMass.push_back(vec.mass());
+  }
+
+
 
       int mcGMomPID_ = -999;
       int mcMomPID_  = -999;
@@ -397,8 +505,7 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
       float mcMomPhi_   = -999.;
       if (!runOnSherpa_) {
 	
-	      reco::GenParticleRef partRef = reco::GenParticleRef(genParticlesHandle,
-	      						    ip-genParticlesHandle->begin());
+	      reco::GenParticleRef partRef = reco::GenParticleRef(genParticlesHandle, ip-genParticlesHandle->begin());
 	      genpartparentage::GenParticleParentage particleHistory(partRef);
 	      
 	      mcParentage.push_back(particleHistory.hasLeptonParent()*16   +
@@ -451,3 +558,34 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
   } // loop over gen-level particles
 
 }
+
+
+
+//
+//if (genID == 11 && closest.pt() > 8 && closest.statusFlags().isPrompt() ) return 1.0;
+//else if (genID == 13 && closest.pt() > 8 && closest.statusFlags().isPrompt() ) return 2.0;
+//else if (genID == 11 && closest.pt() > 8 && closest.statusFlags().isDirectPromptTauDecayProduct() ) return 3.0;
+//else if (genID == 13 && closest.pt() > 8 && closest.statusFlags().isDirectPromptTauDecayProduct() ) return 4.0;
+//// If closest wasn't E / Mu, we need to rebuild taus and check them
+//else {
+//
+//  // Get rebuilt gen taus w/o neutrino energy
+//  std::vector<reco::Candidate::LorentzVector> genTaus = buildGenTaus();
+//
+//  for ( auto vec : genTaus ) {
+//    double tmpDR2 = reco::deltaR( daughter(i)->p4(), vec );
+//    //std::cout << "DR: " << tmpDR2 << "   genTauPt: " << vec.Pt() <<std::endl;
+//    //std::cout << "DR: " << tmpDR2 << std::endl;
+//    if (tmpDR2 < 0.2) {
+//      //std::cout << " ~~~~~ Found Gen Tau " << std::endl;
+//      return 5.0;}
+//  }
+//  //std::cout << " - - - - No Gen Tau " << std::endl;
+//  return 6.0;
+//
+//
+//
+//
+
+
+

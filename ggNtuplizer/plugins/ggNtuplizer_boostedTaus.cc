@@ -413,14 +413,5 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
         ++nBoostedTau_;
         
     } // loop over tau candidates
-
-    // for(vector<pat::Tau>::const_iterator itau = boostedTauHandle_v2->begin(); itau != boostedTauHandle_v2->end(); ++itau) {
-    //     boostedTauByIsolationMVArun2v2DBoldDMwLTraw_.push_back(itau->tauID("byIsolationMVArun2017v2DBoldDMwLTraw2017"));
-    //     boostedTauByVTightIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byVTightIsolationMVArun2017v2DBoldDMwLT2017"));
-    //     boostedTauByTightIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byTightIsolationMVArun2017v2DBoldDMwLT2017"));
-    //     boostedTauByMediumIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byMediumIsolationMVArun2017v2DBoldDMwLT2017"));
-    //     boostedTauByLooseIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byLooseIsolationMVArun2017v2DBoldDMwLT2017"));
-    //     boostedTauByVLooseIsolationMVArun2v2DBoldDMwLT_.push_back(itau->tauID("byVLooseIsolationMVArun2017v2DBoldDMwLT2017"));
-    // }
     
 }

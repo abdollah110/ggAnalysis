@@ -33,6 +33,7 @@
 #include "JetMETCorrections/Modules/interface/JetResolution.h"
 //#include "PhysicsTools/SelectorUtils/interface/PFJetIDSelectionFunctor.h"
 #include "HLTrigger/HLTcore/interface/HLTPrescaleProvider.h"
+#include "HTT-utilities/RecoilCorrections/interface/RecoilCorrector.h"
 
 using namespace std;
 
@@ -83,6 +84,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void fillGlobalEvent(const edm::Event&, const edm::EventSetup&);
   void fillGenInfo    (const edm::Event&);
   void fillGenPart    (const edm::Event&);
+//  void fillMET        (const edm::Event&, const edm::EventSetup&, RecoilCorrector);
   void fillMET        (const edm::Event&, const edm::EventSetup&);
   void fillPhotons    (const edm::Event&, const edm::EventSetup&);
   void fillPFPhotons  (const edm::Event&, const edm::EventSetup&);
@@ -91,6 +93,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void fillMuons      (const edm::Event&, math::XYZPoint&, const reco::Vertex);
   void fillTaus       (const edm::Event&);
   void fillBoostedTaus (const edm::Event&);
+  std::vector<reco::Candidate::LorentzVector>  buildGenTaus (const edm::Event&);
 
   void fillJets       (const edm::Event&, const edm::EventSetup&);
   void fillAK8Jets    (const edm::Event&, const edm::EventSetup&);
@@ -173,6 +176,8 @@ class ggNtuplizer : public edm::EDAnalyzer {
 
   CiCPhotonID                 *cicPhotonId_;
   //EnergyScaleCorrection_class *egmScaler_;
+    
+//   RecoilCorrector recoilPFMetCorrector;
 
   JME::JetResolution            jetResolution_;
   JME::JetResolutionScaleFactor jetResolutionSF_;
@@ -184,6 +189,9 @@ class ggNtuplizer : public edm::EDAnalyzer {
   //boost::shared_ptr<FactorizedJetCorrector> jecAK8pSD_;
   //std::vector<std::string> jecAK8PayloadNames_;
   HLTPrescaleProvider hltPrescaleProvider_;
+  
+  
+  
 };
 
 #endif
