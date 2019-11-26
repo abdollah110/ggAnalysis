@@ -85,7 +85,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void fillGlobalEvent(const edm::Event&, const edm::EventSetup&);
   void fillGenInfo    (const edm::Event&);
   void fillGenPart    (const edm::Event&);
-  void fillMET        (const edm::Event&, const edm::EventSetup&, const RecoilCorrector);
+  void fillMET        (const edm::Event&, const edm::EventSetup&);
 //  void fillMET        (const edm::Event&, const edm::EventSetup&);
   void fillPhotons    (const edm::Event&, const edm::EventSetup&);
   void fillPFPhotons  (const edm::Event&, const edm::EventSetup&);
@@ -180,8 +180,8 @@ class ggNtuplizer : public edm::EDAnalyzer {
     
 //   static const RecoilCorrector recoilPFMetCorrector;
 //   static const RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"), // Type I PF MET 2017,
-   static const RecoilCorrector recoilPFMetCorrector; // Type I PF MET 2017,
-   recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017,
+   RecoilCorrector recoilPFMetCorrector; // Type I PF MET 2017,
+//   recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017,
 
   JME::JetResolution            jetResolution_;
   JME::JetResolutionScaleFactor jetResolutionSF_;
