@@ -192,7 +192,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
         //           dR(lepton,jet) > 0.5.  I have skiped this requirement, instead i subtract my njet with 2 to account the two leptons that have been tagged as lepton
     }
     
-//    int jetVeto30 = std::max(njet-2,0);
+    int jetVeto30 = std::max(njet-2,0);
     
     //=========================================================================================================
 
@@ -309,7 +309,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     pfmetcorr_ex_JESDown = MET_JESDown.Px();
     pfmetcorr_ey_JESDown = MET_JESDown.Py();
     
-    cout <<"\n\t\trecoil = "<<recoil<< "\n";
+//    cout <<"\n\t\trecoil = "<<recoil<< "\n";
 
     if (recoil == 1) {
         recoilPFMetCorrector.CorrectByMeanResolution(
