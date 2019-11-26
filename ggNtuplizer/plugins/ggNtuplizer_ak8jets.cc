@@ -260,7 +260,7 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
   
   edm::Handle<double> rhoHandle;
   e.getByToken(rhoLabel_, rhoHandle);
-  float rho = *(rhoHandle.product()); 
+//  float rho = *(rhoHandle.product()); 
 
   edm::ESHandle<JetCorrectorParametersCollection> AK8JetCorParColl;
   es.get<JetCorrectionsRecord>().get("AK8PFchs",AK8JetCorParColl);
@@ -441,11 +441,11 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
     AK8JetGenPt_ .push_back(AK8JetGenPt);
     AK8JetGenEta_ .push_back(AK8JetGenEta);
     AK8JetGenPhi_ .push_back(AK8JetGenPhi);
-    int AK8JetGenJetIndex = -1;
-    float AK8JetGenJetEn = -999.;
-    float AK8JetGenJetPt = -999.;
-    float AK8JetGenJetEta = -999.;
-    float AK8JetGenJetPhi = -999.;
+//    int AK8JetGenJetIndex = -1;
+//    float AK8JetGenJetEn = -999.;
+//    float AK8JetGenJetPt = -999.;
+//    float AK8JetGenJetEta = -999.;
+//    float AK8JetGenJetPhi = -999.;
 /*
     if (doGenParticles_ && genParticlesHandle.isValid() ) {
       if ((*ijetAK8).genJet()) {

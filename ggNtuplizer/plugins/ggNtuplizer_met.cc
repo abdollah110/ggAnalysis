@@ -118,10 +118,10 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
         return;
     }
     
-    float genpX = -10;
-    float genpY= -10;
-    float vispX= -10;
-    float vispY= -10;
+//     genpX = -10;
+//     genpY= -10;
+//     vispX= -10;
+//     vispY= -10;
     Int_t recoil = 0;
     
     reco::Candidate::LorentzVector visVec;
@@ -192,7 +192,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
         //           dR(lepton,jet) > 0.5.  I have skiped this requirement, instead i subtract my njet with 2 to account the two leptons that have been tagged as lepton
     }
     
-    int jetVeto30 = std::max(njet-2,0);
+//    int jetVeto30 = std::max(njet-2,0);
     
     //=========================================================================================================
 
