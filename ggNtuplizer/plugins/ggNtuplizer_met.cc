@@ -311,124 +311,124 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     
     cout <<"\n\t\trecoil = "<<recoil<< "\n";
 
-//    if (recoil == 1) {
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET.Px(),            // uncorrected type I pf met px (float)
-//                                                     MET.Py(),            // uncorrected type I pf met py (float)
-//                                                     genpX,               // generator Z/W/Higgs px (float)
-//                                                     genpY,               // generator Z/W/Higgs py (float)
-//                                                     vispX,               // generator visible Z/W/Higgs px (float)
-//                                                     vispY,               // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30 + 1,       // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex,        // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey);       // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_JESUp.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_JESUp.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                // generator Z/W/Higgs px (float)
-//                                                     genpY,                // generator Z/W/Higgs py (float)
-//                                                     vispX,                // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30 + 1,        // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_JESUp,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_JESUp);  // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_UESUp.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_UESUp.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                // generator Z/W/Higgs px (float)
-//                                                     genpY,                // generator Z/W/Higgs py (float)
-//                                                     vispX,                // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30 + 1,        // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_UESUp,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_UESUp);  // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_JESDown.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_JESDown.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                  // generator Z/W/Higgs px (float)
-//                                                     genpY,                  // generator Z/W/Higgs py (float)
-//                                                     vispX,                  // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                  // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30 + 1,          // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_JESDown,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_JESDown);  // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_UESDown.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_UESDown.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                  // generator Z/W/Higgs px (float)
-//                                                     genpY,                  // generator Z/W/Higgs py (float)
-//                                                     vispX,                  // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                  // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30 + 1,          // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_UESDown,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_UESDown);  // corrected type I pf met py (float)
-//
-//    } else if (recoil == 2) {
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET.Px(),            // uncorrected type I pf met px (float)
-//                                                     MET.Py(),            // uncorrected type I pf met py (float)
-//                                                     genpX,               // generator Z/W/Higgs px (float)
-//                                                     genpY,               // generator Z/W/Higgs py (float)
-//                                                     vispX,               // generator visible Z/W/Higgs px (float)
-//                                                     vispY,               // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30,       // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex,        // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey);       // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_JESUp.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_JESUp.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                // generator Z/W/Higgs px (float)
-//                                                     genpY,                // generator Z/W/Higgs py (float)
-//                                                     vispX,                // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30,            // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_JESUp,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_JESUp);  // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_UESUp.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_UESUp.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                // generator Z/W/Higgs px (float)
-//                                                     genpY,                // generator Z/W/Higgs py (float)
-//                                                     vispX,                // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30,            // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_UESUp,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_UESUp);  // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_JESDown.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_JESDown.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                  // generator Z/W/Higgs px (float)
-//                                                     genpY,                  // generator Z/W/Higgs py (float)
-//                                                     vispX,                  // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                  // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30,              // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_JESDown,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_JESDown);  // corrected type I pf met py (float)
-//
-//        recoilPFMetCorrector.CorrectByMeanResolution(
-//                                                     MET_UESDown.Px(),       // uncorrected type I pf met px (float)
-//                                                     MET_UESDown.Py(),       // uncorrected type I pf met py (float)
-//                                                     genpX,                  // generator Z/W/Higgs px (float)
-//                                                     genpY,                  // generator Z/W/Higgs py (float)
-//                                                     vispX,                  // generator visible Z/W/Higgs px (float)
-//                                                     vispY,                  // generator visible Z/W/Higgs py (float)
-//                                                     jetVeto30,              // number of jets (hadronic jet multiplicity) (int)
-//                                                     pfmetcorr_ex_UESDown,   // corrected type I pf met px (float)
-//                                                     pfmetcorr_ey_UESDown);  // corrected type I pf met py (float)
-//    }
-//
-//    MET.SetPxPyPzE(pfmetcorr_ex, pfmetcorr_ey, 0, sqrt(pfmetcorr_ex * pfmetcorr_ex + pfmetcorr_ey * pfmetcorr_ey));
-//    MET_UESUp.SetPxPyPzE(pfmetcorr_ex_UESUp, pfmetcorr_ey_UESUp, 0, sqrt(pfmetcorr_ex_UESUp * pfmetcorr_ex_UESUp + pfmetcorr_ey_UESUp * pfmetcorr_ey_UESUp));
-//    MET_UESDown.SetPxPyPzE(pfmetcorr_ex_UESDown, pfmetcorr_ey_UESDown, 0, sqrt(pfmetcorr_ex_UESDown * pfmetcorr_ex_UESDown + pfmetcorr_ey_UESDown * pfmetcorr_ey_UESDown));
-//    MET_JESUp.SetPxPyPzE(pfmetcorr_ex_JESUp, pfmetcorr_ey_JESUp, 0, sqrt(pfmetcorr_ex_JESUp * pfmetcorr_ex_JESUp + pfmetcorr_ey_JESUp * pfmetcorr_ey_JESUp));
-//    MET_JESDown.SetPxPyPzE(pfmetcorr_ex_JESDown, pfmetcorr_ey_JESDown, 0, sqrt(pfmetcorr_ex_JESDown * pfmetcorr_ex_JESDown + pfmetcorr_ey_JESDown * pfmetcorr_ey_JESDown));
+    if (recoil == 1) {
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET.Px(),            // uncorrected type I pf met px (float)
+                                                     MET.Py(),            // uncorrected type I pf met py (float)
+                                                     genpX,               // generator Z/W/Higgs px (float)
+                                                     genpY,               // generator Z/W/Higgs py (float)
+                                                     vispX,               // generator visible Z/W/Higgs px (float)
+                                                     vispY,               // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30 + 1,       // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex,        // corrected type I pf met px (float)
+                                                     pfmetcorr_ey);       // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_JESUp.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_JESUp.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                // generator Z/W/Higgs px (float)
+                                                     genpY,                // generator Z/W/Higgs py (float)
+                                                     vispX,                // generator visible Z/W/Higgs px (float)
+                                                     vispY,                // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30 + 1,        // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_JESUp,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_JESUp);  // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_UESUp.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_UESUp.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                // generator Z/W/Higgs px (float)
+                                                     genpY,                // generator Z/W/Higgs py (float)
+                                                     vispX,                // generator visible Z/W/Higgs px (float)
+                                                     vispY,                // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30 + 1,        // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_UESUp,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_UESUp);  // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_JESDown.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_JESDown.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                  // generator Z/W/Higgs px (float)
+                                                     genpY,                  // generator Z/W/Higgs py (float)
+                                                     vispX,                  // generator visible Z/W/Higgs px (float)
+                                                     vispY,                  // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30 + 1,          // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_JESDown,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_JESDown);  // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_UESDown.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_UESDown.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                  // generator Z/W/Higgs px (float)
+                                                     genpY,                  // generator Z/W/Higgs py (float)
+                                                     vispX,                  // generator visible Z/W/Higgs px (float)
+                                                     vispY,                  // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30 + 1,          // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_UESDown,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_UESDown);  // corrected type I pf met py (float)
+
+    } else if (recoil == 2) {
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET.Px(),            // uncorrected type I pf met px (float)
+                                                     MET.Py(),            // uncorrected type I pf met py (float)
+                                                     genpX,               // generator Z/W/Higgs px (float)
+                                                     genpY,               // generator Z/W/Higgs py (float)
+                                                     vispX,               // generator visible Z/W/Higgs px (float)
+                                                     vispY,               // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30,       // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex,        // corrected type I pf met px (float)
+                                                     pfmetcorr_ey);       // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_JESUp.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_JESUp.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                // generator Z/W/Higgs px (float)
+                                                     genpY,                // generator Z/W/Higgs py (float)
+                                                     vispX,                // generator visible Z/W/Higgs px (float)
+                                                     vispY,                // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30,            // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_JESUp,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_JESUp);  // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_UESUp.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_UESUp.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                // generator Z/W/Higgs px (float)
+                                                     genpY,                // generator Z/W/Higgs py (float)
+                                                     vispX,                // generator visible Z/W/Higgs px (float)
+                                                     vispY,                // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30,            // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_UESUp,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_UESUp);  // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_JESDown.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_JESDown.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                  // generator Z/W/Higgs px (float)
+                                                     genpY,                  // generator Z/W/Higgs py (float)
+                                                     vispX,                  // generator visible Z/W/Higgs px (float)
+                                                     vispY,                  // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30,              // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_JESDown,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_JESDown);  // corrected type I pf met py (float)
+
+        recoilPFMetCorrector.CorrectByMeanResolution(
+                                                     MET_UESDown.Px(),       // uncorrected type I pf met px (float)
+                                                     MET_UESDown.Py(),       // uncorrected type I pf met py (float)
+                                                     genpX,                  // generator Z/W/Higgs px (float)
+                                                     genpY,                  // generator Z/W/Higgs py (float)
+                                                     vispX,                  // generator visible Z/W/Higgs px (float)
+                                                     vispY,                  // generator visible Z/W/Higgs py (float)
+                                                     jetVeto30,              // number of jets (hadronic jet multiplicity) (int)
+                                                     pfmetcorr_ex_UESDown,   // corrected type I pf met px (float)
+                                                     pfmetcorr_ey_UESDown);  // corrected type I pf met py (float)
+    }
+
+    MET.SetPxPyPzE(pfmetcorr_ex, pfmetcorr_ey, 0, sqrt(pfmetcorr_ex * pfmetcorr_ex + pfmetcorr_ey * pfmetcorr_ey));
+    MET_UESUp.SetPxPyPzE(pfmetcorr_ex_UESUp, pfmetcorr_ey_UESUp, 0, sqrt(pfmetcorr_ex_UESUp * pfmetcorr_ex_UESUp + pfmetcorr_ey_UESUp * pfmetcorr_ey_UESUp));
+    MET_UESDown.SetPxPyPzE(pfmetcorr_ex_UESDown, pfmetcorr_ey_UESDown, 0, sqrt(pfmetcorr_ex_UESDown * pfmetcorr_ex_UESDown + pfmetcorr_ey_UESDown * pfmetcorr_ey_UESDown));
+    MET_JESUp.SetPxPyPzE(pfmetcorr_ex_JESUp, pfmetcorr_ey_JESUp, 0, sqrt(pfmetcorr_ex_JESUp * pfmetcorr_ex_JESUp + pfmetcorr_ey_JESUp * pfmetcorr_ey_JESUp));
+    MET_JESDown.SetPxPyPzE(pfmetcorr_ex_JESDown, pfmetcorr_ey_JESDown, 0, sqrt(pfmetcorr_ex_JESDown * pfmetcorr_ex_JESDown + pfmetcorr_ey_JESDown * pfmetcorr_ey_JESDown));
     
     met = MET.Pt();
     metphi = MET.Phi();
