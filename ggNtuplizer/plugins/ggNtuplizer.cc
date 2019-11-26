@@ -9,7 +9,6 @@ void setbit(UShort_t& x, UShort_t bit) {
 }
 
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
-RecoilCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"),
 hltPrescaleProvider_(ps, consumesCollector(), *this)
 {
 
@@ -79,7 +78,7 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   //jecAK8PayloadNames_        =                                          ps.getParameter<std::vector<std::string> >("jecAK8PayloadNames"); 
 
   //pfLooseId_                 = ps.getParameter<ParameterSet>("pfLooseId");
-
+  recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root");
   cicPhotonId_ = new CiCPhotonID(ps);
 
   Service<TFileService> fs;
