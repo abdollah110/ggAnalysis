@@ -33,7 +33,8 @@
 #include "JetMETCorrections/Modules/interface/JetResolution.h"
 //#include "PhysicsTools/SelectorUtils/interface/PFJetIDSelectionFunctor.h"
 #include "HLTrigger/HLTcore/interface/HLTPrescaleProvider.h"
-#include "HTT-utilities/RecoilCorrections/interface/RecoilCorrector.h"
+//#include "HTT-utilities/RecoilCorrections/interface/RecoilCorrector.h"
+#include "RecoilCorrector.h"
 
 using namespace std;
 
@@ -84,7 +85,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void fillGlobalEvent(const edm::Event&, const edm::EventSetup&);
   void fillGenInfo    (const edm::Event&);
   void fillGenPart    (const edm::Event&);
-  void fillMET        (const edm::Event&, const edm::EventSetup&, RecoilCorrector);
+  void fillMET        (const edm::Event&, const edm::EventSetup&, const RecoilCorrector);
 //  void fillMET        (const edm::Event&, const edm::EventSetup&);
   void fillPhotons    (const edm::Event&, const edm::EventSetup&);
   void fillPFPhotons  (const edm::Event&, const edm::EventSetup&);
@@ -177,7 +178,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   CiCPhotonID                 *cicPhotonId_;
   //EnergyScaleCorrection_class *egmScaler_;
     
-   static const RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root");
+   static const RecoilCorrector recoilPFMetCorrector;
 
   JME::JetResolution            jetResolution_;
   JME::JetResolutionScaleFactor jetResolutionSF_;
