@@ -180,7 +180,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
     
 //   static const RecoilCorrector recoilPFMetCorrector;
 //   static const RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"), // Type I PF MET 2017,
-   RecoilCorrector recoilPFMetCorrector; // Type I PF MET 2017,
+   RecoilCorrector recoilPFMetCorrector(std::string); // Type I PF MET 2017,
 //   recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017,
 
   JME::JetResolution            jetResolution_;
