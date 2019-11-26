@@ -87,6 +87,14 @@ process.ggNtuplizer.dumpBoostedTaus=cms.bool(True)
 process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "PAT")
 
 
+# To pass argument to cmsRun
+import FWCore.ParameterSet.VarParsing as VarParsing
+options = VarParsing.VarParsing (
+    recoil=1,
+)
+options.parseArguments()
+
+
 
 
 
