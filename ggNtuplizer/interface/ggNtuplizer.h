@@ -177,7 +177,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   CiCPhotonID                 *cicPhotonId_;
   //EnergyScaleCorrection_class *egmScaler_;
     
-   RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root");
+   static const RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root");
 
   JME::JetResolution            jetResolution_;
   JME::JetResolutionScaleFactor jetResolutionSF_;
