@@ -9,6 +9,7 @@ void setbit(UShort_t& x, UShort_t bit) {
 }
 
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
+recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"),
 hltPrescaleProvider_(ps, consumesCollector(), *this)
 {
 
