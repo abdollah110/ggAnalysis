@@ -33,8 +33,8 @@
 #include "JetMETCorrections/Modules/interface/JetResolution.h"
 //#include "PhysicsTools/SelectorUtils/interface/PFJetIDSelectionFunctor.h"
 #include "HLTrigger/HLTcore/interface/HLTPrescaleProvider.h"
-#include "HTT-utilities/RecoilCorrections/interface/RecoilCorrector.h"
-//#include "RecoilCorrector.h"
+//#include "HTT-utilities/RecoilCorrections/interface/RecoilCorrector.h"
+#include "RecoilCorrector.h"
 
 using namespace std;
 
