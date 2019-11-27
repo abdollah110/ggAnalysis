@@ -289,7 +289,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     MET.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
     pfMetNoRecoil=pfMET->et();
     pfMetPhiNoRecoil=pfMET->phi();
-    std::cout<<"no recoil= "<<pfMET->et()<<"\n";
+//    std::cout<<"no recoil= "<<pfMET->et()<<"\n";
     
     MET_UESUp.SetPtEtaPhiM(pfMET_T1UESUp_, 0, pfMETPhi_T1UESUp_, 0);
     MET_UESDown.SetPtEtaPhiM(pfMET_T1UESDo_, 0, pfMETPhi_T1UESDo_, 0);
@@ -377,7 +377,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     pfMETPhi_ = MET.Phi();
     met_px = MET.Px();
     met_py = MET.Py();
-    std::cout<<"\t corrected met= "<<pfMET_<<"\n";
+//    std::cout<<"\t corrected met= "<<pfMET_<<"\n";
     
     met_JESUp = MET_JESUp.Pt();
     met_JESDown = MET_JESDown.Pt();
