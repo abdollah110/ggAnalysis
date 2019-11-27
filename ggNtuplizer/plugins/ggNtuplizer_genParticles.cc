@@ -66,8 +66,7 @@ std::vector<reco::Candidate::LorentzVector>  ggNtuplizer::buildGenTaus(const edm
       edm::LogWarning("ggNtuplizer") << "no reco::GenParticles in event";
 //      return 0;
     }
-    
-    
+        
     for (vector<reco::GenParticle>::const_iterator ip = genParticlesHandle->begin(); ip != genParticlesHandle->end(); ++ip) {
 
           size_t id = abs(ip->pdgId());
@@ -101,8 +100,6 @@ std::vector<reco::Candidate::LorentzVector>  ggNtuplizer::buildGenTaus(const edm
             } // prompt
           } // tau ID
         } // gen Loop
-        //std::cout << "Total # of Gen Taus Jets: " << genTauJets.size() << std::endl;
-//    std::cout<<"genTauJets  size "<<genTauJets.size()<<"\n";
     return genTauJets;
 }
 
