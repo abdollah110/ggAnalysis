@@ -11,22 +11,22 @@ float genMET_;
 float genMETPhi_;
 float pfMET_;
 float pfMETPhi_;
-float pfMET_T1JERUp_;
-float pfMET_T1JERDo_;
+//float pfMET_T1JERUp_;
+//float pfMET_T1JERDo_;
+//float pfMET_T1MESUp_;
+//float pfMET_T1MESDo_;
+//float pfMET_T1EESUp_;
+//float pfMET_T1EESDo_;
+//float pfMET_T1PESUp_;
+//float pfMET_T1PESDo_;
+//float pfMET_T1TESUp_;
+//float pfMET_T1TESDo_;
 float pfMET_T1JESUp_;
 float pfMET_T1JESDo_;
-float pfMET_T1MESUp_;
-float pfMET_T1MESDo_;
-float pfMET_T1EESUp_;
-float pfMET_T1EESDo_;
-float pfMET_T1PESUp_;
-float pfMET_T1PESDo_;
-float pfMET_T1TESUp_;
-float pfMET_T1TESDo_;
 float pfMET_T1UESUp_;
 float pfMET_T1UESDo_;
-float pfMET_T1TxyPhi_;
-float pfMET_T1TxyPt_;
+//float pfMET_T1TxyPhi_;
+//float pfMET_T1TxyPt_;
 float pfMETPhi_T1JESUp_;
 float pfMETPhi_T1JESDo_;
 float pfMETPhi_T1UESUp_;
@@ -251,8 +251,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
   if (pfMETHandle.isValid()) {
     const pat::MET *pfMET = 0;
     pfMET     = &(pfMETHandle->front());
-    pfMET_    = pfMET->et();
-    pfMETPhi_ = pfMET->phi();
+//    pfMET_    = pfMET->et();
+//    pfMETPhi_ = pfMET->phi();
     
     // Type1MET uncertainties =======================================
 //    pfMET_T1JERUp_ = pfMET->shiftedPt(pat::MET::JetResUp);
@@ -286,9 +286,10 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
   } 
 
 
-    MET.SetPtEtaPhiM(pfMET_, 0, pfMETPhi_, 0);
-    pfMetNoRecoil=pfMET_;
-    pfMetPhiNoRecoil=pfMETPhi_;
+    MET.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
+    pfMetNoRecoil=pfMET->et();
+    pfMetPhiNoRecoil=pfMET->phi();
+    std::cout<<"no recoil= "<<pfMET->et()<<"\n";
     
     MET_UESUp.SetPtEtaPhiM(pfMET_T1UESUp_, 0, pfMETPhi_T1UESUp_, 0);
     MET_UESDown.SetPtEtaPhiM(pfMET_T1UESDo_, 0, pfMETPhi_T1UESDo_, 0);
@@ -376,6 +377,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     pfMETPhi_ = MET.Phi();
     met_px = MET.Px();
     met_py = MET.Py();
+    std::cout<<"\t corrected met= "<<pfMET_<<"\n";
     
     met_JESUp = MET_JESUp.Pt();
     met_JESDown = MET_JESDown.Pt();
