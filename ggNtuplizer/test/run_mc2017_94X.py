@@ -17,6 +17,10 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '94X_mc2017_realistic_v17')
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
+process.source = cms.Source("PoolSource",
+                            fileNames = cms.untracked.vstring(
+        'file:WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-MINIAODSIM_PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_62E9E342-1D63-E811-8179-F04DA27541B7.root'
+        ))
 
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
 
@@ -83,38 +87,17 @@ process.ggNtuplizer.dumpBoostedTaus=cms.bool(True)
 process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "PAT")
 
 
-
-
-
-
-# To pass argument to cmsRun
-import FWCore.ParameterSet.VarParsing as VarParsing
-
-options = VarParsing.VarParsing ('analysis')
-# add a list of strings for events to process
-options.register ('eventsToProcess',
-                  '',
-                  VarParsing.multiplicity.list,
-                  VarParsing.varType.string,
-                  "Events to process")
-#options.register ('maxSize',
-#                  0,
-#                  VarParsing.multiplicity.singleton,
-#                  VarParsing.varType.int,
-#                  "Maximum (suggested) file size (in Kb)")
-
-options.parseArguments()
-
-
-process.source = cms.Source("PoolSource",
-#                    fileNames = cms.untracked.vstring(
-#'file:WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-MINIAODSIM_PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_62E9E342-1D63-E811-8179-F04DA27541B7.root'
-                    fileNames = cms.untracked.vstring (options.inputFiles),
+#recoil=bool(options.recoil)
+#
+## To pass argument to cmsRun
+#import FWCore.ParameterSet.VarParsing as VarParsing
+#options = VarParsing.VarParsing (
+#    recoil=1,
 #)
-)
+#options.parseArguments()
+#
 
-if options.eventsToProcess:
-    process.source.eventsToProcess = cms.untracked.VEventRange (options.eventsToProcess)
+
 
 
 process.p = cms.Path(
