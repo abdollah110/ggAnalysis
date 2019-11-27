@@ -90,7 +90,7 @@ process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "PAT")
 # To pass argument to cmsRun
 import FWCore.ParameterSet.VarParsing as VarParsing
 
-options = VarParsing ('analysis')
+options = VarParsing.VarParsing ('analysis')
 # add a list of strings for events to process
 options.register ('eventsToProcess',
                   '',
