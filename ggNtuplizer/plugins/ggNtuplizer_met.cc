@@ -283,7 +283,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
       genMETPhi_ = pfMET->genMET()->phi();
     }
 
-  } 
+   
 
 
     MET.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
@@ -388,4 +388,5 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     metphi_UESUp = MET_UESUp.Phi();
     metphi_UESDown = MET_UESDown.Phi();
 
+}
 }
