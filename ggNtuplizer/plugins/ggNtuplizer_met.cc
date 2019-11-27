@@ -36,6 +36,8 @@ TLorentzVector  MET, MET_UESUp, MET_UESDown, MET_JESUp, MET_JESDown;
 float genpX, genpY, vispX, vispY;
 float met_UESUp, met_UESDown, met_JESUp, met_JESDown, metphi_UESUp, metphi_UESDown, metphi_JESUp, metphi_JESDown;
 float met_px, met_py, pfmetcorr_ex, pfmetcorr_ey, met, metphi;
+int recoil_;
+float pfMetNoRecoil, pfMetPhiNoRecoil;
 
 
 
@@ -50,6 +52,10 @@ void ggNtuplizer::branchesMET(TTree* tree) {
   tree->Branch("metFilters",       &metFilters_);
   tree->Branch("pfMET",            &pfMET_);
   tree->Branch("pfMETPhi",         &pfMETPhi_);
+  tree->Branch("recoil",         &recoil_);
+  tree->Branch("pfMetNoRecoil",         &pfMetNoRecoil);
+  tree->Branch("pfMetPhiNoRecoil",         &pfMetPhiNoRecoil);
+
 //  tree->Branch("pfMET_T1JERUp",    &pfMET_T1JERUp_);
 //  tree->Branch("pfMET_T1JERDo",    &pfMET_T1JERDo_);
   /*
@@ -134,6 +140,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
         if (    ip->pdgId()  == 25 && ip->isHardProcess()) recoil=2; //Higgs
         
     }
+    recoil_=recoil;
     
     genpX= visVec.px();
     genpY= visVec.py();
@@ -278,6 +285,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 
 
     MET.SetPtEtaPhiM(pfMET_, 0, pfMETPhi_, 0);
+    pfMetNoRecoil=pfMET_;
+    pfMetPhiNoRecoil=pfMETPhi_;
     
     MET_UESUp.SetPtEtaPhiM(pfMET_T1UESUp_, 0, pfMETPhi_T1UESUp_, 0);
     MET_UESDown.SetPtEtaPhiM(pfMET_T1UESDo_, 0, pfMETPhi_T1UESDo_, 0);
