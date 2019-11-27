@@ -90,7 +90,7 @@ process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "PAT")
 # To pass argument to cmsRun
 import FWCore.ParameterSet.VarParsing as VarParsing
 
-options = VarParsing ('analysis')
+options = VarParsing ('ggKit')
 
 # add a list of strings for events to process
 options.register ('eventsToProcess',
@@ -107,11 +107,12 @@ options.register ('eventsToProcess',
 options.parseArguments()
 
 
-#process.source = cms.Source("PoolSource",
+process.source = cms.Source("PoolSource",
 #                    fileNames = cms.untracked.vstring(
-##'file:WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-MINIAODSIM_PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_62E9E342-1D63-E811-8179-F04DA27541B7.root'
+#'file:WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-MINIAODSIM_PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_62E9E342-1D63-E811-8179-F04DA27541B7.root'
+                    fileNames = cms.untracked.vstring (options.inputFiles),
 #)
-#)
+)
 
 if options.eventsToProcess:
     process.source.eventsToProcess = cms.untracked.VEventRange (options.eventsToProcess)
