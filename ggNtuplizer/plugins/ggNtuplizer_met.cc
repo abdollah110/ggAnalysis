@@ -55,7 +55,9 @@ void ggNtuplizer::branchesMET(TTree* tree) {
   tree->Branch("recoil",         &recoil_);
   tree->Branch("pfMetNoRecoil",         &pfMetNoRecoil);
   tree->Branch("pfMetPhiNoRecoil",         &pfMetPhiNoRecoil);
-
+  tree->Branch("met_px",         &met_px);
+  tree->Branch("met_py",         &met_py);
+  
 //  tree->Branch("pfMET_T1JERUp",    &pfMET_T1JERUp_);
 //  tree->Branch("pfMET_T1JERDo",    &pfMET_T1JERDo_);
   /*
@@ -68,14 +70,14 @@ void ggNtuplizer::branchesMET(TTree* tree) {
   tree->Branch("pfMET_T1TESUp",    &pfMET_T1TESUp_);
   tree->Branch("pfMET_T1TESDo",    &pfMET_T1TESDo_);
   */
-  tree->Branch("pfMET_T1JESUp",    &pfMET_T1JESUp_);
-  tree->Branch("pfMET_T1JESDo",    &pfMET_T1JESDo_);
-  tree->Branch("pfMET_T1UESUp",    &pfMET_T1UESUp_);
-  tree->Branch("pfMET_T1UESDo",    &pfMET_T1UESDo_);
-  tree->Branch("pfMETPhi_T1JESUp", &pfMETPhi_T1JESUp_);
-  tree->Branch("pfMETPhi_T1JESDo", &pfMETPhi_T1JESDo_);
-  tree->Branch("pfMETPhi_T1UESUp", &pfMETPhi_T1UESUp_);
-  tree->Branch("pfMETPhi_T1UESDo", &pfMETPhi_T1UESDo_);
+//  tree->Branch("pfMET_T1JESUp",    &pfMET_T1JESUp_);
+//  tree->Branch("pfMET_T1JESDo",    &pfMET_T1JESDo_);
+//  tree->Branch("pfMET_T1UESUp",    &pfMET_T1UESUp_);
+//  tree->Branch("pfMET_T1UESDo",    &pfMET_T1UESDo_);
+//  tree->Branch("pfMETPhi_T1JESUp", &pfMETPhi_T1JESUp_);
+//  tree->Branch("pfMETPhi_T1JESDo", &pfMETPhi_T1JESDo_);
+//  tree->Branch("pfMETPhi_T1UESUp", &pfMETPhi_T1UESUp_);
+//  tree->Branch("pfMETPhi_T1UESDo", &pfMETPhi_T1UESDo_);
   
   // Systematics
   tree->Branch("met_JESUp", &met_JESUp, "met_JESUp/F");
@@ -370,8 +372,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     MET_JESUp.SetPxPyPzE(pfmetcorr_ex_JESUp, pfmetcorr_ey_JESUp, 0, sqrt(pfmetcorr_ex_JESUp * pfmetcorr_ex_JESUp + pfmetcorr_ey_JESUp * pfmetcorr_ey_JESUp));
     MET_JESDown.SetPxPyPzE(pfmetcorr_ex_JESDown, pfmetcorr_ey_JESDown, 0, sqrt(pfmetcorr_ex_JESDown * pfmetcorr_ex_JESDown + pfmetcorr_ey_JESDown * pfmetcorr_ey_JESDown));
     
-    met = MET.Pt();
-    metphi = MET.Phi();
+    pfMET_ = MET.Pt();
+    pfMETPhi_ = MET.Phi();
     met_px = MET.Px();
     met_py = MET.Py();
     
