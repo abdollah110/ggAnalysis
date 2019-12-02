@@ -109,10 +109,10 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     edm::Handle<vector<reco::GenParticle> > genParticlesHandle;
     e.getByToken(genParticlesCollection_, genParticlesHandle);
     
-    if (!genParticlesHandle.isValid()) {
-        edm::LogWarning("ggNtuplizer") << "no reco::GenParticles in event";
-        return;
-    }
+//    if (!genParticlesHandle.isValid()) {
+//        edm::LogWarning("ggNtuplizer") << "no reco::GenParticles in event";
+//        return;
+//    }
 
     Int_t recoil = 0;
     
