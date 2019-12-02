@@ -102,23 +102,27 @@ void ggNtuplizer::branchesMET(TTree* tree) {
 
 void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 
-    //=========================================================================================================
-    //  for recoil correction
-    //=========================================================================================================
-    //check boson pt, ...
-    edm::Handle<vector<reco::GenParticle> > genParticlesHandle;
-    e.getByToken(genParticlesCollection_, genParticlesHandle);
-    
-//    if (!genParticlesHandle.isValid()) {
-//        edm::LogWarning("ggNtuplizer") << "no reco::GenParticles in event";
-//        return;
-//    }
+
 
     Int_t recoil = 0;
     
+    
+    if (!e.isRealData()) {
+        //=========================================================================================================
+        //  for recoil correction
+        //=========================================================================================================
+        //check boson pt, ...
+        edm::Handle<vector<reco::GenParticle> > genParticlesHandle;
+        e.getByToken(genParticlesCollection_, genParticlesHandle);
+        
+        if (!genParticlesHandle.isValid()) {
+            edm::LogWarning("ggNtuplizer") << "no reco::GenParticles in event";
+            return;
+        }
+    
     reco::Candidate::LorentzVector visVec;
     reco::Candidate::LorentzVector withInvisVec;
-    
+        
     for (vector<reco::GenParticle>::const_iterator ip = genParticlesHandle->begin(); ip != genParticlesHandle->end(); ++ip) {
                 
         bool fromHardProcessFinalState = ip->fromHardProcessFinalState();
@@ -141,14 +145,16 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
         if (    abs(ip->pdgId()) == 24 && ip->isHardProcess()) recoil=1;  //W boson
         if (    ip->pdgId()  == 25 && ip->isHardProcess()) recoil=2; //Higgs
         
-    }
-    recoil_=recoil;
-    
-    genpX= visVec.px();
-    genpY= visVec.py();
-    vispX= withInvisVec.px();
-    vispY= withInvisVec.py();
+        }
         
+        genpX= visVec.px();
+        genpY= visVec.py();
+        vispX= withInvisVec.px();
+        vispY= withInvisVec.py();
+    }
+    
+    recoil_=recoil;
+
     edm::Handle<edm::View<pat::Jet> > jetHandle;
     e.getByToken(jetsAK4Label_, jetHandle);
     
