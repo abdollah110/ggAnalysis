@@ -111,7 +111,6 @@ vector<float> boostedTaudxy_;
 void ggNtuplizer::branchesBoostedTaus(TTree* tree)
 {
 
-    std::cout<<"\n\n boosted tau is here\n\n";
     tree->Branch("nBoostedTau", &nBoostedTau_);
     
     //Tau Id & Isolation

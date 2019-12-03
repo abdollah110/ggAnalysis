@@ -33,6 +33,7 @@ recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root
   dumpPDFSystWeight_         = ps.getParameter<bool>("dumpPDFSystWeight");
   dumpHFElectrons_           = ps.getParameter<bool>("dumpHFElectrons");
   year_                      = ps.getParameter<int>("year");
+  dumpBoostedTaus_           = ps.getParameter<bool>("dumpBoostedTaus");// added on Dec 3rd
 
   trgFilterDeltaPtCut_       = ps.getParameter<double>("trgFilterDeltaPtCut");
   trgFilterDeltaRCut_        = ps.getParameter<double>("trgFilterDeltaRCut");
