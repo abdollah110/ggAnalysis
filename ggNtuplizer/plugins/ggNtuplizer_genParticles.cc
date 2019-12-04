@@ -47,10 +47,15 @@ vector<float>    mcCalIsoDR04;
 vector<float>    mcTrkIsoDR04;
 
 //Tau visible daugthers
-vector<float> taudaugPt ;
-vector<float> taudaugEta;
-vector<float> taudaugPhi;
-vector<float> taudaugMass;
+vector<float> taudaugPt0 ;
+vector<float> taudaugEta0;
+vector<float> taudaugPhi0;
+vector<float> taudaugMass0;
+vector<float> taudaugPt1;
+vector<float> taudaugEta1;
+vector<float> taudaugPhi1;
+vector<float> taudaugMass1;
+vector<int> numGenTau;
 
 //using namespace std;
 
@@ -229,10 +234,16 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
 
 
     //Tau visible daugthers
-    tree->Branch("taudaugPt" ,&taudaugPt   );
-    tree->Branch("taudaugEta" ,&taudaugEta  );
-    tree->Branch("taudaugPhi" ,&taudaugPhi );
-    tree->Branch("taudaugMass" ,&taudaugMass  );
+    tree->Branch("taudaugPt0" ,&taudaugPt0   );
+    tree->Branch("taudaugEta0" ,&taudaugEta0  );
+    tree->Branch("taudaugPhi0" ,&taudaugPhi0 );
+    tree->Branch("taudaugMass0" ,&taudaugMass0  );
+    tree->Branch("taudaugPt1" ,&taudaugPt1   );
+    tree->Branch("taudaugEta1" ,&taudaugEta1  );
+    tree->Branch("taudaugPhi1" ,&taudaugPhi1 );
+    tree->Branch("taudaugMass1" ,&taudaugMass1  );
+
+    tree->Branch("numGenTau" ,&numGenTau  );
     
     
 }
@@ -386,10 +397,16 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
   mcCalIsoDR04.clear();
   mcTrkIsoDR04.clear();
   
-  taudaugPt.clear();
-  taudaugEta.clear();
-  taudaugPhi.clear();
-  taudaugMass.clear();
+  taudaugPt0.clear();
+  taudaugEta0.clear();
+  taudaugPhi0.clear();
+  taudaugMass0.clear();
+taudaugPt1.clear();
+taudaugEta1.clear();
+taudaugPhi1.clear();
+taudaugMass1.clear();
+
+  numGenTau.clear();
 
 
 
@@ -484,13 +501,32 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
         //  // Get rebuilt gen taus w/o neutrino energy
           std::vector<reco::Candidate::LorentzVector> genTaus = buildGenTaus(e);
           
-  for ( auto vec : genTaus ) {
-  
-  taudaugPt.push_back(vec.Pt());
-  taudaugEta.push_back(vec.Eta());
-  taudaugPhi.push_back(vec.Phi());
-  taudaugMass.push_back(vec.mass());
-  }
+          
+    numGenTau.push_back(genTaus.size());
+    
+    
+    if (genTaus.size()> 0){
+    taudaugPt0.push_back(genTaus[0].Pt());
+    taudaugEta0.push_back(genTaus[0].Eta());
+    taudaugPhi0.push_back(genTaus[0].Phi());
+    taudaugMass0.push_back(genTaus[0].mass());
+}
+    if (genTaus.size()> 1){
+    taudaugPt1.push_back(genTaus[1].Pt());
+    taudaugEta1.push_back(genTaus[1].Eta());
+    taudaugPhi1.push_back(genTaus[1].Phi());
+    taudaugMass1.push_back(genTaus[1].mass());
+}
+
+    
+    }
+//  for ( auto vec : genTaus ) {
+//
+//  taudaugPt.push_back(vec.Pt());
+//  taudaugEta.push_back(vec.Eta());
+//  taudaugPhi.push_back(vec.Phi());
+//  taudaugMass.push_back(vec.mass());
+//  }
 
 
 
