@@ -518,17 +518,6 @@ taudaugMass1.clear();
     taudaugMass1.push_back(genTaus[1].mass());
 }
 
-    
-    }
-//  for ( auto vec : genTaus ) {
-//
-//  taudaugPt.push_back(vec.Pt());
-//  taudaugEta.push_back(vec.Eta());
-//  taudaugPhi.push_back(vec.Phi());
-//  taudaugMass.push_back(vec.mass());
-//  }
-
-
 
       int mcGMomPID_ = -999;
       int mcMomPID_  = -999;
