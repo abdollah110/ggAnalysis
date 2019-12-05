@@ -51,7 +51,8 @@ vector<float> taudaugPt ;
 vector<float> taudaugEta;
 vector<float> taudaugPhi;
 vector<float> taudaugMass;
-vector<int> numGenTau;
+//vector<int> numGenTau;
+Int_t            numGenTau;
 
 //using namespace std;
 
@@ -202,6 +203,8 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
 void ggNtuplizer::branchesGenPart(TTree* tree) {
 
   tree->Branch("nMC",          &nMC_);
+  tree->Branch("numGenTau",          &numGenTau);
+  
   tree->Branch("mcPID",        &mcPID);
 //  tree->Branch("mcVtx",        &mcVtx);
 //  tree->Branch("mcVty",        &mcVty);
@@ -234,7 +237,7 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
     tree->Branch("taudaugEta" ,&taudaugEta  );
     tree->Branch("taudaugPhi" ,&taudaugPhi );
     tree->Branch("taudaugMass" ,&taudaugMass  );
-    tree->Branch("numGenTau" ,&numGenTau  );
+//    tree->Branch("numGenTau" ,&numGenTau  );
     
     
 }
@@ -392,7 +395,7 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
   taudaugEta.clear();
   taudaugPhi.clear();
   taudaugMass.clear();
-  numGenTau.clear();
+//  numGenTau.clear();
 
 
 
@@ -407,17 +410,18 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
   }
   
   
-  
+  numGenTau=0;
   
 // Get rebuilt gen taus w/o neutrino energy
 std::vector<reco::Candidate::LorentzVector> genTaus = buildGenTaus(e);
-numGenTau.push_back(genTaus.size());
+//numGenTau.push_back(genTaus.size());
     
 for ( auto vec : genTaus ) {
   taudaugPt.push_back(vec.Pt());
   taudaugEta.push_back(vec.Eta());
   taudaugPhi.push_back(vec.Phi());
   taudaugMass.push_back(vec.mass());
+  numGenTau++;
 }
   
   
