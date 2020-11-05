@@ -48,6 +48,11 @@ vector<bool>   boostedTauByLooseIsolationMVArun2v1DBoldDMwLTNew_;
 vector<bool>   boostedTauByTightIsolationMVArun2v1DBoldDMwLT_;
 vector<bool>   boostedTauByTightIsolationMVArun2v1DBoldDMwLTNew_;
 
+vector<bool>   boostedTauByVLooseIsolationMVArun2v1DBoldDMwLTNew_;
+vector<bool>   boostedTauByMediumIsolationMVArun2v1DBoldDMwLTNew_;
+vector<bool>   boostedTauByVTightIsolationMVArun2v1DBoldDMwLTNew_;
+
+
 vector<float> boostedTauByDeepTau2017v1VSjetraw_;
 vector<float> boostedTauByDeepTau2017v1VSeraw_;
 vector<float> boostedTauByDeepTau2017v1VSmuraw_;
@@ -127,7 +132,7 @@ vector<vector<float>> boostedTauSignalPFGammaCandsOrig_;
 vector<vector<float>> boostedTauIsolationPFCandsOrig_;
 vector<vector<float>> boostedTauIsolationPFGammaCandsOrig_;
 
-
+vector<bool>  boostedTauagainstElectronVLooseMVA62018_;
 vector<bool>  boostedTauagainstElectronLooseMVA62018_;
 vector<bool>  boostedTauagainstElectronTightMVA62018_;
 
@@ -169,6 +174,11 @@ void ggNtuplizer::branchesBoostedTaus(TTree* tree)
 //    tree->Branch("boostedTauByTightIsolationMVArun2v1DBoldDMwLTNoOverLap", &boostedTauByTightIsolationMVArun2v1DBoldDMwLTNoOverLap_);
     tree->Branch("boostedTauByTightIsolationMVArun2v1DBoldDMwLT", &boostedTauByTightIsolationMVArun2v1DBoldDMwLT_);
     tree->Branch("boostedTauByTightIsolationMVArun2v1DBoldDMwLTNew", &boostedTauByTightIsolationMVArun2v1DBoldDMwLTNew_);
+    
+    tree->Branch("boostedTauByVLooseIsolationMVArun2v1DBoldDMwLTNew", &boostedTauByVLooseIsolationMVArun2v1DBoldDMwLTNew_);
+    tree->Branch("boostedTauByMediumIsolationMVArun2v1DBoldDMwLTNew", &boostedTauByMediumIsolationMVArun2v1DBoldDMwLTNew_);
+    tree->Branch("boostedTauByVTightIsolationMVArun2v1DBoldDMwLTNew", &boostedTauByVTightIsolationMVArun2v1DBoldDMwLTNew_);
+    
 //    tree->Branch("boostedTauByTightIsolationMVArun2v1DBoldDMwLTOrig", &boostedTauByTightIsolationMVArun2v1DBoldDMwLTOrig_);
     
 //    tree->Branch("boostedTauByLooseIsolationMVArun2v1DBoldDMwLTNoOverLap", &boostedTauByLooseIsolationMVArun2v1DBoldDMwLTNoOverLap_);
@@ -256,6 +266,7 @@ void ggNtuplizer::branchesBoostedTaus(TTree* tree)
     tree->Branch("boostedTaubyTightDeepTau2017v1VSmu"  ,&boostedTaubyTightDeepTau2017v1VSmu_);
     tree->Branch("boostedTaubyVVTightDeepTau2017v1VSmu"  ,&boostedTaubyVVTightDeepTau2017v1VSmu_);
     
+    tree->Branch("boostedTauagainstElectronVLooseMVA62018"  ,&boostedTauagainstElectronVLooseMVA62018_);
     tree->Branch("boostedTauagainstElectronLooseMVA62018"  ,&boostedTauagainstElectronLooseMVA62018_);
     tree->Branch("boostedTauagainstElectronTightMVA62018"  ,&boostedTauagainstElectronTightMVA62018_);
     
@@ -291,6 +302,10 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
     boostedTauByTightIsolationMVArun2v1DBoldDMwLTNoOverLap_.clear();
     boostedTauByTightIsolationMVArun2v1DBoldDMwLT_.clear();
     boostedTauByTightIsolationMVArun2v1DBoldDMwLTNew_.clear();
+    
+    boostedTauByVLooseIsolationMVArun2v1DBoldDMwLTNew_.clear();
+    boostedTauByMediumIsolationMVArun2v1DBoldDMwLTNew_.clear();
+    boostedTauByVTightIsolationMVArun2v1DBoldDMwLTNew_.clear();
     
     boostedTauByLooseIsolationMVArun2v1DBoldDMwLTNoOverLap_.clear();
     boostedTauByLooseIsolationMVArun2v1DBoldDMwLT_.clear();
@@ -379,6 +394,7 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
     boostedTaubyTightDeepTau2017v1VSmu_.clear();
     boostedTaubyVVTightDeepTau2017v1VSmu_.clear();
     
+    boostedTauagainstElectronVLooseMVA62018_.clear();
     boostedTauagainstElectronLooseMVA62018_.clear();
     boostedTauagainstElectronTightMVA62018_.clear();
     
@@ -463,8 +479,11 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
         
         
         boostedTauByIsolationMVArun2v1DBoldDMwLTrawNew_.push_back(itau->tauID("byIsolationMVArun2017v2DBoldDMwLTraw2017"));
+        boostedTauByVLooseIsolationMVArun2v1DBoldDMwLTNew_.push_back(itau->tauID("byVLooseIsolationMVArun2017v2DBoldDMwLT2017"));
         boostedTauByLooseIsolationMVArun2v1DBoldDMwLTNew_.push_back(itau->tauID("byLooseIsolationMVArun2017v2DBoldDMwLT2017"));
+        boostedTauByMediumIsolationMVArun2v1DBoldDMwLTNew_.push_back(itau->tauID("byMediumIsolationMVArun2017v2DBoldDMwLT2017"));
         boostedTauByTightIsolationMVArun2v1DBoldDMwLTNew_.push_back(itau->tauID("byTightIsolationMVArun2017v2DBoldDMwLT2017"));
+        boostedTauByVTightIsolationMVArun2v1DBoldDMwLTNew_.push_back(itau->tauID("byVTightIsolationMVArun2017v2DBoldDMwLT2017"));
 
         boostedTauByDeepTau2017v1VSjetraw_.push_back(itau->tauID("byDeepTau2017v1VSjetraw"));
         boostedTauByDeepTau2017v1VSeraw_.push_back(itau->tauID("byDeepTau2017v1VSeraw"));
@@ -485,6 +504,7 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
         boostedTaubyTightDeepTau2017v1VSmu_.push_back(itau->tauID("byTightDeepTau2017v1VSmu"));
         boostedTaubyVVTightDeepTau2017v1VSmu_.push_back(itau->tauID("byVVTightDeepTau2017v1VSmu"));
         
+        boostedTauagainstElectronVLooseMVA62018_.push_back(itau->tauID("againstElectronVLooseMVA62018"));
         boostedTauagainstElectronLooseMVA62018_.push_back(itau->tauID("againstElectronLooseMVA62018"));
         boostedTauagainstElectronTightMVA62018_.push_back(itau->tauID("againstElectronTightMVA62018"));
 

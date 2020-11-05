@@ -33,6 +33,7 @@
 #include "JetMETCorrections/Modules/interface/JetResolution.h"
 //#include "PhysicsTools/SelectorUtils/interface/PFJetIDSelectionFunctor.h"
 #include "HLTrigger/HLTcore/interface/HLTPrescaleProvider.h"
+#include "RecoilCorrector.h"
 
 using namespace std;
 
@@ -188,6 +189,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   //boost::shared_ptr<FactorizedJetCorrector> jecAK8pSD_;
   //std::vector<std::string> jecAK8PayloadNames_;
   HLTPrescaleProvider hltPrescaleProvider_;
+  RecoilCorrector recoilPFMetCorrector;
 };
 
 #endif
