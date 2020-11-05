@@ -2,7 +2,7 @@
 // abdollah.mohammadi@cern.ch
 
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-#include "BoostTau/BoostAnalyzer/interface/BoostAnalyzer.h"
+#include "ggAnalysis/ggNtuplizer/interface/ggNtuplizer.h"
 
 using namespace std;
 
@@ -137,7 +137,7 @@ vector<bool>  boostedTauagainstElectronTightMVA62018_;
 
 
 
-void BoostAnalyzer::branchesBoostedTaus(TTree* tree)
+void ggNtuplizer::branchesBoostedTaus(TTree* tree)
 {
     
     tree->Branch("nBoostedTau", &nBoostedTau_);
@@ -157,10 +157,10 @@ void BoostAnalyzer::branchesBoostedTaus(TTree* tree)
     tree->Branch("boostedTauByTightCombinedIsolationDeltaBetaCorr3Hits", &boostedTauByTightCombinedIsolationDeltaBetaCorr3Hits_);
     tree->Branch("boostedTauCombinedIsolationDeltaBetaCorrRaw3Hits", &boostedTauCombinedIsolationDeltaBetaCorrRaw3Hits_);
     
-    tree->Branch("boostedTauByLooseCombinedIsolationDeltaBetaCorr3HitsOrig", &boostedTauByLooseCombinedIsolationDeltaBetaCorr3HitsOrig_);
-    tree->Branch("boostedTauByTightCombinedIsolationDeltaBetaCorr3HitsOrig", &boostedTauByTightCombinedIsolationDeltaBetaCorr3HitsOrig_);
-    tree->Branch("boostedTauCombinedIsolationDeltaBetaCorrRaw3HitsOrig", &boostedTauCombinedIsolationDeltaBetaCorrRaw3HitsOrig_);
-    
+//    tree->Branch("boostedTauByLooseCombinedIsolationDeltaBetaCorr3HitsOrig", &boostedTauByLooseCombinedIsolationDeltaBetaCorr3HitsOrig_);
+//    tree->Branch("boostedTauByTightCombinedIsolationDeltaBetaCorr3HitsOrig", &boostedTauByTightCombinedIsolationDeltaBetaCorr3HitsOrig_);
+//    tree->Branch("boostedTauCombinedIsolationDeltaBetaCorrRaw3HitsOrig", &boostedTauCombinedIsolationDeltaBetaCorrRaw3HitsOrig_);
+//
 //    tree->Branch("boostedTauByIsolationMVArun2v1DBoldDMwLTrawNoOverLap", &boostedTauByIsolationMVArun2v1DBoldDMwLTrawNoOverLap_);
     tree->Branch("boostedTauByIsolationMVArun2v1DBoldDMwLTraw", &boostedTauByIsolationMVArun2v1DBoldDMwLTraw_);
 //    tree->Branch("boostedTauByIsolationMVArun2v1DBoldDMwLTrawOrig", &boostedTauByIsolationMVArun2v1DBoldDMwLTrawOrig_);
@@ -261,7 +261,7 @@ void BoostAnalyzer::branchesBoostedTaus(TTree* tree)
     
 }
 
-void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
+void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
 {
     
     // Tau Id & Isolation
@@ -279,13 +279,13 @@ void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
     boostedTauByTightCombinedIsolationDeltaBetaCorr3Hits_.clear();
     boostedTauCombinedIsolationDeltaBetaCorrRaw3Hits_.clear();
     
-    boostedTauByLooseCombinedIsolationDeltaBetaCorr3HitsOrig_.clear();
-    boostedTauByTightCombinedIsolationDeltaBetaCorr3HitsOrig_.clear();
-    boostedTauCombinedIsolationDeltaBetaCorrRaw3HitsOrig_.clear();
+//    boostedTauByLooseCombinedIsolationDeltaBetaCorr3HitsOrig_.clear();
+//    boostedTauByTightCombinedIsolationDeltaBetaCorr3HitsOrig_.clear();
+//    boostedTauCombinedIsolationDeltaBetaCorrRaw3HitsOrig_.clear();
     
     boostedTauByIsolationMVArun2v1DBoldDMwLTrawNoOverLap_.clear();
     boostedTauByIsolationMVArun2v1DBoldDMwLTraw_.clear();
-    boostedTauByIsolationMVArun2v1DBoldDMwLTrawOrig_.clear();
+//    boostedTauByIsolationMVArun2v1DBoldDMwLTrawOrig_.clear();
     boostedTauByIsolationMVArun2v1DBoldDMwLTrawNew_.clear();
     
     boostedTauByTightIsolationMVArun2v1DBoldDMwLTNoOverLap_.clear();
@@ -294,7 +294,7 @@ void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
     
     boostedTauByLooseIsolationMVArun2v1DBoldDMwLTNoOverLap_.clear();
     boostedTauByLooseIsolationMVArun2v1DBoldDMwLT_.clear();
-    boostedTauByLooseIsolationMVArun2v1DBoldDMwLTOrig_.clear();
+//    boostedTauByLooseIsolationMVArun2v1DBoldDMwLTOrig_.clear();
     boostedTauByLooseIsolationMVArun2v1DBoldDMwLTNew_.clear();
     
     
@@ -321,13 +321,13 @@ void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
     boostedTauLeadChargedHadronPhi_.clear();
     boostedTauLeadChargedHadronPt_.clear();
     boostedTauChargedIsoPtSum_.clear();
-    boostedTauChargedIsoPtSumOrig_.clear();
+//    boostedTauChargedIsoPtSumOrig_.clear();
     boostedTauChargedIsoPtSumNoOverLap_.clear();
     boostedTauNeutralIsoPtSum_.clear();
-    boostedTauNeutralIsoPtSumOrig_.clear();
+//    boostedTauNeutralIsoPtSumOrig_.clear();
     boostedTauNeutralIsoPtSumNoOverLap_.clear();
     boostedTauPuCorrPtSum_.clear();
-    boostedTauPuCorrPtSumOrig_.clear();
+//    boostedTauPuCorrPtSumOrig_.clear();
     boostedTauNumSignalPFChargedHadrCands_.clear();
     boostedTauNumSignalPFNeutrHadrCands_.clear();
     boostedTauNumSignalPFGammaCands_.clear();
@@ -336,10 +336,10 @@ void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
     boostedTauNumIsolationPFNeutrHadrCands_.clear();
     boostedTauNumIsolationPFGammaCands_.clear();
     boostedTauNumIsolationPFCands_.clear();
-    boostedTauNumIsolationPFChargedHadrCandsOrig_.clear();
-    boostedTauNumIsolationPFNeutrHadrCandsOrig_.clear();
-    boostedTauNumIsolationPFGammaCandsOrig_.clear();
-    boostedTauNumIsolationPFCandsOrig_.clear();
+//    boostedTauNumIsolationPFChargedHadrCandsOrig_.clear();
+//    boostedTauNumIsolationPFNeutrHadrCandsOrig_.clear();
+//    boostedTauNumIsolationPFGammaCandsOrig_.clear();
+//    boostedTauNumIsolationPFCandsOrig_.clear();
     
     boostedTauneutralIsoPtSumWeight_.clear();
     boostedTaufootprintCorrection_.clear();
@@ -350,14 +350,14 @@ void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
     boostedTauSignalPFCands_.clear();
     boostedTauSignalPFGammaCands_.clear();
     
-    boostedTauSignalPFCandsOrig_.clear();
-    boostedTauSignalPFGammaCandsOrig_.clear();
-    
+//    boostedTauSignalPFCandsOrig_.clear();
+//    boostedTauSignalPFGammaCandsOrig_.clear();
+//
     boostedTauIsolationPFCands_.clear();
     boostedTauIsolationPFGammaCands_.clear();
-    
-    boostedTauIsolationPFCandsOrig_.clear();
-    boostedTauIsolationPFGammaCandsOrig_.clear();
+//
+//    boostedTauIsolationPFCandsOrig_.clear();
+//    boostedTauIsolationPFGammaCandsOrig_.clear();
     
     
     boostedTauByDeepTau2017v1VSjetraw_.clear();
@@ -389,7 +389,7 @@ void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
     e.getByToken(boostedTauCollection_, boostedTauHandleOrig);
     
     if (!boostedTauHandleOrig.isValid()) {
-        edm::LogWarning("BoostAnalyzer") << "no pat::Tau in event boostedTauHandleOrig";
+        edm::LogWarning("ggNtuplizer") << "no pat::Tau in event boostedTauHandleOrig";
         return;
     }
     
@@ -397,7 +397,7 @@ void BoostAnalyzer::fillBoostedTaus(const edm::Event& e)
     e.getByToken(boostedTauCollectionNoOverLap_, boostedTauHandleNoOverLap);
     
     if (!boostedTauHandleNoOverLap.isValid()) {
-        edm::LogWarning("BoostAnalyzer") << "no pat::Tau in event boostedTauHandleNoOverLap";
+        edm::LogWarning("ggNtuplizer") << "no pat::Tau in event boostedTauHandleNoOverLap";
         return;
     }
     

@@ -106,6 +106,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   bool runL1ECALPrefire_;
   bool dumpPFPhotons_;
   bool dumpTaus_;
+  bool dumpBoostedTaus_;
   bool dumpJets_;
   bool dumpAK8Jets_;
   bool dumpSoftDrop_;

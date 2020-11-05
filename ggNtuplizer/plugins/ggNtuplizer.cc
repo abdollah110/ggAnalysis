@@ -25,6 +25,7 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   dumpAK8Jets_               = ps.getParameter<bool>("dumpAK8Jets");
   dumpSoftDrop_              = ps.getParameter<bool>("dumpSoftDrop");
   dumpTaus_                  = ps.getParameter<bool>("dumpTaus");
+  dumpBoostedTaus_           = ps.getParameter<bool>("dumpBoostedTaus");
   dumpPDFSystWeight_         = ps.getParameter<bool>("dumpPDFSystWeight");
   dumpHFElectrons_           = ps.getParameter<bool>("dumpHFElectrons");
   year_                      = ps.getParameter<int>("year");
@@ -96,14 +97,14 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   }
   
   branchesMET(tree_);
-  branchesPhotons(tree_);
+//  branchesPhotons(tree_);
   branchesElectrons(tree_);
   branchesMuons(tree_);
-  branchesBoostedTaus(tree_);
   if (dumpPFPhotons_)   branchesPFPhotons(tree_);
   if (dumpHFElectrons_) branchesHFElectrons(tree_);
   if (dumpTaus_)        branchesTaus(tree_);
   if (dumpJets_)        branchesJets(tree_);
+  if (dumpBoostedTaus_) branchesBoostedTaus(tree_);
   if (dumpAK8Jets_)     branchesAK8Jets(tree_);
 }
 
@@ -154,13 +155,13 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
   fillMET(e, es);
   fillElectrons(e, es, pv);
   fillMuons(e, pv, vtx);
-  fillPhotons(e, es); 
+//  fillPhotons(e, es);
   if (dumpPFPhotons_)    fillPFPhotons(e, es);
   if (dumpHFElectrons_ ) fillHFElectrons(e);
   if (dumpTaus_)         fillTaus(e);
   if (dumpJets_)         fillJets(e,es);
   if (dumpAK8Jets_)      fillAK8Jets(e,es);
-fillBoostedTaus(e);
+  if (dumpBoostedTaus_)  fillBoostedTaus(e);
   hEvents_->Fill(1.5);
   tree_->Fill();
 
