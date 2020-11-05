@@ -78,6 +78,8 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void branchesTaus       (TTree*);
   void branchesJets       (TTree*);
   void branchesAK8Jets    (TTree*);
+  void branchesBoostedTaus(TTree*);
+
 
   void fillGlobalEvent(const edm::Event&, const edm::EventSetup&);
   void fillGenInfo    (const edm::Event&);
@@ -91,6 +93,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   void fillTaus       (const edm::Event&);
   void fillJets       (const edm::Event&, const edm::EventSetup&);
   void fillAK8Jets    (const edm::Event&, const edm::EventSetup&);
+  void fillBoostedTaus(const edm::Event&);
 
   void cleanupPhotons();
 
@@ -147,6 +150,11 @@ class ggNtuplizer : public edm::EDAnalyzer {
   edm::EDGetTokenT<edm::View<pat::Jet> >           jetsAK8Label_;
   edm::EDGetTokenT<reco::JetTagCollection>         boostedDoubleSVLabel_;
   edm::EDGetTokenT<pat::PackedCandidateCollection> pckPFCandidateCollection_;
+
+ edm::EDGetTokenT<std::vector<pat::Tau> >              boostedTauCollection_;
+ edm::EDGetTokenT<std::vector<pat::Tau> >              boostedTauCollectionNoOverLap_;
+
+
 
   // for MET filters
   edm::EDGetTokenT<bool> ecalBadCalibFilterUpdate_;

@@ -77,6 +77,11 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   prefweightup_token_        = consumes<double>(edm::InputTag("prefiringweight:nonPrefiringProbUp"));
   prefweightdown_token_      = consumes<double>(edm::InputTag("prefiringweight:nonPrefiringProbDown"));
 
+  boostedTauCollectionNoOverLap_    = consumes<vector<pat::Tau> >(ps.getParameter<InputTag>("cleanedBoostedTauSrc"));
+  boostedTauCollection_             = consumes<vector<pat::Tau> >(ps.getParameter<InputTag>("boostedTauSrc"));
+
+
+
   cicPhotonId_ = new CiCPhotonID(ps);
 
   Service<TFileService> fs;
@@ -94,12 +99,12 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   branchesPhotons(tree_);
   branchesElectrons(tree_);
   branchesMuons(tree_);
+  branchesBoostedTaus(tree_);
   if (dumpPFPhotons_)   branchesPFPhotons(tree_);
   if (dumpHFElectrons_) branchesHFElectrons(tree_);
   if (dumpTaus_)        branchesTaus(tree_);
   if (dumpJets_)        branchesJets(tree_);
   if (dumpAK8Jets_)     branchesAK8Jets(tree_);
-
 }
 
 ggNtuplizer::~ggNtuplizer() {
@@ -155,7 +160,7 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
   if (dumpTaus_)         fillTaus(e);
   if (dumpJets_)         fillJets(e,es);
   if (dumpAK8Jets_)      fillAK8Jets(e,es);
-
+fillBoostedTaus(e);
   hEvents_->Fill(1.5);
   tree_->Fill();
 

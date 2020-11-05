@@ -63,6 +63,10 @@ ggNtuplizer = cms.EDAnalyzer("ggNtuplizer",
                              tauSrc                    = cms.InputTag("slimmedTaus"),
                              #pfLooseId                 = pfJetIDSelector.clone(),
 
+			    boostedTauSrc             = cms.InputTag("slimmedTausBoosted"),
+			    cleanedBoostedTauSrc    = cms.InputTag("slimmedBoostedTausNewID"),
+
+
                              packedPFCands             = cms.InputTag("packedPFCandidates"),
                              elePFClusEcalIsoProducer  = cms.InputTag("electronEcalPFClusterIsolationProducer"),
                              elePFClusHcalIsoProducer  = cms.InputTag("electronHcalPFClusterIsolationProducer"),
