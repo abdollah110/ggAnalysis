@@ -18,7 +18,8 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-        'file:/data4/cmkuo/testfiles/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIIAutumn18MiniAOD.root'
+#        'file:/data4/cmkuo/testfiles/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIIAutumn18MiniAOD.root'
+    '/store/mc/RunIIAutumn18MiniAOD/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/102X_upgrade2018_realistic_v15-v2/100000/0367CE5C-D121-5748-93D3-528A4B1DFDA5.root'
         ))
 
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
@@ -72,14 +73,16 @@ process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService
                                                    )
 
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
-process.ggNtuplizer.year=cms.int32(2017)
+process.ggNtuplizer.year=cms.int32(2018)
 process.ggNtuplizer.doGenParticles=cms.bool(True)
-process.ggNtuplizer.dumpPFPhotons=cms.bool(True)
+process.ggNtuplizer.runL1ECALPrefire=cms.bool(True)
+process.ggNtuplizer.dumpPFPhotons=cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons=cms.bool(False)
 process.ggNtuplizer.dumpJets=cms.bool(True)
 process.ggNtuplizer.dumpAK8Jets=cms.bool(False)
-process.ggNtuplizer.dumpSoftDrop= cms.bool(True)
+process.ggNtuplizer.dumpSoftDrop= cms.bool(False)
 process.ggNtuplizer.dumpTaus=cms.bool(False)
+process.ggNtuplizer.dumpBoostedTaus=cms.bool(True)
 process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "PAT")
 process.ggNtuplizer.ak4JetSrc=cms.InputTag("slimmedJetsJEC")
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
@@ -90,12 +93,63 @@ process.cleanedMu = cms.EDProducer("PATMuonCleanerBySegments",
                                    passthrough = cms.string("isGlobalMuon && numberOfMatches >= 2"),
                                    fractionOfSharedSegments = cms.double(0.499))
 
+
+
+########################################################################################
+# A new boostedTau collection is made here and the overlap is removed
+########################################################################################
+from RecoTauTag.Configuration.boostedHPSPFTaus_cff import ca8PFJetsCHSprunedForBoostedTaus
+process.ca8PFJetsCHSprunedForBoostedTausPAT = ca8PFJetsCHSprunedForBoostedTaus.clone(
+                        src=cms.InputTag("packedPFCandidates"),
+                        jetCollInstanceName = cms.string('subJetsForSeedingBoostedTausPAT')
+                )
+cleanedBoostedTau = cms.EDProducer("PATBoostedTauCleaner",
+   src = cms.InputTag('slimmedTausBoosted'),
+   pfcands = cms.InputTag('packedPFCandidates'),
+   vtxLabel= cms.InputTag('offlineSlimmedPrimaryVertices'),
+   ca8JetSrc = cms.InputTag('ca8PFJetsCHSprunedForBoostedTausPAT','subJetsForSeedingBoostedTausPAT'),
+   removeOverLap = cms.bool(True),
+   )
+setattr(process, "cleanedSlimmedTausBoosted", cleanedBoostedTau)
+
+
+########################################################################################
+# Rerun boostedTau Id
+########################################################################################
+from RecoTauTag.RecoTau.TauDiscriminatorTools import noPrediscriminants
+process.load('RecoTauTag.Configuration.loadRecoTauTagMVAsFromPrepDB_cfi')
+from RecoTauTag.RecoTau.PATTauDiscriminationByMVAIsolationRun2_cff import *
+#anti-electron
+from RecoTauTag.RecoTau.PATTauDiscriminationAgainstElectronMVA6_cfi import *
+
+updatedBoostedTauName = "slimmedBoostedTausNewID" #name of pat::Tau collection with new tau-Ids
+import RecoTauTag.RecoTau.tools.runBoostedTauIdMVA as tauIdConfig
+#import BoostTau.BoostAnalyzer.runBoostedTauIdMVA as tauIdConfig
+boostedTauIdEmbedder = tauIdConfig.BoostedTauIDEmbedder(process, cms, debug = False,
+                    updatedTauName = updatedBoostedTauName,
+                    PATTauProducer = cms.InputTag('cleanedSlimmedTausBoosted'),
+                    srcChargedIsoPtSum = cms.string('chargedIsoPtSumNoOverLap'),
+                    srcNeutralIsoPtSum = cms.string('neutralIsoPtSumNoOverLap'),
+                    toKeep = [
+#                                "2017v2", "dR0p32017v2", "newDM2017v2", #classic MVAIso tau-Ids
+#                               "deepTau2017v1", #deepTau Tau-Ids
+#                               "DPFTau_2016_v0", #D[eep]PF[low] Tau-Id
+                                "2017v2","deepTau2017v1","againstEle2018"
+                               ])
+boostedTauIdEmbedder.runTauID()
+
+########################################################################################
+
 process.p = cms.Path(
     process.fullPatMetSequenceModifiedMET *
     process.egammaPostRecoSeq *
     process.cleanedMu *
     process.jetCorrFactors *
     process.slimmedJetsJEC *
+    process.ca8PFJetsCHSprunedForBoostedTausPAT *
+    getattr(process, "cleanedSlimmedTausBoosted") *
+    process.rerunMvaIsolationBoostSequence *
+    getattr(process,updatedBoostedTauName) *
     process.ggNtuplizer
     )
 
