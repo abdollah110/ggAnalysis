@@ -75,7 +75,7 @@ process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
 process.ggNtuplizer.year=cms.int32(2018)
 process.ggNtuplizer.doGenParticles=cms.bool(True)
-process.ggNtuplizer.runL1ECALPrefire=cms.bool(True)
+process.ggNtuplizer.runL1ECALPrefire=cms.bool(False)
 process.ggNtuplizer.dumpPFPhotons=cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons=cms.bool(False)
 process.ggNtuplizer.dumpJets=cms.bool(True)

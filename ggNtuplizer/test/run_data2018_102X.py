@@ -20,7 +20,8 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-        'file:/data4/cmkuo/testfiles/DoubleMuon_Run2018C_17Sep2018.root'
+#        'file:/data4/cmkuo/testfiles/DoubleMuon_Run2018C_17Sep2018.root'
+        '/store/data/Run2018B/SingleMuon/MINIAOD/17Sep2018-v1/00000/006BBA14-C3C6-FA42-ADEF-35D43DA86202.root'
         #'file:/data4/cmkuo/testfiles/DoubleMuon_Run2018D_PR.root'
         )
                             )
