@@ -13,7 +13,7 @@ void setbit(UShort_t& x, UShort_t bit) {
 
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   hltPrescaleProvider_(ps, consumesCollector(), *this),
-  recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root") // Type I PF MET 2017
+  recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/TypeIPFMET_2016BCD.root") // Type I PF MET 2016
 {
 
   development_               = ps.getParameter<bool>("development");
@@ -156,7 +156,7 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
       fillGenPart(e);
   }
 
-  fillMET(e, es);
+  fillMET(e, es, year_);
   fillElectrons(e, es, pv);
   fillMuons(e, pv, vtx);
 //  fillPhotons(e, es);

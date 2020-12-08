@@ -2,6 +2,7 @@
 #include "FWCore/Common/interface/TriggerNames.h"
 #include "ggAnalysis/ggNtuplizer/interface/ggNtuplizer.h"
 #include "ggAnalysis/ggNtuplizer/interface/GenParticleParentage.h"
+#include "HTT-utilities/RecoilCorrections/interface/MEtSys.h"
 
 
 using namespace std;
@@ -38,7 +39,9 @@ float met_UESUp, met_UESDown, met_JESUp, met_JESDown, metphi_UESUp, metphi_UESDo
 float met_px, met_py, pfmetcorr_ex, pfmetcorr_ey, met, metphi;
 int recoil_;
 float pfMetNoRecoil, pfMetPhiNoRecoil;
-float metcov00, metcov10, metcov01, metcov11; 
+float metcov00, metcov10, metcov01, metcov11;
+float met_reso_Up, met_reso_Down, met_resp_Up, met_resp_Down, metphi_reso_Up, metphi_reso_Down, metphi_resp_Up, metphi_resp_Down;
+
 
 
 
@@ -103,9 +106,19 @@ tree->Branch("metcov11",&metcov11   );
   tree->Branch("pfmetcorr_ex_JESDown"                     , &pfmetcorr_ex_JESDown                     , "pfmetcorr_ex_JESDown/F");
   tree->Branch("pfmetcorr_ey_JESDown"                     , &pfmetcorr_ey_JESDown                     , "pfmetcorr_ey_JESDown/F");
 
+tree->Branch("met_reso_Up", &met_reso_Up);
+tree->Branch("met_reso_Down", &met_reso_Down);
+tree->Branch("met_resp_Up", &met_resp_Up);
+tree->Branch("met_resp_Down", &met_resp_Down);
+tree->Branch("metphi_reso_Up", &metphi_reso_Up);
+tree->Branch("metphi_reso_Down", &metphi_reso_Down);
+tree->Branch("metphi_resp_Up", &metphi_resp_Up);
+tree->Branch("metphi_resp_Down", &metphi_resp_Down);
+
+
 }
 
-void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
+void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es, int year) {
 
 
 
@@ -303,8 +316,19 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
 
    
 
+      // MET Resp and Res
+      TLorentzVector MET_reso_Up, MET_reso_Down, MET_resp_Up, MET_resp_Down;
+
 
     MET.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
+    
+      MET_reso_Up.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
+    MET_reso_Down.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
+      MET_resp_Up.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
+    MET_resp_Down.SetPtEtaPhiM(pfMET->et(), 0, pfMET->phi(), 0);
+
+    
+    
     pfMetNoRecoil=pfMET->et();
     pfMetPhiNoRecoil=pfMET->phi();
 //    std::cout<<"no recoil= "<<pfMET->et()<<"\n";
@@ -327,8 +351,25 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
     pfmetcorr_ey_JESDown = MET_JESDown.Py();
     
 
+    std::string recoilname, recoilSysname;
+    if (year == 2016) {
+        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root";
+        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root";
+    } else if (year == 2017) {
+        recoilname = "HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root";
+        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
+    } else if (year == 2018) {
+        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root";
+        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
+    }
+    
+    RecoilCorrector recoilPFMetCorrector_(recoilname.c_str());
+    MEtSys metSys(recoilSysname.c_str());
+    
+    
+
     if (recoil != 0 ) {
-        recoilPFMetCorrector.CorrectByMeanResolution(
+        recoilPFMetCorrector_.CorrectByMeanResolution(
                                                      MET.Px(),            // uncorrected type I pf met px (float)
                                                      MET.Py(),            // uncorrected type I pf met py (float)
                                                      genpX,               // generator Z/W/Higgs px (float)
@@ -339,7 +380,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex,        // corrected type I pf met px (float)
                                                      pfmetcorr_ey);       // corrected type I pf met py (float)
 
-        recoilPFMetCorrector.CorrectByMeanResolution(
+        recoilPFMetCorrector_.CorrectByMeanResolution(
                                                      MET_JESUp.Px(),       // uncorrected type I pf met px (float)
                                                      MET_JESUp.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                // generator Z/W/Higgs px (float)
@@ -350,7 +391,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex_JESUp,   // corrected type I pf met px (float)
                                                      pfmetcorr_ey_JESUp);  // corrected type I pf met py (float)
 
-        recoilPFMetCorrector.CorrectByMeanResolution(
+        recoilPFMetCorrector_.CorrectByMeanResolution(
                                                      MET_UESUp.Px(),       // uncorrected type I pf met px (float)
                                                      MET_UESUp.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                // generator Z/W/Higgs px (float)
@@ -361,7 +402,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex_UESUp,   // corrected type I pf met px (float)
                                                      pfmetcorr_ey_UESUp);  // corrected type I pf met py (float)
 
-        recoilPFMetCorrector.CorrectByMeanResolution(
+        recoilPFMetCorrector_.CorrectByMeanResolution(
                                                      MET_JESDown.Px(),       // uncorrected type I pf met px (float)
                                                      MET_JESDown.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                  // generator Z/W/Higgs px (float)
@@ -372,7 +413,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex_JESDown,   // corrected type I pf met px (float)
                                                      pfmetcorr_ey_JESDown);  // corrected type I pf met py (float)
 
-        recoilPFMetCorrector.CorrectByMeanResolution(
+        recoilPFMetCorrector_.CorrectByMeanResolution(
                                                      MET_UESDown.Px(),       // uncorrected type I pf met px (float)
                                                      MET_UESDown.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                  // generator Z/W/Higgs px (float)
@@ -405,6 +446,42 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
     metphi_JESDown = MET_JESDown.Phi();
     metphi_UESUp = MET_UESUp.Phi();
     metphi_UESDown = MET_UESDown.Phi();
+
+      float pfmetcorr_recoil_ex, pfmetcorr_recoil_ey;
+//      MEtSys metSys;
+    
+      
+      metSys.ApplyMEtSys(MET_resp_Up.Px(), MET_resp_Up.Py(), genpX, genpY, vispX, vispY, jetVeto30,
+                         MEtSys::ProcessType::BOSON, MEtSys::SysType::Response, MEtSys::SysShift::Up, pfmetcorr_recoil_ex, pfmetcorr_recoil_ey);
+      MET_resp_Up.SetPxPyPzE(pfmetcorr_recoil_ex, pfmetcorr_recoil_ey, 0,
+                             sqrt(pfmetcorr_recoil_ex * pfmetcorr_recoil_ex + pfmetcorr_recoil_ey * pfmetcorr_recoil_ey));
+      
+      metSys.ApplyMEtSys(MET_resp_Down.Px(), MET_resp_Down.Py(), genpX, genpY, vispX, vispY, jetVeto30,
+                         MEtSys::ProcessType::BOSON, MEtSys::SysType::Response, MEtSys::SysShift::Down, pfmetcorr_recoil_ex, pfmetcorr_recoil_ey);
+      MET_resp_Down.SetPxPyPzE(pfmetcorr_recoil_ex, pfmetcorr_recoil_ey, 0,
+                               sqrt(pfmetcorr_recoil_ex * pfmetcorr_recoil_ex + pfmetcorr_recoil_ey * pfmetcorr_recoil_ey));
+      
+      metSys.ApplyMEtSys(MET_reso_Up.Px(), MET_reso_Up.Py(), genpX, genpY, vispX, vispY, jetVeto30,  MEtSys::ProcessType::BOSON, MEtSys::SysType::Resolution, MEtSys::SysShift::Up, pfmetcorr_recoil_ex, pfmetcorr_recoil_ey);
+      
+      MET_reso_Up.SetPxPyPzE(pfmetcorr_recoil_ex, pfmetcorr_recoil_ey, 0,
+                             sqrt(pfmetcorr_recoil_ex * pfmetcorr_recoil_ex + pfmetcorr_recoil_ey * pfmetcorr_recoil_ey));
+      metSys.ApplyMEtSys(MET_reso_Down.Px(), MET_reso_Down.Py(), genpX, genpY, vispX, vispY, jetVeto30,
+      
+      MEtSys::ProcessType::BOSON, MEtSys::SysType::Resolution, MEtSys::SysShift::Down, pfmetcorr_recoil_ex, pfmetcorr_recoil_ey);
+      MET_reso_Down.SetPxPyPzE(pfmetcorr_recoil_ex, pfmetcorr_recoil_ey, 0,
+                               sqrt(pfmetcorr_recoil_ex * pfmetcorr_recoil_ex + pfmetcorr_recoil_ey * pfmetcorr_recoil_ey));
+
+
+      // systematics
+      met_resp_Up = MET_resp_Up.Pt();
+      met_resp_Down = MET_resp_Down.Pt();
+      met_reso_Up = MET_reso_Up.Pt();
+      met_reso_Down = MET_reso_Down.Pt();
+      metphi_resp_Up = MET_resp_Up.Phi();
+      metphi_resp_Down = MET_resp_Down.Phi();
+      metphi_reso_Up = MET_reso_Up.Phi();
+      metphi_reso_Down = MET_reso_Down.Phi();
+
 
 }
 }
