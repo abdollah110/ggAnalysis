@@ -363,13 +363,13 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
         recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
     }
     
-    RecoilCorrector recoilPFMetCorrector_(recoilname.c_str());
+//    RecoilCorrector recoilPFMetCorrector_(recoilname.c_str());
     MEtSys metSys(recoilSysname.c_str());
     
     
 
     if (recoil != 0 ) {
-        recoilPFMetCorrector_.CorrectByMeanResolution(
+        recoilPFMetCorrector.CorrectByMeanResolution(
                                                      MET.Px(),            // uncorrected type I pf met px (float)
                                                      MET.Py(),            // uncorrected type I pf met py (float)
                                                      genpX,               // generator Z/W/Higgs px (float)
@@ -380,7 +380,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex,        // corrected type I pf met px (float)
                                                      pfmetcorr_ey);       // corrected type I pf met py (float)
 
-        recoilPFMetCorrector_.CorrectByMeanResolution(
+        recoilPFMetCorrector.CorrectByMeanResolution(
                                                      MET_JESUp.Px(),       // uncorrected type I pf met px (float)
                                                      MET_JESUp.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                // generator Z/W/Higgs px (float)
@@ -391,7 +391,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex_JESUp,   // corrected type I pf met px (float)
                                                      pfmetcorr_ey_JESUp);  // corrected type I pf met py (float)
 
-        recoilPFMetCorrector_.CorrectByMeanResolution(
+        recoilPFMetCorrector.CorrectByMeanResolution(
                                                      MET_UESUp.Px(),       // uncorrected type I pf met px (float)
                                                      MET_UESUp.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                // generator Z/W/Higgs px (float)
@@ -402,7 +402,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex_UESUp,   // corrected type I pf met px (float)
                                                      pfmetcorr_ey_UESUp);  // corrected type I pf met py (float)
 
-        recoilPFMetCorrector_.CorrectByMeanResolution(
+        recoilPFMetCorrector.CorrectByMeanResolution(
                                                      MET_JESDown.Px(),       // uncorrected type I pf met px (float)
                                                      MET_JESDown.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                  // generator Z/W/Higgs px (float)
@@ -413,7 +413,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
                                                      pfmetcorr_ex_JESDown,   // corrected type I pf met px (float)
                                                      pfmetcorr_ey_JESDown);  // corrected type I pf met py (float)
 
-        recoilPFMetCorrector_.CorrectByMeanResolution(
+        recoilPFMetCorrector.CorrectByMeanResolution(
                                                      MET_UESDown.Px(),       // uncorrected type I pf met px (float)
                                                      MET_UESDown.Py(),       // uncorrected type I pf met py (float)
                                                      genpX,                  // generator Z/W/Higgs px (float)

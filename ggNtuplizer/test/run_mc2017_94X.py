@@ -94,6 +94,8 @@ process.ggNtuplizer.dumpBoostedTaus=cms.bool(True)
 process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "PAT")
 process.ggNtuplizer.ak4JetSrc=cms.InputTag("slimmedJetsJEC")
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
+process.ggNtuplizer.TypeIPFMET_RootFile=cms.InputTag("HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root")
+
 
 process.cleanedMu = cms.EDProducer("PATMuonCleanerBySegments",
                                    src = cms.InputTag("slimmedMuons"),
