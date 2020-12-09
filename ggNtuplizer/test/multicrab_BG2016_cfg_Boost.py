@@ -54,11 +54,10 @@ if __name__ == '__main__':
     ## From now on that's what users should modify: this is the a-la-CRAB2 configuration part. ##
     #############################################################################################
 
-#Samples_test= [
-#
-#    ["JJH0PMToTauTauPlusZeroJets", "/JJH0PMToTauTauPlusZeroJets_Filtered_M125_TuneCP5_13TeV-mcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],"]
-#    ]
+Samples_test= [
 
+["WW1l1nu2q","/WWTo1L1Nu2Q_13TeV_amcatnloFXFX_madspin_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM"],
+]
  
 Samples= [
    
@@ -132,8 +131,8 @@ Samples= [
 
 
 
-for sam in Samples:
-#for sam in Samples_test:
+#for sam in Samples:
+for sam in Samples_test:
     print sam[0], sam[1]
     config.General.requestName = sam[0]
     config.Data.inputDataset = sam[1]
