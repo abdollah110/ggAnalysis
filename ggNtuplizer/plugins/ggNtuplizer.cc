@@ -7,14 +7,11 @@ void setbit(UShort_t& x, UShort_t bit) {
   UShort_t a = 1;
   x |= (a << bit);
 }
-// RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/TypeIPFMET_2016BCD.root"); // Type I PF MET 2016
-// RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root"); // Type I PF MET 2017
-// RecoilCorrector recoilPFMetCorrector("HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root"); // Type I PF MET 2018
 
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   hltPrescaleProvider_(ps, consumesCollector(), *this),
-  recoilPFMetCorrector(ps.getParameter<string>("TypeIPFMET_RootFile")), // Type I PF MET 2016
-  metSys(ps.getParameter<string>("MetSys_RootFile")) // Type I PF MET 2016
+  recoilPFMetCorrector(ps.getParameter<string>("TypeIPFMET_RootFile")),
+  metSys(ps.getParameter<string>("MetSys_RootFile"))
 {
   development_               = ps.getParameter<bool>("development");
   addFilterInfoMINIAOD_      = ps.getParameter<bool>("addFilterInfoMINIAOD");
@@ -156,7 +153,7 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
       fillGenPart(e);
   }
 
-  fillMET(e, es, year_);
+  fillMET(e, es);
   fillElectrons(e, es, pv);
   fillMuons(e, pv, vtx);
 //  fillPhotons(e, es);

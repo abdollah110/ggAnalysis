@@ -91,6 +91,8 @@ process.ggNtuplizer.patTriggerResults=cms.InputTag("TriggerResults", "", "PAT")
 process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "")
 process.ggNtuplizer.ak4JetSrc=cms.InputTag("slimmedJetsJEC")
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
+process.ggNtuplizer.TypeIPFMET_RootFile=cms.string("HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root")
+process.ggNtuplizer.MetSys_RootFile=cms.string("HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root")
 
 process.cleanedMu = cms.EDProducer("PATMuonCleanerBySegments",
                                    src = cms.InputTag("slimmedMuons"),

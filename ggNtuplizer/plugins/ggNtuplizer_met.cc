@@ -117,7 +117,7 @@ tree->Branch("metphi_resp_Down", &metphi_resp_Down);
 
 }
 
-void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es, int year) {
+void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 
 
 
@@ -162,6 +162,10 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es, int ye
         if (    abs(ip->pdgId()) == 24 && ip->isHardProcess()) recoil=1;  //W boson
         if (    ip->pdgId()  == 25 && ip->isHardProcess()) recoil=2; //Higgs
         
+//        https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L300
+        if (ip->pdgId()  == 23) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPrompt= "<< ip->isPrompt()<< " fromHardProcessDecaye= "<< ip->fromHardProcessDecaye() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
+        if (ip->pdgId()  == 24) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPrompt= "<< ip->isPrompt()<< " fromHardProcessDecaye= "<< ip->fromHardProcessDecaye() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
+        if (ip->pdgId()  == 25) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPrompt= "<< ip->isPrompt()<< " fromHardProcessDecaye= "<< ip->fromHardProcessDecaye() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
         }
         
         genpX= visVec.px();
@@ -348,24 +352,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
     pfmetcorr_ey_JESUp = MET_JESUp.Py();
     pfmetcorr_ex_JESDown = MET_JESDown.Px();
     pfmetcorr_ey_JESDown = MET_JESDown.Py();
-    
 
-//    std::string recoilname, recoilSysname;
-//    if (year == 2016) {
-//        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root";
-//        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root";
-//    } else if (year == 2017) {
-//        recoilname = "HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root";
-//        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
-//    } else if (year == 2018) {
-//        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root";
-//        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
-//    }
-//
-////    RecoilCorrector recoilPFMetCorrector_(recoilname.c_str());
-//    MEtSys metSys(recoilSysname.c_str());
-    
-    
 
     if (recoil != 0 ) {
         recoilPFMetCorrector.CorrectByMeanResolution(
