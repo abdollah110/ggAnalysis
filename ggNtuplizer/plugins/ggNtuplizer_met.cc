@@ -163,9 +163,10 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
         if (    ip->pdgId()  == 25 && ip->isHardProcess()) recoil=2; //Higgs
         
 //        https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L300
-        if (ip->pdgId()  == 23) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPrompt= "<< ip->isPrompt()<< " fromHardProcessDecaye= "<< ip->fromHardProcessDecaye() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
-        if (ip->pdgId()  == 24) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPrompt= "<< ip->isPrompt()<< " fromHardProcessDecaye= "<< ip->fromHardProcessDecaye() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
-        if (ip->pdgId()  == 25) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPrompt= "<< ip->isPrompt()<< " fromHardProcessDecaye= "<< ip->fromHardProcessDecaye() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
+//        if (ip->pdgId()  == 23) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPromptFinalState()= "<< ip->isPromptFinalState()<< " isHardProcess= "<< ip->isHardProcess() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
+//        if (ip->pdgId()  == 24) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPromptFinalState()= "<< ip->isPromptFinalState()<< " isHardProcess= "<< ip->isHardProcess() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
+//        if (ip->pdgId()  == 25) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPromptFinalState()= "<< ip->isPromptFinalState()<< " isHardProcess= "<< ip->isHardProcess() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
+
         }
         
         genpX= visVec.px();
