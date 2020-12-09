@@ -17,8 +17,7 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring(
-        'file:/data4/cmkuo/testfiles/ggHZg_RunIISummer16MiniAODv3.root'
+                            fileNames = cms.untracked.vstring(        '/store/mc/RunIISummer16MiniAODv3/DYJetsToLL_Pt-100To250_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3_ext5-v2/120000/74C76EDE-E438-E911-8ADD-0025905B85A2.root'
         ))
 
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
