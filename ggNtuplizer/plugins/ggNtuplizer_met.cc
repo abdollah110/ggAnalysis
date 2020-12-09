@@ -351,20 +351,20 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
     pfmetcorr_ey_JESDown = MET_JESDown.Py();
     
 
-    std::string recoilname, recoilSysname;
-    if (year == 2016) {
-        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root";
-        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root";
-    } else if (year == 2017) {
-        recoilname = "HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root";
-        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
-    } else if (year == 2018) {
-        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root";
-        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
-    }
-    
-//    RecoilCorrector recoilPFMetCorrector_(recoilname.c_str());
-    MEtSys metSys(recoilSysname.c_str());
+//    std::string recoilname, recoilSysname;
+//    if (year == 2016) {
+//        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root";
+//        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root";
+//    } else if (year == 2017) {
+//        recoilname = "HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root";
+//        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
+//    } else if (year == 2018) {
+//        recoilname = "HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root";
+//        recoilSysname = "HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root";
+//    }
+//
+////    RecoilCorrector recoilPFMetCorrector_(recoilname.c_str());
+//    MEtSys metSys(recoilSysname.c_str());
     
     
 
@@ -447,9 +447,7 @@ metcov11=   pfMETHandle->front().getSignificanceMatrix()(1,1);
     metphi_UESUp = MET_UESUp.Phi();
     metphi_UESDown = MET_UESDown.Phi();
 
-      float pfmetcorr_recoil_ex, pfmetcorr_recoil_ey;
-//      MEtSys metSys;
-    
+      float pfmetcorr_recoil_ex, pfmetcorr_recoil_ey;    
       
       metSys.ApplyMEtSys(MET_resp_Up.Px(), MET_resp_Up.Py(), genpX, genpY, vispX, vispY, jetVeto30,
                          MEtSys::ProcessType::BOSON, MEtSys::SysType::Response, MEtSys::SysShift::Up, pfmetcorr_recoil_ex, pfmetcorr_recoil_ey);
