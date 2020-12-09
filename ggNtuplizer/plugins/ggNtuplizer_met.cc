@@ -2,7 +2,6 @@
 #include "FWCore/Common/interface/TriggerNames.h"
 #include "ggAnalysis/ggNtuplizer/interface/ggNtuplizer.h"
 #include "ggAnalysis/ggNtuplizer/interface/GenParticleParentage.h"
-#include "HTT-utilities/RecoilCorrections/interface/MEtSys.h"
 
 
 using namespace std;
