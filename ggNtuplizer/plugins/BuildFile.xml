@@ -17,5 +17,6 @@
 <use name="JetMETCorrections/Objects"/>
 <use name="JetMETCorrections/Modules"/>
 <use name="HTT-utilities/RecoilCorrections"/>
+<use name="PhysicsTools/HepMCCandAlgos"/>
 
 <flags EDM_PLUGIN="1"/>

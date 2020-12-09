@@ -35,6 +35,7 @@
 #include "HLTrigger/HLTcore/interface/HLTPrescaleProvider.h"
 #include "RecoilCorrector.h"
 #include "HTT-utilities/RecoilCorrections/interface/MEtSys.h"
+#include "PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h"
 
 using namespace std;
 
