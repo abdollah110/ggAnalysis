@@ -20,7 +20,7 @@ config.Data.splitting = 'LumiBased'
 #config.Data.lumiMask = 'Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt'
 config.Data.lumiMask = 'Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt'
 config.Data.runRange = '314472-325175'
-config.Data.outLFNDirBase = '/eos/uscms/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2018/Data'
+config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2018/Data'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')
@@ -71,6 +71,7 @@ if __name__ == '__main__':
 
     for sample in samples:
       name = sample[1:].replace('/MINIAOD', '').replace('/', '_')
+      print '\t name of sample is {}'.format(name)
       config.General.requestName = name
       config.Data.inputDataset = sample
       submit(config)

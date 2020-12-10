@@ -10,7 +10,7 @@ config.section_('JobType')
 config.JobType.psetName = 'run_mc2016_94X.py'
 config.JobType.pluginName = 'Analysis'
 config.JobType.outputFiles = ["ggtree_mc.root"]
-#config.JobType.inputFiles = ["Fall17_17Nov2017BCDEF_V6_DATA.db','Fall17_17Nov2017_V6_MC.db']
+config.JobType.inputFiles = ["Fall17_17Nov2017BCDEF_V6_DATA.db','Fall17_17Nov2017_V6_MC.db']
 #config.JobType.maxMemoryMB = 2500
 config.JobType.sendExternalFolder = True
 config.JobType.allowUndistributedCMSSW = True
@@ -21,7 +21,7 @@ config.section_('Data')
 config.Data.splitting = 'Automatic'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2016_v1/MC/'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017_v1/test'
-config.Data.outLFNDirBase = '/eos/uscms/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/MC'
+config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/MC'
 config.Data.allowNonValidInputDataset = True
 #config.Data.ignoreLocality= True
 config.section_('User')
@@ -131,8 +131,8 @@ Samples= [
 
 
 
-#for sam in Samples:
-for sam in Samples_test:
+for sam in Samples:
+#for sam in Samples_test:
     print sam[0], sam[1]
     config.General.requestName = sam[0]
     config.Data.inputDataset = sam[1]

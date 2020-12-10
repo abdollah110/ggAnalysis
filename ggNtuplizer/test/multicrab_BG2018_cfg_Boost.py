@@ -20,7 +20,7 @@ config.section_('Data')
 #config.Data.splitting = 'FileBased'
 config.Data.splitting = 'Automatic'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2018_v1/MC/'
-config.Data.outLFNDirBase = '/eos/uscms/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2018/MC'
+config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2018/MC'
 config.Data.allowNonValidInputDataset = True
 #config.Data.ignoreLocality= True
 config.section_('User')

@@ -73,6 +73,7 @@ if __name__ == '__main__':
 
     for sample in samples:
       name = sample[1:].replace('/MINIAOD', '').replace('/', '_')
+      print '\t name of sample is {}'.format(name)
       config.General.requestName = name
       config.Data.inputDataset = sample
       submit(config)

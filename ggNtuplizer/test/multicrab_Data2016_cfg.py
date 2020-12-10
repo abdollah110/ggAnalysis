@@ -19,7 +19,7 @@ config.Data.unitsPerJob = 30
 config.Data.splitting = 'LumiBased'
 config.Data.lumiMask = 'Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt'
 config.Data.runRange = '271036-284044'
-config.Data.outLFNDirBase = '/eos/uscms/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/Data'
+config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/Data'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')
@@ -82,6 +82,7 @@ if __name__ == '__main__':
 
     for sample in samples:
       name = sample[1:].replace('/MINIAOD', '').replace('/', '_')
+      print '\t name of sample is {}'.format(name)
       config.General.requestName = name
       config.Data.inputDataset = sample
       submit(config)
