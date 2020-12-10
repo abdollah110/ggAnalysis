@@ -10,7 +10,7 @@ config.section_('JobType')
 config.JobType.psetName = 'run_mc2016_94X.py'
 config.JobType.pluginName = 'Analysis'
 config.JobType.outputFiles = ["ggtree_mc.root"]
-config.JobType.inputFiles = ["Fall17_17Nov2017BCDEF_V6_DATA.db','Fall17_17Nov2017_V6_MC.db']
+#config.JobType.inputFiles = ["Fall17_17Nov2017BCDEF_V6_DATA.db','Fall17_17Nov2017_V6_MC.db']
 #config.JobType.maxMemoryMB = 2500
 config.JobType.sendExternalFolder = True
 config.JobType.allowUndistributedCMSSW = True
