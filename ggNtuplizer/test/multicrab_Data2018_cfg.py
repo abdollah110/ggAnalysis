@@ -10,7 +10,7 @@ config.JobType.psetName = 'run_data2018_102X.py'
 config.JobType.pluginName = 'Analysis'
 config.JobType.outputFiles = ['ggtree_data.root']
 #config.JobType.inputFiles = ['Fall17_17Nov2017BCDEF_V6_DATA.db','Fall17_17Nov2017_V6_MC.db']
-#config.JobType.maxMemoryMB = 3000
+config.JobType.maxMemoryMB = 4000
 config.JobType.allowUndistributedCMSSW = True
 config.JobType.sendExternalFolder = True
 config.JobType.allowUndistributedCMSSW = True
@@ -20,7 +20,8 @@ config.Data.splitting = 'LumiBased'
 #config.Data.lumiMask = 'Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt'
 config.Data.lumiMask = 'Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt'
 config.Data.runRange = '314472-325175'
-config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2018/Data'
+config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2018/Data/'
+#config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2018/Data'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')
@@ -62,8 +63,8 @@ if __name__ == '__main__':
         "/SingleMuon/Run2018D-PromptReco-v2/MINIAOD",
 
        "/EGamma/Run2018A-17Sep2018-v2/MINIAOD",
-       "/EGamma/Run2018A-17Sep2018-v1/MINIAOD",
-       "/EGamma/Run2018A-17Sep2018-v1/MINIAOD",
+       "/EGamma/Run2018B-17Sep2018-v1/MINIAOD",
+       "/EGamma/Run2018C-17Sep2018-v1/MINIAOD",
        "/EGamma/Run2018D-PromptReco-v2/MINIAOD",
 
     ]
