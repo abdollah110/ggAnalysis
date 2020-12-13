@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     # We want to put all the CRAB project directories from the tasks we submit here into one common directory.
     # That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-    config.General.workArea = 'Data_2018_v1'
+    config.General.workArea = 'Data_2018_v2'
 
     def submit(config):
         try:
@@ -57,10 +57,10 @@ if __name__ == '__main__':
 #/Tau/Run2018C-17Sep2018-v1/MINIAOD
 #/Tau/Run2018D-PromptReco-v2/MINIAOD
 
-        "/SingleMuon/Run2018A-17Sep2018-v2/MINIAOD",
-        "/SingleMuon/Run2018B-17Sep2018-v1/MINIAOD",
-        "/SingleMuon/Run2018C-17Sep2018-v1/MINIAOD",
-        "/SingleMuon/Run2018D-PromptReco-v2/MINIAOD",
+#        "/SingleMuon/Run2018A-17Sep2018-v2/MINIAOD",
+#        "/SingleMuon/Run2018B-17Sep2018-v1/MINIAOD",
+#        "/SingleMuon/Run2018C-17Sep2018-v1/MINIAOD",
+#        "/SingleMuon/Run2018D-PromptReco-v2/MINIAOD",
 
        "/EGamma/Run2018A-17Sep2018-v2/MINIAOD",
        "/EGamma/Run2018B-17Sep2018-v1/MINIAOD",
