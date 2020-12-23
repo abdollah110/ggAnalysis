@@ -36,6 +36,7 @@ void ggNtuplizer::branchesGlobalEvent(TTree* tree) {
   tree->Branch("event",                &event_);
   tree->Branch("lumis",                &lumis_);
   tree->Branch("isData",               &isData_);
+  tree->Branch("year",                 &year);
   tree->Branch("nVtx",                 &nVtx_);
   tree->Branch("nGoodVtx",             &nGoodVtx_);
   tree->Branch("isPVGood",             &isPVGood_);
@@ -77,6 +78,7 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
   lumis_  = e.luminosityBlock();
   isData_ = e.isRealData();
   rho_    = *(rhoHandle.product());
+  year=year_;
   if (rhoCentralHandle.isValid()) rhoCentral_ = *(rhoCentralHandle.product());
   else rhoCentral_ = -99.;
 
