@@ -51,21 +51,21 @@ if __name__ == '__main__':
     #############################################################################################
 
     samples = [
-    
-#/Tau/Run2018A-17Sep2018-v1/MINIAOD
-#/Tau/Run2018B-17Sep2018-v1/MINIAOD
-#/Tau/Run2018C-17Sep2018-v1/MINIAOD
-#/Tau/Run2018D-PromptReco-v2/MINIAOD
+
+    "/Tau/Run2018A-17Sep2018-v1/MINIAOD",
+    "/Tau/Run2018B-17Sep2018-v1/MINIAOD",
+    "/Tau/Run2018C-17Sep2018-v1/MINIAOD",
+    "/Tau/Run2018D-PromptReco-v2/MINIAOD"
 
 #        "/SingleMuon/Run2018A-17Sep2018-v2/MINIAOD",
 #        "/SingleMuon/Run2018B-17Sep2018-v1/MINIAOD",
 #        "/SingleMuon/Run2018C-17Sep2018-v1/MINIAOD",
 #        "/SingleMuon/Run2018D-PromptReco-v2/MINIAOD",
 
-       "/EGamma/Run2018A-17Sep2018-v2/MINIAOD",
-       "/EGamma/Run2018B-17Sep2018-v1/MINIAOD",
-       "/EGamma/Run2018C-17Sep2018-v1/MINIAOD",
-       "/EGamma/Run2018D-PromptReco-v2/MINIAOD",
+#       "/EGamma/Run2018A-17Sep2018-v2/MINIAOD",
+#       "/EGamma/Run2018B-17Sep2018-v1/MINIAOD",
+#       "/EGamma/Run2018C-17Sep2018-v1/MINIAOD",
+#       "/EGamma/Run2018D-PromptReco-v2/MINIAOD",
 
     ]
 
