@@ -6,6 +6,7 @@
 using namespace std;
 
 // (local) variables associated with tree branches
+Int_t       year;
 Int_t       run_;
 Long64_t    event_;
 Int_t       lumis_;
