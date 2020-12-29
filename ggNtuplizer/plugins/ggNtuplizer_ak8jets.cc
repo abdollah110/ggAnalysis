@@ -320,7 +320,8 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
   // Loop over the "hard" jets
   for (ijetAK8 = beginAK8; ijetAK8 != endAK8; ++ijetAK8 ) {
     ijetRef++;
-    if( ijetAK8->pt() < 30.0 ) continue;
+    if( ijetAK8->pt() < 170.0 ) continue;
+//    if( ijetAK8->pt() < 30.0 ) continue;
     nAK8Jet_++;
     AK8JetPt_.push_back( ijetAK8->pt() );
     AK8JetEn_.push_back( ijetAK8->energy() );
