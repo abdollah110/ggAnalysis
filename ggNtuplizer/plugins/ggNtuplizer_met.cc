@@ -140,6 +140,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     reco::Candidate::LorentzVector visVec;
     reco::Candidate::LorentzVector withInvisVec;
         
+    int numW=0;
+    int numZ=0;
     for (vector<reco::GenParticle>::const_iterator ip = genParticlesHandle->begin(); ip != genParticlesHandle->end(); ++ip) {
                 
         bool fromHardProcessFinalState = ip->fromHardProcessFinalState();
@@ -158,8 +160,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
         if ((fromHardProcessFinalState && (isMuon || isElectron)) || (isDirectHardProcessTauDecayProduct && !isNeutrino)) {
             visVec += ip->p4();}
         
-        if (    ip->pdgId()  == 23 && ip->isHardProcess()) recoil=2;   //Z boson
-        if (    abs(ip->pdgId()) == 24 && ip->isHardProcess() && abs(ip->mcMomPID()) != 6) recoil=1;  //W boson
+        if (    ip->pdgId()  == 23 && ip->isHardProcess()) {recoil=2;numZ++;}    //Z boson
+        if (    abs(ip->pdgId()) == 24 && ip->isHardProcess()) {recoil=1; numW++;}  //W boson
         if (    ip->pdgId()  == 25 && ip->isHardProcess()) recoil=2; //Higgs
         
 //        https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L300
@@ -168,6 +170,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 //        if (ip->pdgId()  == 25) cout<< ip->pdgId() <<"  isHardProcess= "<<ip->isHardProcess() <<" isPromptFinalState()= "<< ip->isPromptFinalState()<< " isHardProcess= "<< ip->isHardProcess() <<"  numberOfMothers= "<<ip->numberOfMothers() <<"\n";
 
         }
+        if (numW > 1) recoil=0;
+        if (numZ > 1) recoil=0;
         
         genpX= visVec.px();
         genpY= visVec.py();
