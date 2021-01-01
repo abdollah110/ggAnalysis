@@ -127,11 +127,11 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   tree->Branch("jetNCH",       &jetNCH_);
   tree->Branch("jetNNP",       &jetNNP_);
   tree->Branch("jetMUF",       &jetMUF_);
-  tree->Branch("jetVtxPt",     &jetVtxPt_);
-  tree->Branch("jetVtxMass",   &jetVtxMass_);
-  tree->Branch("jetVtxNtrks",  &jetVtxNtrks_);
-  tree->Branch("jetVtx3DVal",  &jetVtx3DVal_);
-  tree->Branch("jetVtx3DSig",  &jetVtx3DSig_);
+//  tree->Branch("jetVtxPt",     &jetVtxPt_);
+//  tree->Branch("jetVtxMass",   &jetVtxMass_);
+//  tree->Branch("jetVtxNtrks",  &jetVtxNtrks_);
+//  tree->Branch("jetVtx3DVal",  &jetVtx3DVal_);
+//  tree->Branch("jetVtx3DSig",  &jetVtx3DSig_);
   if (development_) {
     tree->Branch("jetHFHAE",         &jetHFHAE_);
     tree->Branch("jetHFEME",         &jetHFEME_);

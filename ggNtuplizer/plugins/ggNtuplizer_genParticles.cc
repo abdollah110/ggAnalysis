@@ -135,10 +135,10 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
   tree->Branch("puTrue",        &puTrue_);
   tree->Branch("nLHE",          &nLHE_);
   tree->Branch("lhePID",        &lhePID);
-  tree->Branch("lhePx",         &lhePx);
-  tree->Branch("lhePy",         &lhePy); 
-  tree->Branch("lhePz",         &lhePz); 
-  tree->Branch("lheE",          &lheE); 
+//  tree->Branch("lhePx",         &lhePx);
+//  tree->Branch("lhePy",         &lhePy);
+//  tree->Branch("lhePz",         &lhePz);
+//  tree->Branch("lheE",          &lheE);
 
   hPU_        = fs->make<TH1F>("hPU",        "number of pileup",      200,  0, 200);
   hPUTrue_    = fs->make<TH1F>("hPUTrue",    "number of true pilepu", 1000, 0, 200);
@@ -150,9 +150,9 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
 
   tree->Branch("nMC",          &nMC_);
   tree->Branch("mcPID",        &mcPID);
-  tree->Branch("mcVtx",        &mcVtx);
-  tree->Branch("mcVty",        &mcVty);
-  tree->Branch("mcVtz",        &mcVtz);
+//  tree->Branch("mcVtx",        &mcVtx);
+//  tree->Branch("mcVty",        &mcVty);
+//  tree->Branch("mcVtz",        &mcVtz);
   tree->Branch("mcPt",         &mcPt);
   tree->Branch("mcMass",       &mcMass);
   tree->Branch("mcEta",        &mcEta);
@@ -169,10 +169,10 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
   tree->Branch("mcStatusFlag", &mcStatusFlag); //-999:non W or Z, 1:hardronic, 2:e, 3:mu, 4:tau
   tree->Branch("mcParentage",  &mcParentage);  // 16*lepton + 8*boson + 4*non-prompt + 2*qcd + exotics
   tree->Branch("mcStatus",     &mcStatus);     // status of the particle
-  tree->Branch("mcCalIsoDR03", &mcCalIsoDR03);
-  tree->Branch("mcTrkIsoDR03", &mcTrkIsoDR03);
-  tree->Branch("mcCalIsoDR04", &mcCalIsoDR04);
-  tree->Branch("mcTrkIsoDR04", &mcTrkIsoDR04);
+//  tree->Branch("mcCalIsoDR03", &mcCalIsoDR03);
+//  tree->Branch("mcTrkIsoDR03", &mcTrkIsoDR03);
+//  tree->Branch("mcCalIsoDR04", &mcCalIsoDR04);
+//  tree->Branch("mcTrkIsoDR04", &mcTrkIsoDR04);
 }
 
 void ggNtuplizer::fillGenInfo(const edm::Event& e) {
