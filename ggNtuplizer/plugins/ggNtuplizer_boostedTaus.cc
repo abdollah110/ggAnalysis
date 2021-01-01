@@ -236,10 +236,10 @@ void ggNtuplizer::branchesBoostedTaus(TTree* tree)
     tree->Branch("boostedTaudz"  ,&boostedTaudz_);
     tree->Branch("boostedTaudxy"  ,&boostedTaudxy_);
     
-    tree->Branch("boostedTauSignalPFCands"  ,&boostedTauSignalPFCands_);
-    tree->Branch("boostedTauSignalPFGammaCands"  ,&boostedTauSignalPFGammaCands_);
-    tree->Branch("boostedTauIsolationPFCands"  ,&boostedTauIsolationPFCands_);
-    tree->Branch("boostedTauIsolationPFGammaCands"  ,&boostedTauIsolationPFGammaCands_);
+//    tree->Branch("boostedTauSignalPFCands"  ,&boostedTauSignalPFCands_);
+//    tree->Branch("boostedTauSignalPFGammaCands"  ,&boostedTauSignalPFGammaCands_);
+//    tree->Branch("boostedTauIsolationPFCands"  ,&boostedTauIsolationPFCands_);
+//    tree->Branch("boostedTauIsolationPFGammaCands"  ,&boostedTauIsolationPFGammaCands_);
     
 //    tree->Branch("boostedTauSignalPFCandsOrig"  ,&boostedTauSignalPFCandsOrig_);
 //    tree->Branch("boostedTauSignalPFGammaCandsOrig"  ,&boostedTauSignalPFGammaCandsOrig_);

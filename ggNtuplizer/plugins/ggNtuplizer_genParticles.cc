@@ -127,7 +127,7 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
     tree->Branch("pdfWeight",     &pdfWeight_);
     tree->Branch("pdfSystWeight", &pdfSystWeight_);
   }
-  tree->Branch("EventTag",      &EventTag_);
+//  tree->Branch("EventTag",      &EventTag_);
 
   tree->Branch("nPUInfo",       &nPUInfo_);
   tree->Branch("nPU",           &nPU_);

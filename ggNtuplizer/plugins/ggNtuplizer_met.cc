@@ -159,7 +159,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
             visVec += ip->p4();}
         
         if (    ip->pdgId()  == 23 && ip->isHardProcess()) recoil=2;   //Z boson
-        if (    abs(ip->pdgId()) == 24 && ip->isHardProcess()) recoil=1;  //W boson
+        if (    abs(ip->pdgId()) == 24 && ip->isHardProcess() && abs(ip->mcMomPID()) != 6) recoil=1;  //W boson
         if (    ip->pdgId()  == 25 && ip->isHardProcess()) recoil=2; //Higgs
         
 //        https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L300
