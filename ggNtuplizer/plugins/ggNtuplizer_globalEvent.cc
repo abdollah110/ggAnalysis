@@ -54,7 +54,7 @@ void ggNtuplizer::branchesGlobalEvent(TTree* tree) {
   tree->Branch("HLTPhoRejectedByPS",   &HLTPhoRejectedByPS_);
   tree->Branch("HLTJet",               &HLTJet_);
   tree->Branch("HLTEleMuXIsPrescaled", &HLTEleMuXIsPrescaled_);
-  tree->Branch("HLTPhoIsPrescaled",    &HLTPhoIsPrescaled_);
+//  tree->Branch("HLTPhoIsPrescaled",    &HLTPhoIsPrescaled_);
   tree->Branch("HLTJetIsPrescaled",    &HLTJetIsPrescaled_);
 
   if (!doGenParticles_)

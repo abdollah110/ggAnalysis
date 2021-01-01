@@ -100,16 +100,16 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   if (doGenParticles_){
     tree->Branch("jetPartonID",       &jetPartonID_);
     tree->Branch("jetHadFlvr",        &jetHadFlvr_);
-    tree->Branch("jetGenJetEn",       &jetGenJetEn_);
-    tree->Branch("jetGenJetPt",       &jetGenJetPt_);
-    tree->Branch("jetGenJetEta",      &jetGenJetEta_);
-    tree->Branch("jetGenJetPhi",      &jetGenJetPhi_);
-    tree->Branch("jetGenPartonID",    &jetGenPartonID_);
-    tree->Branch("jetGenEn",          &jetGenEn_);
-    tree->Branch("jetGenPt",          &jetGenPt_);
-    tree->Branch("jetGenEta",         &jetGenEta_);
-    tree->Branch("jetGenPhi",         &jetGenPhi_);
-    tree->Branch("jetGenPartonMomID", &jetGenPartonMomID_);
+//    tree->Branch("jetGenJetEn",       &jetGenJetEn_);
+//    tree->Branch("jetGenJetPt",       &jetGenJetPt_);
+//    tree->Branch("jetGenJetEta",      &jetGenJetEta_);
+//    tree->Branch("jetGenJetPhi",      &jetGenJetPhi_);
+//    tree->Branch("jetGenPartonID",    &jetGenPartonID_);
+//    tree->Branch("jetGenEn",          &jetGenEn_);
+//    tree->Branch("jetGenPt",          &jetGenPt_);
+//    tree->Branch("jetGenEta",         &jetGenEta_);
+//    tree->Branch("jetGenPhi",         &jetGenPhi_);
+//    tree->Branch("jetGenPartonMomID", &jetGenPartonMomID_);
     tree->Branch("jetP4Smear",        &jetP4Smear_);
     tree->Branch("jetP4SmearUp",      &jetP4SmearUp_);
     tree->Branch("jetP4SmearDo",      &jetP4SmearDo_);

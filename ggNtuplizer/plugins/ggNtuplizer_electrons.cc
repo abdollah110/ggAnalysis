@@ -138,7 +138,7 @@ void ggNtuplizer::branchesElectrons(TTree* tree) {
 //  tree->Branch("eleSigmaIPhiIPhiFull5x5", &eleSigmaIPhiIPhiFull5x5_);
   tree->Branch("eleConvVeto",             &eleConvVeto_);
   tree->Branch("eleMissHits",             &eleMissHits_);
-  tree->Branch("eleESEffSigmaRR",         &eleESEffSigmaRR_);
+//  tree->Branch("eleESEffSigmaRR",         &eleESEffSigmaRR_);
   tree->Branch("elePFChIso",              &elePFChIso_);
   tree->Branch("elePFPhoIso",             &elePFPhoIso_);
   tree->Branch("elePFNeuIso",             &elePFNeuIso_);
