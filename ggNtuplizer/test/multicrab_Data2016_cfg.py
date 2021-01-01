@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
 
     "/JetHT/Run2016B-17Jul2018_ver1-v1/MINIAOD",
-    "/JetHT/Run2016B-17Jul2018_ver2-v1/MINIAOD",
+    "/JetHT/Run2016B-17Jul2018_ver2-v2/MINIAOD",
     "/JetHT/Run2016C-17Jul2018-v1/MINIAOD",
     "/JetHT/Run2016D-17Jul2018-v1/MINIAOD",
     "/JetHT/Run2016E-17Jul2018-v1/MINIAOD",
