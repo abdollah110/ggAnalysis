@@ -18,7 +18,7 @@ config.section_('Data')
 config.Data.unitsPerJob = 1
 #config.Data.inputDBS = 'phys03'
 config.Data.splitting = 'FileBased'
-config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017_v1/MC/'
+config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2017/MC'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017_v1/test'
 config.Data.allowNonValidInputDataset = True
 config.section_('User')
@@ -136,9 +136,9 @@ Samples= [
 
 ["TTToSemiLeptonic", "/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM"],
 
-["TTTo2L2Nu", "/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
+["TTTo2L2Nu_v1", "/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
 
-
+["TTTo2L2Nu_v2", "/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM"],
 
 
 ###### W  HT bins samples
@@ -244,8 +244,8 @@ Samples= [
 
 ]
 
-#for sam in Samples:
-for sam in Samples_test:
+for sam in Samples:
+#for sam in Samples_test:
     print sam[0], sam[1]
     config.General.requestName = sam[0]
     config.Data.inputDataset = sam[1]
