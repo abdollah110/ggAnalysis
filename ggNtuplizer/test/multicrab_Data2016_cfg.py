@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     # We want to put all the CRAB project directories from the tasks we submit here into one common directory.
     # That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-    config.General.workArea = 'Data_2016_v1'
+    config.General.workArea = 'Data_2016_v3'
 
     def submit(config):
         try:
@@ -78,14 +78,25 @@ if __name__ == '__main__':
 #    "/Tau/Run2016H-17Jul2018-v1/MINIAOD",
 
 
-    "/JetHT/Run2016B-17Jul2018_ver1-v1/MINIAOD",
-    "/JetHT/Run2016B-17Jul2018_ver2-v2/MINIAOD",
-    "/JetHT/Run2016C-17Jul2018-v1/MINIAOD",
-    "/JetHT/Run2016D-17Jul2018-v1/MINIAOD",
-    "/JetHT/Run2016E-17Jul2018-v1/MINIAOD",
-    "/JetHT/Run2016F-17Jul2018-v1/MINIAOD",
-    "/JetHT/Run2016G-17Jul2018-v1/MINIAOD",
-    "/JetHT/Run2016H-17Jul2018-v1/MINIAOD",
+#    "/JetHT/Run2016B-17Jul2018_ver1-v1/MINIAOD",
+#    "/JetHT/Run2016B-17Jul2018_ver2-v2/MINIAOD",
+#    "/JetHT/Run2016C-17Jul2018-v1/MINIAOD",
+#    "/JetHT/Run2016D-17Jul2018-v1/MINIAOD",
+#    "/JetHT/Run2016E-17Jul2018-v1/MINIAOD",
+#    "/JetHT/Run2016F-17Jul2018-v1/MINIAOD",
+#    "/JetHT/Run2016G-17Jul2018-v1/MINIAOD",
+#    "/JetHT/Run2016H-17Jul2018-v1/MINIAOD",
+
+
+
+    "/HTMHT/Run2016B-17Jul2018_ver1-v1/MINIAOD",
+    "/HTMHT/Run2016B-17Jul2018_ver2-v1/MINIAOD",
+    "/HTMHT/Run2016C-17Jul2018-v1/MINIAOD",
+    "/HTMHT/Run2016D-17Jul2018-v1/MINIAOD",
+    "/HTMHT/Run2016E-17Jul2018-v1/MINIAOD",
+    "/HTMHT/Run2016F-17Jul2018-v1/MINIAOD",
+    "/HTMHT/Run2016G-17Jul2018-v1/MINIAOD",
+    "/HTMHT/Run2016H-17Jul2018-v1/MINIAOD",
 
     ]
 

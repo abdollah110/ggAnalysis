@@ -260,11 +260,11 @@ void ggNtuplizer::branchesBoostedTaus(TTree* tree)
     tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSe"  ,&boostedTaubyVVVLooseDeepTau2017v1VSe_);
     tree->Branch("boostedTaubyLooseDeepTau2017v1VSe"  ,&boostedTaubyLooseDeepTau2017v1VSe_);
     tree->Branch("boostedTaubyTightDeepTau2017v1VSe"  ,&boostedTaubyTightDeepTau2017v1VSe_);
-    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSe"  ,&boostedTaubyVVTightDeepTau2017v1VSe_);
+//    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSe"  ,&boostedTaubyVVTightDeepTau2017v1VSe_);
     tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSmu"  ,&boostedTaubyVVVLooseDeepTau2017v1VSmu_);
     tree->Branch("boostedTaubyLooseDeepTau2017v1VSmu"  ,&boostedTaubyLooseDeepTau2017v1VSmu_);
     tree->Branch("boostedTaubyTightDeepTau2017v1VSmu"  ,&boostedTaubyTightDeepTau2017v1VSmu_);
-    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSmu"  ,&boostedTaubyVVTightDeepTau2017v1VSmu_);
+//    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSmu"  ,&boostedTaubyVVTightDeepTau2017v1VSmu_);
     
     tree->Branch("boostedTauagainstElectronVLooseMVA62018"  ,&boostedTauagainstElectronVLooseMVA62018_);
     tree->Branch("boostedTauagainstElectronLooseMVA62018"  ,&boostedTauagainstElectronLooseMVA62018_);

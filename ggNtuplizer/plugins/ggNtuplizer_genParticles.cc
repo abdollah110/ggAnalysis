@@ -121,8 +121,8 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
   tree->Branch("processID",     &processID_);
   tree->Branch("genWeight",     &genWeight_);
   tree->Branch("genHT",         &genHT_);
-  tree->Branch("genPho1",       &genPho1_);
-  tree->Branch("genPho2",       &genPho2_);
+//  tree->Branch("genPho1",       &genPho1_);
+//  tree->Branch("genPho2",       &genPho2_);
   if (dumpPDFSystWeight_) {
     tree->Branch("pdfWeight",     &pdfWeight_);
     tree->Branch("pdfSystWeight", &pdfSystWeight_);

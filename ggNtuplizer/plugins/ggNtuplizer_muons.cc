@@ -65,8 +65,8 @@ void ggNtuplizer::branchesMuons(TTree* tree) {
 //  tree->Branch("muPixelLayers", &muPixelLayers_);
 //  tree->Branch("muPixelHits",   &muPixelHits_);
   tree->Branch("muMuonHits",    &muMuonHits_);
-  tree->Branch("muStations",    &muStations_);
-  tree->Branch("muMatches",     &muMatches_);
+//  tree->Branch("muStations",    &muStations_);
+//  tree->Branch("muMatches",     &muMatches_);
 //  tree->Branch("muTrkQuality",  &muTrkQuality_);
   tree->Branch("muIsoTrk",      &muIsoTrk_);
   tree->Branch("muPFChIso",     &muPFChIso_);

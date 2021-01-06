@@ -88,10 +88,10 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   tree->Branch("jetLeadTrackPt",      &jetLeadTrackPt_);
   tree->Branch("jetLeadTrackEta",     &jetLeadTrackEta_);
   tree->Branch("jetLeadTrackPhi",     &jetLeadTrackPhi_);
-  tree->Branch("jetLepTrackPID",      &jetLepTrackPID_);
-  tree->Branch("jetLepTrackPt",       &jetLepTrackPt_);
-  tree->Branch("jetLepTrackEta",      &jetLepTrackEta_);
-  tree->Branch("jetLepTrackPhi",      &jetLepTrackPhi_);
+//  tree->Branch("jetLepTrackPID",      &jetLepTrackPID_);
+//  tree->Branch("jetLepTrackPt",       &jetLepTrackPt_);
+//  tree->Branch("jetLepTrackEta",      &jetLepTrackEta_);
+//  tree->Branch("jetLepTrackPhi",      &jetLepTrackPhi_);
   tree->Branch("jetCSV2BJetTags",     &jetCSV2BJetTags_);
   tree->Branch("jetDeepCSVTags_b",    &jetDeepCSVTags_b_);
   tree->Branch("jetDeepCSVTags_bb",   &jetDeepCSVTags_bb_);

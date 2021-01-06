@@ -50,15 +50,15 @@ void ggNtuplizer::branchesGlobalEvent(TTree* tree) {
   tree->Branch("L1ECALPrefireUp",      &L1ECALPrefireUp_);
   tree->Branch("L1ECALPrefireDown",    &L1ECALPrefireDown_);
   tree->Branch("HLTEleMuX",            &HLTEleMuX_);
-  tree->Branch("HLTPho",               &HLTPho_);
-  tree->Branch("HLTPhoRejectedByPS",   &HLTPhoRejectedByPS_);
+//  tree->Branch("HLTPho",               &HLTPho_);
+//  tree->Branch("HLTPhoRejectedByPS",   &HLTPhoRejectedByPS_);
   tree->Branch("HLTJet",               &HLTJet_);
   tree->Branch("HLTEleMuXIsPrescaled", &HLTEleMuXIsPrescaled_);
 //  tree->Branch("HLTPhoIsPrescaled",    &HLTPhoIsPrescaled_);
   tree->Branch("HLTJetIsPrescaled",    &HLTJetIsPrescaled_);
 
-  if (!doGenParticles_)
-    tree->Branch("phoPrescale",          &phoPrescale_); 
+//  if (!doGenParticles_)
+//    tree->Branch("phoPrescale",          &phoPrescale_);
 }
 
 void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es) {

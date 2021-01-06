@@ -124,7 +124,7 @@ void ggNtuplizer::branchesElectrons(TTree* tree) {
 //  tree->Branch("eleCalibEn",              &eleCalibEn_);
   tree->Branch("eleSCEta",                &eleSCEta_);
   tree->Branch("eleSCPhi",                &eleSCPhi_);
-  tree->Branch("eleSCRawEn",              &eleSCRawEn_);
+//  tree->Branch("eleSCRawEn",              &eleSCRawEn_);
 //  tree->Branch("eleSCEtaWidth",           &eleSCEtaWidth_);
 //  tree->Branch("eleSCPhiWidth",           &eleSCPhiWidth_);
 //  tree->Branch("eleHoverE",               &eleHoverE_);
