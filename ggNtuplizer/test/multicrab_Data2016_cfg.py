@@ -19,7 +19,8 @@ config.Data.unitsPerJob = 30
 config.Data.splitting = 'LumiBased'
 config.Data.lumiMask = 'Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt'
 config.Data.runRange = '271036-284044'
-config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2016/Data'
+#config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2016/Data'
+config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/Data'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')

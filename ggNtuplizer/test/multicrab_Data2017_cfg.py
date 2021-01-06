@@ -19,7 +19,8 @@ config.Data.unitsPerJob = 30
 config.Data.splitting = 'LumiBased'
 config.Data.lumiMask = 'Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt' 
 config.Data.runRange = '294927-306462'
-config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017/Data/'
+#config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017/Data/'
+config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2017/Data'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')
@@ -56,11 +57,11 @@ if __name__ == '__main__':
 #        "/Tau/Run2017E-31Mar2018-v1/MINIAOD",
 #        "/Tau/Run2017F-31Mar2018-v1/MINIAOD",
 
-        "/JetHT/Run2017B-31Mar2018-v1/MINIAOD",
-        "/JetHT/Run2017C-31Mar2018-v1/MINIAOD",
-        "/JetHT/Run2017D-31Mar2018-v1/MINIAOD",
-        "/JetHT/Run2017E-31Mar2018-v1/MINIAOD",
-        "/JetHT/Run2017F-31Mar2018-v1/MINIAOD",
+#        "/JetHT/Run2017B-31Mar2018-v1/MINIAOD",
+#        "/JetHT/Run2017C-31Mar2018-v1/MINIAOD",
+#        "/JetHT/Run2017D-31Mar2018-v1/MINIAOD",
+#        "/JetHT/Run2017E-31Mar2018-v1/MINIAOD",
+#        "/JetHT/Run2017F-31Mar2018-v1/MINIAOD",
 
 
 #        "/SingleMuon/Run2017B-31Mar2018-v1/MINIAOD",
@@ -74,7 +75,15 @@ if __name__ == '__main__':
 #        "/SingleElectron/Run2017D-31Mar2018-v1/MINIAOD",
 #        "/SingleElectron/Run2017E-31Mar2018-v1/MINIAOD",
 #        "/SingleElectron/Run2017F-31Mar2018-v1/MINIAOD"
-        
+
+        "/HTMHT/Run2017B-31Mar2018-v1/MINIAOD",
+        "/HTMHT/Run2017C-31Mar2018-v1/MINIAOD",
+        "/HTMHT/Run2017D-31Mar2018-v1/MINIAOD",
+        "/HTMHT/Run2017E-31Mar2018-v1/MINIAOD",
+        "/HTMHT/Run2017F-31Mar2018-v1/MINIAOD",
+
+
+
     ]
 
 
