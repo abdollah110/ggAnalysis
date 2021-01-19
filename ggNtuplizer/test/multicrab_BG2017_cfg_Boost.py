@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     # We want to put all the CRAB project directories from the tasks we submit here into one common directory.
     # That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-    config.General.workArea = 'MC_2017_v1'
+    config.General.workArea = 'MC_2017_v5'
 
     def submit(config):
         try:
@@ -50,11 +50,24 @@ if __name__ == '__main__':
 
 Samples_test= [
 
+    ["WJetsToLNu_HT-100To200", "/WJetsToLNu_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM"],
+
+    ["WJetsToLNu_HT-200To400", "/WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
+
+    ["WJetsToLNu_HT-400To600", "/WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
+
+    ["WJetsToLNu_HT-600To800", "/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
+
+    ["WJetsToLNu_HT-800To1200", "/WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-1200To2500", "/WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-2500ToInf", "/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v3/MINIAODSIM"],
+
+
 #    ["JJH0PMToTauTauPlusZeroJets", "/JJH0PMToTauTauPlusZeroJets_Filtered_M125_TuneCP5_13TeV-mcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"]
 #    ]
-    ["WJetsToLNu_Pt-0To50", "/WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
-
-    ["DYJetsToLL_Pt-0To50", "/DYJetsToLL_Pt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"]
+#    ["WJetsToLNu_Pt-0To50", "/WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"],
+#
+#    ["DYJetsToLL_Pt-0To50", "/DYJetsToLL_Pt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM"]
 ]
 
 Samples= [
@@ -244,8 +257,8 @@ Samples= [
 
 ]
 
-for sam in Samples:
-#for sam in Samples_test:
+#for sam in Samples:
+for sam in Samples_test:
     print sam[0], sam[1]
     config.General.requestName = sam[0]
     config.Data.inputDataset = sam[1]

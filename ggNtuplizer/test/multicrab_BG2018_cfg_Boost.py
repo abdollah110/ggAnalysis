@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     # We want to put all the CRAB project directories from the tasks we submit here into one common directory.
     # That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-    config.General.workArea = 'MC_2018_v4'
+    config.General.workArea = 'MC_2018_v5'
 
     def submit(config):
         try:
@@ -53,10 +53,18 @@ if __name__ == '__main__':
     ## From now on that's what users should modify: this is the a-la-CRAB2 configuration part. ##
     #############################################################################################
 
-#Samples_test= [
-#
+Samples_test= [
+
+    ["WJetsToLNu_HT-100To200", "/WJetsToLNu_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-200To400", "/WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-400To600", "/WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-600To800", "/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-800To1200", "/WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-1200To2500", "/WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],
+    ["WJetsToLNu_HT-2500ToInf", "/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"],
+
 #    ["JJH0PMToTauTauPlusZeroJets", "/JJH0PMToTauTauPlusZeroJets_Filtered_M125_TuneCP5_13TeV-mcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM"]
-#    ]
+    ]
 
 Samples= [
    
@@ -168,8 +176,8 @@ Samples= [
 
 
 
-for sam in Samples:
-#for sam in Samples_test:
+#for sam in Samples:
+for sam in Samples_test:
     print sam[0], sam[1]
     config.General.requestName = sam[0]
     config.Data.inputDataset = sam[1]
