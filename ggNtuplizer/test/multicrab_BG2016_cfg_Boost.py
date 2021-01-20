@@ -15,10 +15,10 @@ config.JobType.outputFiles = ["ggtree_mc.root"]
 config.JobType.sendExternalFolder = True
 config.JobType.allowUndistributedCMSSW = True
 config.section_('Data')
-#config.Data.unitsPerJob = 1
+config.Data.unitsPerJob = 1
 #config.Data.inputDBS = 'phys03'
-#config.Data.splitting = 'FileBased'
-config.Data.splitting = 'Automatic'
+config.Data.splitting = 'FileBased'
+#config.Data.splitting = 'Automatic'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2016_v1/MC/'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017_v1/test'
 config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/MC'
