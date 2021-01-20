@@ -19,8 +19,8 @@ config.Data.unitsPerJob = 30
 config.Data.splitting = 'LumiBased'
 config.Data.lumiMask = 'Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt'
 config.Data.runRange = '271036-284044'
-#config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2016/Data'
-config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/Data'
+config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2016/Data'
+#config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2016/Data'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     # We want to put all the CRAB project directories from the tasks we submit here into one common directory.
     # That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-    config.General.workArea = 'Data_2016_v3'
+    config.General.workArea = 'Data_2016_v5'
 
     def submit(config):
         try:
@@ -60,14 +60,14 @@ if __name__ == '__main__':
 #    "/SingleMuon/Run2016G-17Jul2018-v1/MINIAOD",
 #    "/SingleMuon/Run2016H-17Jul2018-v1/MINIAOD",
 #
-#    "/SingleElectron/Run2016B-17Jul2018_ver1-v1/MINIAOD",
-#    "/SingleElectron/Run2016B-17Jul2018_ver2-v1/MINIAOD",
-#    "/SingleElectron/Run2016C-17Jul2018-v1/MINIAOD",
-#    "/SingleElectron/Run2016D-17Jul2018-v1/MINIAOD",
-#    "/SingleElectron/Run2016E-17Jul2018-v1/MINIAOD",
-#    "/SingleElectron/Run2016F-17Jul2018-v1/MINIAOD",
-#    "/SingleElectron/Run2016G-17Jul2018-v1/MINIAOD",
-#    "/SingleElectron/Run2016H-17Jul2018-v1/MINIAOD",
+    "/SingleElectron/Run2016B-17Jul2018_ver1-v1/MINIAOD",
+    "/SingleElectron/Run2016B-17Jul2018_ver2-v1/MINIAOD",
+    "/SingleElectron/Run2016C-17Jul2018-v1/MINIAOD",
+    "/SingleElectron/Run2016D-17Jul2018-v1/MINIAOD",
+    "/SingleElectron/Run2016E-17Jul2018-v1/MINIAOD",
+    "/SingleElectron/Run2016F-17Jul2018-v1/MINIAOD",
+    "/SingleElectron/Run2016G-17Jul2018-v1/MINIAOD",
+    "/SingleElectron/Run2016H-17Jul2018-v1/MINIAOD",
 
 #    "/Tau/Run2016B-17Jul2018_ver1-v1/MINIAOD",
 #    "/Tau/Run2016B-17Jul2018_ver2-v1/MINIAOD",
@@ -90,14 +90,14 @@ if __name__ == '__main__':
 
 
 
-    "/HTMHT/Run2016B-17Jul2018_ver1-v1/MINIAOD",
-    "/HTMHT/Run2016B-17Jul2018_ver2-v1/MINIAOD",
-    "/HTMHT/Run2016C-17Jul2018-v1/MINIAOD",
-    "/HTMHT/Run2016D-17Jul2018-v1/MINIAOD",
-    "/HTMHT/Run2016E-17Jul2018-v1/MINIAOD",
-    "/HTMHT/Run2016F-17Jul2018-v1/MINIAOD",
-    "/HTMHT/Run2016G-17Jul2018-v1/MINIAOD",
-    "/HTMHT/Run2016H-17Jul2018-v1/MINIAOD",
+#    "/HTMHT/Run2016B-17Jul2018_ver1-v1/MINIAOD",
+#    "/HTMHT/Run2016B-17Jul2018_ver2-v1/MINIAOD",
+#    "/HTMHT/Run2016C-17Jul2018-v1/MINIAOD",
+#    "/HTMHT/Run2016D-17Jul2018-v1/MINIAOD",
+#    "/HTMHT/Run2016E-17Jul2018-v1/MINIAOD",
+#    "/HTMHT/Run2016F-17Jul2018-v1/MINIAOD",
+#    "/HTMHT/Run2016G-17Jul2018-v1/MINIAOD",
+#    "/HTMHT/Run2016H-17Jul2018-v1/MINIAOD",
 
     ]
 

@@ -19,8 +19,8 @@ config.Data.unitsPerJob = 30
 config.Data.splitting = 'LumiBased'
 config.Data.lumiMask = 'Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt' 
 config.Data.runRange = '294927-306462'
-#config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017/Data/'
-config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2017/Data'
+config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017/Data/'
+#config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2017/Data'
 #config.Data.useParent = True
 config.section_('User')
 config.section_('Site')
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     # We want to put all the CRAB project directories from the tasks we submit here into one common directory.
     # That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-    config.General.workArea = 'Data_2017_v1'
+    config.General.workArea = 'Data_2017_v5'
 
     def submit(config):
         try:
@@ -70,17 +70,17 @@ if __name__ == '__main__':
 #        "/SingleMuon/Run2017E-31Mar2018-v1/MINIAOD",
 #        "/SingleMuon/Run2017F-31Mar2018-v1/MINIAOD",
 #
-#        "/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD",
-#        "/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD",
-#        "/SingleElectron/Run2017D-31Mar2018-v1/MINIAOD",
-#        "/SingleElectron/Run2017E-31Mar2018-v1/MINIAOD",
-#        "/SingleElectron/Run2017F-31Mar2018-v1/MINIAOD"
+        "/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD",
+        "/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD",
+        "/SingleElectron/Run2017D-31Mar2018-v1/MINIAOD",
+        "/SingleElectron/Run2017E-31Mar2018-v1/MINIAOD",
+        "/SingleElectron/Run2017F-31Mar2018-v1/MINIAOD"
 
-        "/HTMHT/Run2017B-31Mar2018-v1/MINIAOD",
-        "/HTMHT/Run2017C-31Mar2018-v1/MINIAOD",
-        "/HTMHT/Run2017D-31Mar2018-v1/MINIAOD",
-        "/HTMHT/Run2017E-31Mar2018-v1/MINIAOD",
-        "/HTMHT/Run2017F-31Mar2018-v1/MINIAOD",
+#        "/HTMHT/Run2017B-31Mar2018-v1/MINIAOD",
+#        "/HTMHT/Run2017C-31Mar2018-v1/MINIAOD",
+#        "/HTMHT/Run2017D-31Mar2018-v1/MINIAOD",
+#        "/HTMHT/Run2017E-31Mar2018-v1/MINIAOD",
+#        "/HTMHT/Run2017F-31Mar2018-v1/MINIAOD",
 
 
 
