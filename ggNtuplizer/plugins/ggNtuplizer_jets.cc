@@ -230,9 +230,9 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 
 // Instantiate uncertainty sources
 //const int nsrc = 33;
-const int nsrc = 2;
-const char* srcnames[nsrc] =
-  {"FlavorQCD", "PileUpPtBB"
+//const int nsrc = 2;
+//const char* srcnames[nsrc] =
+//  {"FlavorQCD", "PileUpPtBB"
 //  "Absolute", "HighPtExtra",  "SinglePionECAL", "SinglePionHCAL",
 //    "Time",
 //   "RelativeJEREC1", "RelativeJEREC2", "RelativeJERHF",
@@ -243,16 +243,58 @@ const char* srcnames[nsrc] =
 //   "SubTotalPileUp","SubTotalRelative","SubTotalPt","SubTotalMC",
 //   "Total","TotalNoFlavor",
 //   "FlavorZJet","FlavorPhotonJet","FlavorPureGluon","FlavorPureQuark","FlavorPureCharm","FlavorPureBottom"
+//  };
+//std::vector<JetCorrectionUncertainty*> vsrc(nsrc);
+std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
+std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
+
+//for (int isrc = 0; isrc < nsrc; isrc++) {
+//
+//   const char *name = srcnames[isrc];
+//   JetCorrectorParameters *p = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchsXXX.txt", name);
+//   JetCorParMap[name] = JetCorPar;
+//
+//    JetCorrectionUncertainty * jecUnc(
+//    new JetCorrectionUncertainty(*JetCorParMap[name]));
+//    JetUncMap[name] = jecUnc;
+//    k=k+1;
+//  };
+  
+  
+  std::vector< std::string > uncertNames = {
+    "FlavorQCD", "PileUpPtBB"
+//    "Absolute",
+//    "Absoluteyear",
+//    "BBEC1",
+//    "BBEC1year",
+//    "EC2",
+//    "EC2year",
+//    "FlavorQCD",
+//    "HF",
+//    "HFyear",
+//    "RelativeBal",
+//    "RelativeSample",
+//    "Total"
+    };
+    
+  
+   // Create the uncertainty tool for each uncert
+  k=0;
+  for (auto const& name : uncertNames) {
+    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+    JetCorParMap[name] = JetCorPar2;
+
+    JetCorrectionUncertainty * jecUnc2(
+        new JetCorrectionUncertainty(*JetCorParMap[name]));
+    JetUncMap[name] = jecUnc2;
+    k=k+1;
   };
-std::vector<JetCorrectionUncertainty*> vsrc(nsrc);
 
 
-for (int isrc = 0; isrc < nsrc; isrc++) {
 
-   const char *name = srcnames[isrc];
-   JetCorrectorParameters *p = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchsXXX.txt", name);
-   JetCorrectionUncertainty *unc = new JetCorrectionUncertainty(*p);
-   vsrc[isrc] = unc;
+   
+//   JetCorrectionUncertainty *unc = new JetCorrectionUncertainty(*p);
+//   vsrc[isrc] = unc;
 } // for isrc
 
 
