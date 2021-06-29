@@ -288,8 +288,8 @@ double uncert = total->getUncertainty(true);
 //  JetCorrectorParameters const & JetCorPar_BBEC1 = (*JetCorParColl)["BBEC1"];
 //  JetCorrectorParameters const & JetCorPar_FlavorQCD = (*JetCorParColl)["FlavorQCD"];
 //
-//  JetCorrectionUncertainty *jecUnc=0;
-//  jecUnc = new JetCorrectionUncertainty(JetCorPar);
+  JetCorrectionUncertainty *jecUnc=0;
+  jecUnc = new JetCorrectionUncertainty(JetCorPar);
 //
 //  JetCorrectionUncertainty *jecUnc_Absolute=0;
 //  jecUnc_Absolute = new JetCorrectionUncertainty(JetCorPar_Absolute);
@@ -360,7 +360,7 @@ double uncert = total->getUncertainty(true);
       jetJECUnc_.push_back(jecUnc->getUncertainty(true));
     } else {
       jetJECUnc_.push_back(-1.);
-    }    
+    }
     
     
     jetFiredTrgs_.push_back(matchJetTriggerFilters(iJet->pt(), iJet->eta(), iJet->phi()));    
