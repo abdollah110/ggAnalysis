@@ -226,39 +226,67 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   edm::ESHandle<JetCorrectorParametersCollection> JetCorParColl;
   es.get<JetCorrectionsRecord>().get("AK4PFchs",JetCorParColl); 
   JetCorrectorParameters const & JetCorPar = (*JetCorParColl)["Uncertainty"];
+  JetCorrectionUncertainty *jecUnc=0;
+  jecUnc = new JetCorrectionUncertainty(JetCorPar);
 
 
+
+
+//https://twiki.cern.ch/twiki/bin/viewauth/CMS/JECUncertaintySources#Main_uncertainties_2018_Autumn18
 // Instantiate uncertainty sources
-//const int nsrc = 33;
-//const int nsrc = 2;
-//const char* srcnames[nsrc] =
-//  {"FlavorQCD", "PileUpPtBB"
+const int nsrc = 2;
+const char* srcnames[nsrc] =
+{"FlavorQCD", "PileUpPtBB"};
 //  "Absolute", "HighPtExtra",  "SinglePionECAL", "SinglePionHCAL",
-//    "Time",
+//   "FlavorQCD", "Time",
 //   "RelativeJEREC1", "RelativeJEREC2", "RelativeJERHF",
 //   "RelativePtBB","RelativePtEC1", "RelativePtEC2", "RelativePtHF", "RelativeFSR",
 //   "RelativeStatEC2", "RelativeStatHF",
 //   "PileUpDataMC",
-//    "PileUpPtEC", "PileUpPtHF","PileUpBias",
+//   "PileUpPtBB", "PileUpPtEC", "PileUpPtHF","PileUpBias",
 //   "SubTotalPileUp","SubTotalRelative","SubTotalPt","SubTotalMC",
 //   "Total","TotalNoFlavor",
-//   "FlavorZJet","FlavorPhotonJet","FlavorPureGluon","FlavorPureQuark","FlavorPureCharm","FlavorPureBottom"
-//  };
-//std::vector<JetCorrectionUncertainty*> vsrc(nsrc);
-std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
-std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
+//   "FlavorZJet","FlavorPhotonJet","FlavorPureGluon","FlavorPureQuark","FlavorPureCharm","FlavorPureBottom"};
+std::vector<JetCorrectionUncertainty*> vsrc(nsrc);
 
-//for (int isrc = 0; isrc < nsrc; isrc++) {
-//
-//   const char *name = srcnames[isrc];
-//   JetCorrectorParameters *p = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchsXXX.txt", name);
-//   JetCorParMap[name] = JetCorPar;
-//
-//    JetCorrectionUncertainty * jecUnc(
-//    new JetCorrectionUncertainty(*JetCorParMap[name]));
-//    JetUncMap[name] = jecUnc;
-//    k=k+1;
-//  };
+for (int isrc = 0; isrc < nsrc; isrc++) {
+
+   const char *name = srcnames[isrc];
+   JetCorrectorParameters *p = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+   JetCorrectionUncertainty *unc = new JetCorrectionUncertainty(*p);
+   vsrc[isrc] = unc;
+} // for isrc
+
+// Total uncertainty for reference
+JetCorrectionUncertainty *total = new JetCorrectionUncertainty(*(new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", "Total")));
+
+// Calculate uncertainty per source and as a total
+double jetpt(50.);
+double jeteta(2.4);
+double sum2_up(0), sum2_dw(0);
+
+for (int isrc = 0; isrc < nsrc; isrc++) {
+
+      JetCorrectionUncertainty *unc = vsrc[isrc];
+      unc->setJetPt(jetpt);
+      unc->setJetEta(jeteta);
+      double sup = unc->getUncertainty(true); // up variation
+      unc->setJetPt(jetpt);
+      unc->setJetEta(jeteta);
+      double sdw = unc->getUncertainty(false); // down variation
+
+      sum2_up += pow(max(sup,sdw),2);
+      sum2_dw += pow(min(sup,sdw),2);
+} // for isrc
+
+total->setJetPt(jetpt);
+total->setJetEta(jeteta);
+double uncert = total->getUncertainty(true);
+cout << name <<"  unc  "<<uncert <<"\n";
+
+
+// Cecile
+//https://github.com/uwcms/FinalStateAnalysis/blob/miniAOD_10_2_22/PatTools/plugins/MiniAODJetFullSystematicsEmbedder.cc
   
   
   std::vector< std::string > uncertNames = {
@@ -286,47 +314,11 @@ std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
     JetCorParMap[name] = JetCorPar2;
 //    cout<<"\n Now check the  unc    "<<JetCorParMap[&JetCorPar2]<<"\n";
 
-//    JetCorrectionUncertainty * jecUnc2(
-//        new JetCorrectionUncertainty(*JetCorParMap[name]));
-//    JetUncMap[name] = jecUnc2;
+    JetCorrectionUncertainty * jecUnc2(
+        new JetCorrectionUncertainty(*JetCorParMap[name]));
+    JetUncMap[name] = jecUnc2;
     k=k+1;
   };
-
-
-
-   
-//   JetCorrectionUncertainty *unc = new JetCorrectionUncertainty(*p);
-//   vsrc[isrc] = unc;
-//} // for isrc
-
-
-// Total uncertainty for reference
-//JetCorrectionUncertainty *total = new JetCorrectionUncertainty(*(new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txtYYY", "Total")));
-
-//// Calculate uncertainty per source and as a total
-//double jetpt(50.);
-//double jeteta(2.4);
-//double sum2_up(0), sum2_dw(0);
-//
-//for (int isrc = 0; isrc < nsrc; isrc++) {
-//
-//      JetCorrectionUncertainty *unc = vsrc[isrc];
-//      unc->setJetPt(jetpt);
-//      unc->setJetEta(jeteta);
-//      double sup = unc->getUncertainty(true); // up variation
-//      std::cout<<"\n sup = \n"<<sup<<"\n";
-//      unc->setJetPt(jetpt);
-//      unc->setJetEta(jeteta);
-//      double sdw = unc->getUncertainty(false); // down variation
-//
-//      sum2_up += pow(max(sup,sdw),2);
-//      sum2_dw += pow(min(sup,sdw),2);
-//} // for isrc
-//
-//total->setJetPt(jetpt);
-//total->setJetEta(jeteta);
-//double uncert = total->getUncertainty(true);
-
 
 
 
@@ -335,45 +327,9 @@ std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
 //  JetCorrectorParameters const & JetCorPar_BBEC1 = (*JetCorParColl)["BBEC1"];
 //  JetCorrectorParameters const & JetCorPar_FlavorQCD = (*JetCorParColl)["FlavorQCD"];
 //
-  JetCorrectionUncertainty *jecUnc=0;
-  jecUnc = new JetCorrectionUncertainty(JetCorPar);
 //
 //  JetCorrectionUncertainty *jecUnc_Absolute=0;
 //  jecUnc_Absolute = new JetCorrectionUncertainty(JetCorPar_Absolute);
-
-
-    
-  
-////New
-//   std::vector< std::string > uncertNames = {
-//    "Absolute",
-//    "Absoluteyear",
-//    "BBEC1",
-//    "BBEC1year",
-//    "EC2",
-//    "EC2year",
-//    "FlavorQCD",
-//    "HF",
-//    "HFyear",
-//    "RelativeBal",
-//    "RelativeSample",
-//    "Total"
-//    };
-//    std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
-//    std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
-////New
-//
-//  // Create the uncertainty tool for each uncert
-//  k=0;
-//  for (auto const& name : uncertNames) {
-//    JetCorrectorParameters const * JetCorPar = new JetCorrectorParameters(fName_, name);
-//    JetCorParMap[name] = JetCorPar;
-//
-//    JetCorrectionUncertainty * jecUnc(
-//        new JetCorrectionUncertainty(*JetCorParMap[name]));
-//    JetUncMap[name] = jecUnc;
-//    k=k+1;
-//  };
 
 
 
