@@ -226,16 +226,72 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   edm::ESHandle<JetCorrectorParametersCollection> JetCorParColl;
   es.get<JetCorrectionsRecord>().get("AK4PFchs",JetCorParColl); 
   JetCorrectorParameters const & JetCorPar = (*JetCorParColl)["Uncertainty"];
-  
-  JetCorrectorParameters const & JetCorPar_Absolute = (*JetCorParColl)["FlavorQCD"];
-  JetCorrectorParameters const & JetCorPar_BBEC1 = (*JetCorParColl)["BBEC1"];
-  JetCorrectorParameters const & JetCorPar_FlavorQCD = (*JetCorParColl)["FlavorQCD"];
-  
-  JetCorrectionUncertainty *jecUnc=0;
-  jecUnc = new JetCorrectionUncertainty(JetCorPar);
 
-  JetCorrectionUncertainty *jecUnc_Absolute=0;
-  jecUnc_Absolute = new JetCorrectionUncertainty(JetCorPar_Absolute);
+
+// Instantiate uncertainty sources
+const int nsrc = 33;
+const char* srcnames[nsrc] =
+  {"FlavorQCD", "Absolute", "HighPtExtra",  "SinglePionECAL", "SinglePionHCAL",
+    "Time",
+   "RelativeJEREC1", "RelativeJEREC2", "RelativeJERHF",
+   "RelativePtBB","RelativePtEC1", "RelativePtEC2", "RelativePtHF", "RelativeFSR",
+   "RelativeStatEC2", "RelativeStatHF",
+   "PileUpDataMC",
+   "PileUpPtBB", "PileUpPtEC", "PileUpPtHF","PileUpBias",
+   "SubTotalPileUp","SubTotalRelative","SubTotalPt","SubTotalMC",
+   "Total","TotalNoFlavor",
+   "FlavorZJet","FlavorPhotonJet","FlavorPureGluon","FlavorPureQuark","FlavorPureCharm","FlavorPureBottom"};
+std::vector<JetCorrectionUncertainty*> vsrc(nsrc);
+
+
+for (int isrc = 0; isrc < nsrc; isrc++) {
+
+   const char *name = srcnames[isrc];
+   JetCorrectorParameters *p = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+   JetCorrectionUncertainty *unc = new JetCorrectionUncertainty(*p);
+   vsrc[isrc] = unc;
+} // for isrc
+
+
+// Total uncertainty for reference
+JetCorrectionUncertainty *total = new JetCorrectionUncertainty(*(new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", "Total")));
+
+// Calculate uncertainty per source and as a total
+double jetpt(50.);
+double jeteta(2.4);
+double sum2_up(0), sum2_dw(0);
+
+for (int isrc = 0; isrc < nsrc; isrc++) {
+
+      JetCorrectionUncertainty *unc = vsrc[isrc];
+      unc->setJetPt(jetpt);
+      unc->setJetEta(jeteta);
+      double sup = unc->getUncertainty(true); // up variation
+      unc->setJetPt(jetpt);
+      unc->setJetEta(jeteta);
+      double sdw = unc->getUncertainty(false); // down variation
+
+      sum2_up += pow(max(sup,sdw),2);
+      sum2_dw += pow(min(sup,sdw),2);
+} // for isrc
+
+total->setJetPt(jetpt);
+total->setJetEta(jeteta);
+double uncert = total->getUncertainty(true);
+
+
+
+
+
+//  JetCorrectorParameters const & JetCorPar_Absolute = (*JetCorParColl)["FlavorQCD"];
+//  JetCorrectorParameters const & JetCorPar_BBEC1 = (*JetCorParColl)["BBEC1"];
+//  JetCorrectorParameters const & JetCorPar_FlavorQCD = (*JetCorParColl)["FlavorQCD"];
+//
+//  JetCorrectionUncertainty *jecUnc=0;
+//  jecUnc = new JetCorrectionUncertainty(JetCorPar);
+//
+//  JetCorrectionUncertainty *jecUnc_Absolute=0;
+//  jecUnc_Absolute = new JetCorrectionUncertainty(JetCorPar_Absolute);
 
 
     
