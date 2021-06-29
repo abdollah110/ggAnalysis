@@ -282,7 +282,6 @@ for (int isrc = 0; isrc < nsrc; isrc++) {
 total->setJetPt(jetpt);
 total->setJetEta(jeteta);
 double uncert = total->getUncertainty(true);
-cout << name <<"  unc  "<<uncert <<"\n";
 
 
 // Cecile
@@ -304,7 +303,8 @@ cout << name <<"  unc  "<<uncert <<"\n";
 //    "RelativeSample",
 //    "Total"
     };
-    
+    std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
+    std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
   
    // Create the uncertainty tool for each uncert
   int k=0;
