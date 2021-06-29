@@ -375,8 +375,8 @@ double uncert = total->getUncertainty(true);
 total->setJetPt(iJet->pt());
 total->setJetEta(iJet->eta());
 jetTotal_.push_back(total->getUncertainty(true));
-float jetPtTotUp=(1+jetTotal_)*iJet->pt();
-float jetPtTotDown=(1-jetTotal_)*iJet->pt();
+float jetPtTotUp=(1+total)*iJet->pt();
+float jetPtTotDown=(1-total)*iJet->pt();
 jetPtTotUp_.push_back(jetPtTotUp);
 jetPtTotDown_.push_back(jetPtTotDown);
     
