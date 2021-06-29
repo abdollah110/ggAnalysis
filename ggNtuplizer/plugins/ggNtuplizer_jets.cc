@@ -282,7 +282,7 @@ std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
   int k=0;
   for (auto const& name : uncertNames) {
     cout<<"\n accessing unc    "<<name<<"\n";
-    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("ggAnalysis/ggNtuplizer/data/Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
     JetCorParMap[name] = JetCorPar2;
 //    cout<<"\n Now check the  unc    "<<JetCorParMap[&JetCorPar2]<<"\n";
 
