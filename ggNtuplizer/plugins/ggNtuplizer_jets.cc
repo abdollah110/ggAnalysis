@@ -250,14 +250,14 @@ std::vector<JetCorrectionUncertainty*> vsrc(nsrc);
 for (int isrc = 0; isrc < nsrc; isrc++) {
 
    const char *name = srcnames[isrc];
-   JetCorrectorParameters *p = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+   JetCorrectorParameters *p = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchsXXX.txt", name);
    JetCorrectionUncertainty *unc = new JetCorrectionUncertainty(*p);
    vsrc[isrc] = unc;
 } // for isrc
 
 
 // Total uncertainty for reference
-JetCorrectionUncertainty *total = new JetCorrectionUncertainty(*(new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", "Total")));
+JetCorrectionUncertainty *total = new JetCorrectionUncertainty(*(new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txtYYY", "Total")));
 
 //// Calculate uncertainty per source and as a total
 //double jetpt(50.);
