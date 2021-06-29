@@ -259,29 +259,29 @@ for (int isrc = 0; isrc < nsrc; isrc++) {
 // Total uncertainty for reference
 JetCorrectionUncertainty *total = new JetCorrectionUncertainty(*(new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", "Total")));
 
-// Calculate uncertainty per source and as a total
-double jetpt(50.);
-double jeteta(2.4);
-double sum2_up(0), sum2_dw(0);
-
-for (int isrc = 0; isrc < nsrc; isrc++) {
-
-      JetCorrectionUncertainty *unc = vsrc[isrc];
-      unc->setJetPt(jetpt);
-      unc->setJetEta(jeteta);
-      double sup = unc->getUncertainty(true); // up variation
-      std::cout<<"\n sup = \n"<<sup<<"\n";
-      unc->setJetPt(jetpt);
-      unc->setJetEta(jeteta);
-      double sdw = unc->getUncertainty(false); // down variation
-
-      sum2_up += pow(max(sup,sdw),2);
-      sum2_dw += pow(min(sup,sdw),2);
-} // for isrc
-
-total->setJetPt(jetpt);
-total->setJetEta(jeteta);
-double uncert = total->getUncertainty(true);
+//// Calculate uncertainty per source and as a total
+//double jetpt(50.);
+//double jeteta(2.4);
+//double sum2_up(0), sum2_dw(0);
+//
+//for (int isrc = 0; isrc < nsrc; isrc++) {
+//
+//      JetCorrectionUncertainty *unc = vsrc[isrc];
+//      unc->setJetPt(jetpt);
+//      unc->setJetEta(jeteta);
+//      double sup = unc->getUncertainty(true); // up variation
+//      std::cout<<"\n sup = \n"<<sup<<"\n";
+//      unc->setJetPt(jetpt);
+//      unc->setJetEta(jeteta);
+//      double sdw = unc->getUncertainty(false); // down variation
+//
+//      sum2_up += pow(max(sup,sdw),2);
+//      sum2_dw += pow(min(sup,sdw),2);
+//} // for isrc
+//
+//total->setJetPt(jetpt);
+//total->setJetEta(jeteta);
+//double uncert = total->getUncertainty(true);
 
 
 
