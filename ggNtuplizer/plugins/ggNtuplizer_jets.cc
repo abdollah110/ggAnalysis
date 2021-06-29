@@ -360,16 +360,7 @@ double uncert = total->getUncertainty(true);
       jetJECUnc_.push_back(jecUnc->getUncertainty(true));
     } else {
       jetJECUnc_.push_back(-1.);
-    }
-
-    if (fabs(iJet->eta()) < 5.2) {
-      jecUnc_Absolute->setJetEta(iJet->eta());
-      jecUnc_Absolute->setJetPt(iJet->pt()); // here you must use the CORRECTED jet pt
-//      jetJECUnc_.push_back(jecUnc->getUncertainty(true));
-    } else {
-//      jetJECUnc_.push_back(-1.);
-    }
-    
+    }    
     
     
     jetFiredTrgs_.push_back(matchJetTriggerFilters(iJet->pt(), iJet->eta(), iJet->phi()));    
