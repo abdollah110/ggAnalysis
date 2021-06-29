@@ -267,6 +267,7 @@ for (int isrc = 0; isrc < nsrc; isrc++) {
       unc->setJetPt(jetpt);
       unc->setJetEta(jeteta);
       double sup = unc->getUncertainty(true); // up variation
+      std::cout<<"\n sup = \n"<<sup<<"\n";
       unc->setJetPt(jetpt);
       unc->setJetEta(jeteta);
       double sdw = unc->getUncertainty(false); // down variation
