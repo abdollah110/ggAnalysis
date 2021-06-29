@@ -17,6 +17,8 @@ typedef ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<double> > LorentzVector;
 
 Int_t          nJet_;
 vector<float>  jetPt_;
+vector<float>  jetPtTotUp_;
+vector<float>  jetPtTotDown_;
 vector<float>  jetEn_;
 vector<float>  jetEta_;
 vector<float>  jetPhi_;
@@ -58,6 +60,7 @@ vector<int>    jetID_;
 vector<float>  jetPUID_;
 vector<int>    jetPUFullID_;
 vector<float>  jetJECUnc_;
+vector<float>  jetTotal_;
 vector<float>  jetP4Smear_;
 vector<float>  jetP4SmearUp_;
 vector<float>  jetP4SmearDo_;
@@ -78,6 +81,8 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   
   tree->Branch("nJet",                &nJet_);
   tree->Branch("jetPt",               &jetPt_);
+  tree->Branch("jetPtTotUp",               &jetPtTotUp_);
+  tree->Branch("jetPtTotDown",               &jetPtTotDown_);
   tree->Branch("jetEn",               &jetEn_);
   tree->Branch("jetEta",              &jetEta_);
   tree->Branch("jetPhi",              &jetPhi_);
@@ -119,6 +124,7 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   tree->Branch("jetPUID",      &jetPUID_);
   tree->Branch("jetPUFullID",  &jetPUFullID_);
   tree->Branch("jetJECUnc",    &jetJECUnc_);
+  tree->Branch("jetTotal",    &jetTotal_);
   tree->Branch("jetFiredTrgs", &jetFiredTrgs_);
   tree->Branch("jetCHF",       &jetCHF_);
   tree->Branch("jetNHF",       &jetNHF_);
@@ -169,6 +175,7 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   jetPUID_                                .clear();
   jetPUFullID_                            .clear();
   jetJECUnc_                              .clear();
+  jetTotal_                              .clear();
   jetP4Smear_                             .clear();
   jetP4SmearUp_                           .clear();
   jetP4SmearDo_                           .clear();
@@ -284,6 +291,7 @@ total->setJetEta(jeteta);
 double uncert = total->getUncertainty(true);
 
 
+
 // Cecile
 //https://github.com/uwcms/FinalStateAnalysis/blob/miniAOD_10_2_22/PatTools/plugins/MiniAODJetFullSystematicsEmbedder.cc
   
@@ -364,7 +372,13 @@ double uncert = total->getUncertainty(true);
     } else {
       jetJECUnc_.push_back(-1.);
     }
-    
+total->setJetPt(iJet->pt());
+total->setJetEta(iJet->eta());
+jetTotal_.push_back(total->getUncertainty(true));
+float jetPtTotUp=(1+jetTotal_)*iJet->pt();
+float jetPtTotDown=(1-jetTotal_)*iJet->pt();
+jetPtTotUp_.push_back(jetPtTotUp);
+jetPtTotDown_.push_back(jetPtTotDown);
     
     jetFiredTrgs_.push_back(matchJetTriggerFilters(iJet->pt(), iJet->eta(), iJet->phi()));    
 
