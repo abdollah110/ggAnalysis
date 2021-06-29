@@ -227,7 +227,7 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   es.get<JetCorrectionsRecord>().get("AK4PFchs",JetCorParColl); 
   JetCorrectorParameters const & JetCorPar = (*JetCorParColl)["Uncertainty"];
   
-  JetCorrectorParameters const & JetCorPar_Absolute = (*JetCorParColl)["Absolute"];
+  JetCorrectorParameters const & JetCorPar_Absolute = (*JetCorParColl)["FlavorQCD"];
   JetCorrectorParameters const & JetCorPar_BBEC1 = (*JetCorParColl)["BBEC1"];
   JetCorrectorParameters const & JetCorPar_FlavorQCD = (*JetCorParColl)["FlavorQCD"];
   
