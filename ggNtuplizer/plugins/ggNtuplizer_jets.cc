@@ -284,7 +284,7 @@ std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
     cout<<"\n accessing unc    "<<name<<"\n";
     JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
     JetCorParMap[name] = JetCorPar2;
-    cout<<"\n Now check the  unc    "<<JetCorParMap[JetCorPar2]<<"\n";
+    cout<<"\n Now check the  unc    "<<JetCorParMap[*JetCorPar2]<<"\n";
 
 //    JetCorrectionUncertainty * jecUnc2(
 //        new JetCorrectionUncertainty(*JetCorParMap[name]));
