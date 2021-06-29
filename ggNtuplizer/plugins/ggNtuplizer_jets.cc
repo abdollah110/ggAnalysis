@@ -279,16 +279,18 @@ std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
     
   
    // Create the uncertainty tool for each uncert
-//  int k=0;
-//  for (auto const& name : uncertNames) {
-//    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
-//    JetCorParMap[name] = JetCorPar2;
-//
+  int k=0;
+  for (auto const& name : uncertNames) {
+    cout<<"\n accessing unc    "<<name<<"\n";
+    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+    JetCorParMap[name] = JetCorPar2;
+    cout<<"\n Now check the  unc    "<<JetCorParMap[JetCorPar2]<<"\n";
+
 //    JetCorrectionUncertainty * jecUnc2(
 //        new JetCorrectionUncertainty(*JetCorParMap[name]));
 //    JetUncMap[name] = jecUnc2;
-//    k=k+1;
-//  };
+    k=k+1;
+  };
 
 
 
