@@ -131,12 +131,12 @@ void ggNtuplizer::branchesElectrons(TTree* tree) {
 //  tree->Branch("eleEoverP",               &eleEoverP_);
 //  tree->Branch("eleEoverPout",            &eleEoverPout_);
 //  tree->Branch("eleEoverPInv",            &eleEoverPInv_);
-  tree->Branch("eleBrem",                 &eleBrem_);
+//  tree->Branch("eleBrem",                 &eleBrem_);
 //  tree->Branch("eledEtaAtVtx",            &eledEtaAtVtx_);
 //  tree->Branch("eledPhiAtVtx",            &eledPhiAtVtx_);
 //  tree->Branch("eleSigmaIEtaIEtaFull5x5", &eleSigmaIEtaIEtaFull5x5_);
 //  tree->Branch("eleSigmaIPhiIPhiFull5x5", &eleSigmaIPhiIPhiFull5x5_);
-  tree->Branch("eleConvVeto",             &eleConvVeto_);
+//  tree->Branch("eleConvVeto",             &eleConvVeto_);
   tree->Branch("eleMissHits",             &eleMissHits_);
 //  tree->Branch("eleESEffSigmaRR",         &eleESEffSigmaRR_);
   tree->Branch("elePFChIso",              &elePFChIso_);

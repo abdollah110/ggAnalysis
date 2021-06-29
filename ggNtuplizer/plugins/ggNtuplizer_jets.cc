@@ -226,8 +226,51 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   edm::ESHandle<JetCorrectorParametersCollection> JetCorParColl;
   es.get<JetCorrectionsRecord>().get("AK4PFchs",JetCorParColl); 
   JetCorrectorParameters const & JetCorPar = (*JetCorParColl)["Uncertainty"];
+  
+  JetCorrectorParameters const & JetCorPar_Absolute = (*JetCorParColl)["Absolute"];
+  JetCorrectorParameters const & JetCorPar_BBEC1 = (*JetCorParColl)["BBEC1"];
+  JetCorrectorParameters const & JetCorPar_FlavorQCD = (*JetCorParColl)["FlavorQCD"];
+  
   JetCorrectionUncertainty *jecUnc=0;
   jecUnc = new JetCorrectionUncertainty(JetCorPar);
+
+  JetCorrectionUncertainty *jecUnc_Absolute=0;
+  jecUnc_Absolute = new JetCorrectionUncertainty(JetCorPar_Absolute);
+
+
+  
+////New
+//   std::vector< std::string > uncertNames = {
+//    "Absolute",
+//    "Absoluteyear",
+//    "BBEC1",
+//    "BBEC1year",
+//    "EC2",
+//    "EC2year",
+//    "FlavorQCD",
+//    "HF",
+//    "HFyear",
+//    "RelativeBal",
+//    "RelativeSample",
+//    "Total"
+//    };
+//    std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
+//    std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
+////New
+//
+//  // Create the uncertainty tool for each uncert
+//  k=0;
+//  for (auto const& name : uncertNames) {
+//    JetCorrectorParameters const * JetCorPar = new JetCorrectorParameters(fName_, name);
+//    JetCorParMap[name] = JetCorPar;
+//
+//    JetCorrectionUncertainty * jecUnc(
+//        new JetCorrectionUncertainty(*JetCorParMap[name]));
+//    JetUncMap[name] = jecUnc;
+//    k=k+1;
+//  };
+
+
 
   for (edm::View<pat::Jet>::const_iterator iJet = jetHandle->begin(); iJet != jetHandle->end(); ++iJet) {
 

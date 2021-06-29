@@ -53,12 +53,12 @@ void ggNtuplizer::branchesMuons(TTree* tree) {
   tree->Branch("muEta",         &muEta_);
   tree->Branch("muPhi",         &muPhi_);
   tree->Branch("muCharge",      &muCharge_);
-  tree->Branch("muType",        &muType_);
+//  tree->Branch("muType",        &muType_);
   tree->Branch("muIDbit",       &muIDbit_);
   tree->Branch("muD0",          &muD0_);
   tree->Branch("muDz",          &muDz_);
   tree->Branch("muSIP",         &muSIP_);
-  tree->Branch("muChi2NDF",     &muChi2NDF_);
+//  tree->Branch("muChi2NDF",     &muChi2NDF_);
 //  tree->Branch("muInnerD0",     &muInnerD0_);
 //  tree->Branch("muInnerDz",     &muInnerDz_);
 //  tree->Branch("muTrkLayers",   &muTrkLayers_);
@@ -77,8 +77,8 @@ void ggNtuplizer::branchesMuons(TTree* tree) {
   tree->Branch("muPFPhoIso03",  &muPFPhoIso03_);
   tree->Branch("muPFNeuIso03",  &muPFNeuIso03_);
   tree->Branch("muPFPUIso03",   &muPFPUIso03_);
-  tree->Branch("muFiredTrgs",   &muFiredTrgs_);
-  tree->Branch("muFiredL1Trgs", &muFiredL1Trgs_);
+//  tree->Branch("muFiredTrgs",   &muFiredTrgs_);
+//  tree->Branch("muFiredL1Trgs", &muFiredL1Trgs_);
 //  tree->Branch("muInnervalidFraction",   &muInnervalidFraction_);
 //  tree->Branch("musegmentCompatibility", &musegmentCompatibility_);
 //  tree->Branch("muchi2LocalPosition",    &muchi2LocalPosition_);

@@ -116,25 +116,25 @@ float getGenTrkIso(edm::Handle<reco::GenParticleCollection> handle,
 
 void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
 
-  tree->Branch("pdf",           &pdf_);
-  tree->Branch("pthat",         &pthat_);
+//  tree->Branch("pdf",           &pdf_);
+//  tree->Branch("pthat",         &pthat_);
   tree->Branch("processID",     &processID_);
   tree->Branch("genWeight",     &genWeight_);
   tree->Branch("genHT",         &genHT_);
 //  tree->Branch("genPho1",       &genPho1_);
 //  tree->Branch("genPho2",       &genPho2_);
   if (dumpPDFSystWeight_) {
-    tree->Branch("pdfWeight",     &pdfWeight_);
-    tree->Branch("pdfSystWeight", &pdfSystWeight_);
+//    tree->Branch("pdfWeight",     &pdfWeight_);
+//    tree->Branch("pdfSystWeight", &pdfSystWeight_);
   }
 //  tree->Branch("EventTag",      &EventTag_);
 
   tree->Branch("nPUInfo",       &nPUInfo_);
-  tree->Branch("nPU",           &nPU_);
-  tree->Branch("puBX",          &puBX_);
+//  tree->Branch("nPU",           &nPU_);
+//  tree->Branch("puBX",          &puBX_);
   tree->Branch("puTrue",        &puTrue_);
   tree->Branch("nLHE",          &nLHE_);
-  tree->Branch("lhePID",        &lhePID);
+//  tree->Branch("lhePID",        &lhePID);
 //  tree->Branch("lhePx",         &lhePx);
 //  tree->Branch("lhePy",         &lhePy);
 //  tree->Branch("lhePz",         &lhePz);
