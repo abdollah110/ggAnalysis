@@ -229,18 +229,21 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 
 
 // Instantiate uncertainty sources
-const int nsrc = 33;
+//const int nsrc = 33;
+const int nsrc = 2;
 const char* srcnames[nsrc] =
-  {"FlavorQCD", "Absolute", "HighPtExtra",  "SinglePionECAL", "SinglePionHCAL",
-    "Time",
-   "RelativeJEREC1", "RelativeJEREC2", "RelativeJERHF",
-   "RelativePtBB","RelativePtEC1", "RelativePtEC2", "RelativePtHF", "RelativeFSR",
-   "RelativeStatEC2", "RelativeStatHF",
-   "PileUpDataMC",
-   "PileUpPtBB", "PileUpPtEC", "PileUpPtHF","PileUpBias",
-   "SubTotalPileUp","SubTotalRelative","SubTotalPt","SubTotalMC",
-   "Total","TotalNoFlavor",
-   "FlavorZJet","FlavorPhotonJet","FlavorPureGluon","FlavorPureQuark","FlavorPureCharm","FlavorPureBottom"};
+  {"FlavorQCD", "PileUpPtBB"
+//  "Absolute", "HighPtExtra",  "SinglePionECAL", "SinglePionHCAL",
+//    "Time",
+//   "RelativeJEREC1", "RelativeJEREC2", "RelativeJERHF",
+//   "RelativePtBB","RelativePtEC1", "RelativePtEC2", "RelativePtHF", "RelativeFSR",
+//   "RelativeStatEC2", "RelativeStatHF",
+//   "PileUpDataMC",
+//    "PileUpPtEC", "PileUpPtHF","PileUpBias",
+//   "SubTotalPileUp","SubTotalRelative","SubTotalPt","SubTotalMC",
+//   "Total","TotalNoFlavor",
+//   "FlavorZJet","FlavorPhotonJet","FlavorPureGluon","FlavorPureQuark","FlavorPureCharm","FlavorPureBottom"
+  };
 std::vector<JetCorrectionUncertainty*> vsrc(nsrc);
 
 
