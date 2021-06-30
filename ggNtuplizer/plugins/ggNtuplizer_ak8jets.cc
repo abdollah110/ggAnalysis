@@ -17,6 +17,8 @@ typedef ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<double> > LorentzVector;
 
 Int_t         nAK8Jet_;
 vector<float> AK8JetPt_;
+vector<float>  AK8JetPtUncUp_;
+vector<float>  AK8JetPtUncDown_;
 vector<float> AK8JetEn_;
 vector<float> AK8JetRawPt_;
 vector<float> AK8JetRawEn_;
@@ -98,6 +100,8 @@ void ggNtuplizer::branchesAK8Jets(TTree* tree) {
   
   tree->Branch("nAK8Jet",                  &nAK8Jet_);
   tree->Branch("AK8JetPt",                 &AK8JetPt_);
+  tree->Branch("AK8JetPtUncUp",               &AK8JetPtUncUp_);
+  tree->Branch("AK8JetPtUncDown",               &AK8JetPtUncDown_);
   tree->Branch("AK8JetEn",                 &AK8JetEn_);
   tree->Branch("AK8JetRawPt",              &AK8JetRawPt_);
   tree->Branch("AK8JetRawEn",              &AK8JetRawEn_);
@@ -178,6 +182,8 @@ void ggNtuplizer::branchesAK8Jets(TTree* tree) {
 void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 
   AK8JetPt_              .clear();
+  AK8JetPtUncUp_                             .clear();
+  AK8JetPtUncDown_                            .clear();
   AK8JetEn_              .clear();
   AK8JetRawPt_           .clear();
   AK8JetRawEn_           .clear();
@@ -291,6 +297,45 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
   // Make the FactorizedJetCorrector
   //jecAK8_ = boost::shared_ptr<FactorizedJetCorrector> ( new FactorizedJetCorrector(vPar) );
   //jecAK8pSD_ = boost::shared_ptr<FactorizedJetCorrector> ( new FactorizedJetCorrector(vPar) );
+  
+  
+  
+  
+  // JEC twiki
+//https://twiki.cern.ch/twiki/bin/viewauth/CMS/JECUncertaintySources#Main_uncertainties_2018_Autumn18
+// FSA Ntuple
+//https://github.com/uwcms/FinalStateAnalysis/blob/miniAOD_10_2_22/PatTools/plugins/MiniAODJetFullSystematicsEmbedder.cc
+//
+//
+  std::vector< std::string > uncertNames = {
+    "FlavorQCD", "PileUpPtBB",
+//    "Absolute",
+//    "Absolute2018",
+//    "BBEC1",
+//    "BBEC12018",
+//    "EC2",
+//    "EC22018",
+//    "HF",
+//    "HFyear",
+    "RelativeBal",
+    "RelativeSample",
+    "Total"
+    };
+    std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
+    std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
+
+   // Create the uncertainty tool for each uncert
+  int k=0;
+  for (auto const& name : uncertNames) {
+    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK8PF.txt", name);
+    JetCorParMap[name] = JetCorPar2;
+    JetCorrectionUncertainty * jecUnc2(
+        new JetCorrectionUncertainty(*JetCorParMap[name]));
+    JetUncMap[name] = jecUnc2;
+    k=k+1;
+  };
+
+  
   
   nAK8Jet_ = 0;
   //jet substructure
@@ -412,6 +457,26 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
     } else {
       AK8JetJECUnc_.push_back(-1.);
     }
+    
+    // JEC uncertainties Cecile
+    int p=-1;
+    for (auto const& name : uncertNames) {
+    p=p+1;
+    double unc = 0;
+      JetUncMap[name]->setJetEta(ijetAK8->eta());
+      JetUncMap[name]->setJetPt(ijetAK8->pt());
+      unc = JetUncMap[name]->getUncertainty(true);
+    float ptplus=(1+unc)*ijetAK8->pt();
+    float ptminus=(1-unc)*ijetAK8->pt();
+
+    cout<< name <<" AK8ptplus= " <<ptplus<<" AK8centeral= " <<ijetAK8->pt() << " AK8ptminus= "<<ptminus <<"\n";
+    AK8JetPtUncUp_.push_back(ptplus);
+    AK8JetPtUncDown_.push_back(ptminus);
+    }
+    cout<<"\n\n";
+
+
+    
     //save gen-info for ak8 jets
     //parton id                                                                                                                                                           
     AK8JetPartonID_.push_back(ijetAK8->partonFlavour());

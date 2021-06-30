@@ -193,7 +193,8 @@ class ggNtuplizer : public edm::EDAnalyzer {
   HLTPrescaleProvider hltPrescaleProvider_;
   RecoilCorrector recoilPFMetCorrector;
   MEtSys metSys;
-
+  string ak4Name;
+  string ak8Name;
 };
 
 #endif

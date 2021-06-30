@@ -18,8 +18,8 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-#        'file:/data4/cmkuo/testfiles/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIIAutumn18MiniAOD.root'
-    '/store/mc/RunIIAutumn18MiniAOD/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/102X_upgrade2018_realistic_v15-v2/100000/0367CE5C-D121-5748-93D3-528A4B1DFDA5.root'
+        'file:GluGluHToTauTau_M125_13TeV_powheg_pythia8_MINIAODSIM_102X_upgrade2018_realistic_v15-v2.root'
+#    '/store/mc/RunIIAutumn18MiniAOD/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/102X_upgrade2018_realistic_v15-v2/100000/0367CE5C-D121-5748-93D3-528A4B1DFDA5.root'
         ))
 
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
@@ -88,6 +88,8 @@ process.ggNtuplizer.ak4JetSrc=cms.InputTag("slimmedJetsJEC")
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
 process.ggNtuplizer.TypeIPFMET_RootFile=cms.string("HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root")
 process.ggNtuplizer.MetSys_RootFile=cms.string("HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root")
+process.ggNtuplizer.AK4JECUncFileName=cms.string("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt")
+process.ggNtuplizer.AK8JECUncFileName=cms.string("Autumn18_V19_MC_UncertaintySources_AK8PF.txt")
     
 process.cleanedMu = cms.EDProducer("PATMuonCleanerBySegments",
                                    src = cms.InputTag("slimmedMuons"),

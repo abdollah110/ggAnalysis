@@ -11,7 +11,9 @@ void setbit(UShort_t& x, UShort_t bit) {
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   hltPrescaleProvider_(ps, consumesCollector(), *this),
   recoilPFMetCorrector(ps.getParameter<string>("TypeIPFMET_RootFile")),
-  metSys(ps.getParameter<string>("MetSys_RootFile"))
+  metSys(ps.getParameter<string>("MetSys_RootFile")),
+  ak4Name(ps.getParameter<string>("AK4JECUncFileName")),
+  ak8Name(ps.getParameter<string>("AK8JECUncFileName"))
 {
   development_               = ps.getParameter<bool>("development");
   addFilterInfoMINIAOD_      = ps.getParameter<bool>("addFilterInfoMINIAOD");

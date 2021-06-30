@@ -73,6 +73,9 @@ ggNtuplizer = cms.EDAnalyzer("ggNtuplizer",
                              elePFClusHcalIsoProducer  = cms.InputTag("electronHcalPFClusterIsolationProducer"),
                              ecalBadCalibReducedMINIAODFilter = cms.InputTag("ecalBadCalibReducedMINIAODFilter"),
                              TypeIPFMET_RootFile = cms.string("HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root"),
-                             MetSys_RootFile = cms.string("HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root")
+                             MetSys_RootFile = cms.string("HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root"),
+                             AK4JECUncFileName=cms.string("AK4JECUncFileName.txt"),
+                             AK8JECUncFileName=cms.string("AK8JECUncFileName.txt")
+
                              
 )
