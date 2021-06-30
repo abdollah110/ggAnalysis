@@ -96,7 +96,8 @@ process.ggNtuplizer.ak4JetSrc=cms.InputTag("slimmedJetsJEC")
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
 process.ggNtuplizer.TypeIPFMET_RootFile=cms.string("HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root")
 process.ggNtuplizer.MetSys_RootFile=cms.string("HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root")
-
+process.ggNtuplizer.AK4JECUncFileName=cms.string("Fall17_17Nov2017_V32_MC_UncertaintySources_AK4PF.txt")
+process.ggNtuplizer.AK8JECUncFileName=cms.string("Fall17_17Nov2017_V32_MC_UncertaintySources_AK8PF.txt")
 
 process.cleanedMu = cms.EDProducer("PATMuonCleanerBySegments",
                                    src = cms.InputTag("slimmedMuons"),

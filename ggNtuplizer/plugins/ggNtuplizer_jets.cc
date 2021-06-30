@@ -247,17 +247,17 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //
 //
   std::vector< std::string > uncertNames = {
-    "FlavorQCD", "PileUpPtBB",
-//    "Absolute",
-//    "Absolute2018",
-//    "BBEC1",
-//    "BBEC12018",
-//    "EC2",
-//    "EC22018",
-//    "HF",
-//    "HFyear",
-    "RelativeBal",
-    "RelativeSample",
+//    "FlavorQCD", "PileUpPtBB",
+////    "Absolute",
+////    "Absolute2018",
+////    "BBEC1",
+////    "BBEC12018",
+////    "EC2",
+////    "EC22018",
+////    "HF",
+////    "HFyear",
+//    "RelativeBal",
+//    "RelativeSample",
     "Total"
     };
     std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
@@ -266,8 +266,6 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
    // Create the uncertainty tool for each uncert
   int k=0;
   for (auto const& name : uncertNames) {
-    cout<<"\n accessing unc    "<<name<<"\n";
-//    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
     JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak4Name, name);
     JetCorParMap[name] = JetCorPar2;
     JetCorrectionUncertainty * jecUnc2(

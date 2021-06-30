@@ -308,17 +308,17 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 //
 //
   std::vector< std::string > uncertNames = {
-    "FlavorQCD", "PileUpPtBB",
-//    "Absolute",
-//    "Absolute2018",
-//    "BBEC1",
-//    "BBEC12018",
-//    "EC2",
-//    "EC22018",
-//    "HF",
-//    "HFyear",
-    "RelativeBal",
-    "RelativeSample",
+//    "FlavorQCD", "PileUpPtBB",
+////    "Absolute",
+////    "Absolute2018",
+////    "BBEC1",
+////    "BBEC12018",
+////    "EC2",
+////    "EC22018",
+////    "HF",
+////    "HFyear",
+//    "RelativeBal",
+//    "RelativeSample",
     "Total"
     };
     std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
@@ -470,12 +470,10 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
     float ptplus=(1+unc)*ijetAK8->pt();
     float ptminus=(1-unc)*ijetAK8->pt();
 
-    cout<< name <<" AK8ptplus= " <<ptplus<<" AK8centeral= " <<ijetAK8->pt() << " AK8ptminus= "<<ptminus <<"\n";
+//    cout<< name <<" AK8ptplus= " <<ptplus<<" AK8centeral= " <<ijetAK8->pt() << " AK8ptminus= "<<ptminus <<"\n";
     AK8JetPtUncUp_.push_back(ptplus);
     AK8JetPtUncDown_.push_back(ptminus);
     }
-    cout<<"\n\n";
-
 
     
     //save gen-info for ak8 jets
