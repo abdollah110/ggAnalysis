@@ -327,7 +327,8 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
    // Create the uncertainty tool for each uncert
   int k=0;
   for (auto const& name : uncertNames) {
-    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK8PF.txt", name);
+//    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK8PF.txt", name);
+    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak8Name, name);
     JetCorParMap[name] = JetCorPar2;
     JetCorrectionUncertainty * jecUnc2(
         new JetCorrectionUncertainty(*JetCorParMap[name]));

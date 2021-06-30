@@ -267,7 +267,8 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   int k=0;
   for (auto const& name : uncertNames) {
     cout<<"\n accessing unc    "<<name<<"\n";
-    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+//    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters("Autumn18_V19_MC_UncertaintySources_AK4PFchs.txt", name);
+    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak4Name, name);
     JetCorParMap[name] = JetCorPar2;
     JetCorrectionUncertainty * jecUnc2(
         new JetCorrectionUncertainty(*JetCorParMap[name]));
