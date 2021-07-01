@@ -10,14 +10,15 @@ config.section_('JobType')
 config.JobType.psetName = 'run_mc2017_94X.py'
 config.JobType.pluginName = 'Analysis'
 config.JobType.outputFiles = ["ggtree_mc.root"]
-config.JobType.inputFiles = ['Fall17_17Nov2017BCDEF_V6_DATA.db','Fall17_17Nov2017_V6_MC.db']
-#config.JobType.maxMemoryMB = 2500
+config.JobType.inputFiles = ['Fall17_17Nov2017_V32_MC_UncertaintySources_AK4PF.txt','Fall17_17Nov2017_V32_MC_UncertaintySources_AK8PF.txt']
+config.JobType.maxMemoryMB = 4000
 config.JobType.sendExternalFolder = True
 config.JobType.allowUndistributedCMSSW = True
 config.section_('Data')
-config.Data.unitsPerJob = 1
+#config.Data.unitsPerJob = 1
 #config.Data.inputDBS = 'phys03'
-config.Data.splitting = 'FileBased'
+#config.Data.splitting = 'FileBased'
+config.Data.splitting = 'Automatic'
 config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2017/MC'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2017_v1/test'
 config.Data.allowNonValidInputDataset = True

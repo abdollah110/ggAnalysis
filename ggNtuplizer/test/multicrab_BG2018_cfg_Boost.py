@@ -11,7 +11,7 @@ config.JobType.psetName = 'run_mc2018_102X.py'
 config.JobType.pluginName = 'Analysis'
 config.JobType.outputFiles = ["ggtree_mc.root"]
 config.JobType.inputFiles = ['Autumn18_V19_MC_UncertaintySources_AK4PF.txt','Autumn18_V19_MC_UncertaintySources_AK8PF.txt']
-config.JobType.maxMemoryMB = 2500
+config.JobType.maxMemoryMB = 4000
 config.JobType.sendExternalFolder = True
 config.JobType.allowUndistributedCMSSW = True
 config.section_('Data')
