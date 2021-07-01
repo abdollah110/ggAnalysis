@@ -10,15 +10,15 @@ config.section_('JobType')
 config.JobType.psetName = 'run_mc2018_102X.py'
 config.JobType.pluginName = 'Analysis'
 config.JobType.outputFiles = ["ggtree_mc.root"]
-#config.JobType.inputFiles = ['Fall17_17Nov2017BCDEF_V6_DATA.db','Fall17_17Nov2017_V6_MC.db']
-#config.JobType.maxMemoryMB = 2500
+config.JobType.inputFiles = ['Autumn18_V19_MC_UncertaintySources_AK4PF.txt','Autumn18_V19_MC_UncertaintySources_AK8PF.txt']
+config.JobType.maxMemoryMB = 2500
 config.JobType.sendExternalFolder = True
 config.JobType.allowUndistributedCMSSW = True
 config.section_('Data')
-config.Data.unitsPerJob = 1
+#config.Data.unitsPerJob = 1
 #config.Data.inputDBS = 'phys03'
-config.Data.splitting = 'FileBased'
-#config.Data.splitting = 'Automatic'
+#config.Data.splitting = 'FileBased'
+config.Data.splitting = 'Automatic'
 #config.Data.outLFNDirBase = '/store/user/abdollah/BoostedH/2018_v1/MC/'
 config.Data.outLFNDirBase = '/store/group/lpcggntuples/ggNtuples/13TeV/BoostH/2018/MC'
 config.Data.allowNonValidInputDataset = True
@@ -182,8 +182,8 @@ Samples= [
 
 
 
-for sam in Samples:
-#for sam in Samples_test:
+#for sam in Samples:
+for sam in Samples_test:
     print sam[0], sam[1]
     config.General.requestName = sam[0]
     config.Data.inputDataset = sam[1]
