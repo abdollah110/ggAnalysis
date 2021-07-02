@@ -17,8 +17,8 @@ typedef ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<double> > LorentzVector;
 
 Int_t          nJet_;
 vector<float>  jetPt_;
-//vector<float>  jetPtTotUncUp_;
-//vector<float>  jetPtTotUncDown_;
+vector<float>  jetPtTotUncUp_;
+vector<float>  jetPtTotUncDown_;
 vector<float>  jetEn_;
 vector<float>  jetEta_;
 vector<float>  jetPhi_;
@@ -81,8 +81,8 @@ void ggNtuplizer::branchesJets(TTree* tree) {
   
   tree->Branch("nJet",                &nJet_);
   tree->Branch("jetPt",               &jetPt_);
-//  tree->Branch("jetPtTotUncUp",               &jetPtTotUncUp_);
-//  tree->Branch("jetPtTotUncDown",               &jetPtTotUncDown_);
+  tree->Branch("jetPtTotUncUp",               &jetPtTotUncUp_);
+  tree->Branch("jetPtTotUncDown",               &jetPtTotUncDown_);
   tree->Branch("jetEn",               &jetEn_);
   tree->Branch("jetEta",              &jetEta_);
   tree->Branch("jetPhi",              &jetPhi_);
@@ -149,8 +149,8 @@ void ggNtuplizer::branchesJets(TTree* tree) {
 void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 
   jetPt_                                  .clear();
-//  jetPtTotUncUp_                             .clear();
-//  jetPtTotUncDown_                            .clear();
+  jetPtTotUncUp_                             .clear();
+  jetPtTotUncDown_                            .clear();
   jetEn_                                  .clear();
   jetEta_                                 .clear();
   jetPhi_                                 .clear();
@@ -275,9 +275,8 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //    k=k+1;
 //  };
   
-  // test memory
-//  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak4Name, "Total");
-//  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
+  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak4Name, "Total");
+  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
 
   for (edm::View<pat::Jet>::const_iterator iJet = jetHandle->begin(); iJet != jetHandle->end(); ++iJet) {
 
@@ -327,15 +326,14 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //    }
 
 
-// test memory
-//        double unc = 0;
-//      jecUncTot->setJetEta(iJet->eta());
-//      jecUncTot->setJetPt(iJet->pt());
-//      unc = jecUncTot->getUncertainty(true);
-//      float ptplus=(1+unc)*iJet->pt();
-//      float ptminus=(1-unc)*iJet->pt();
-//      jetPtTotUncUp_.push_back(ptplus);
-//      jetPtTotUncDown_.push_back(ptminus);
+        double unc = 0;
+      jecUncTot->setJetEta(iJet->eta());
+      jecUncTot->setJetPt(iJet->pt());
+      unc = jecUncTot->getUncertainty(true);
+      float ptplus=(1+unc)*iJet->pt();
+      float ptminus=(1-unc)*iJet->pt();
+      jetPtTotUncUp_.push_back(ptplus);
+      jetPtTotUncDown_.push_back(ptminus);
     
 
 
@@ -506,4 +504,5 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   }
   
   delete jecUnc;
+  delete jecUncTot;
 }
