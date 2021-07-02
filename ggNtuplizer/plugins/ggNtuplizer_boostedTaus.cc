@@ -53,24 +53,24 @@ vector<bool>   boostedTauByMediumIsolationMVArun2v1DBoldDMwLTNew_;
 vector<bool>   boostedTauByVTightIsolationMVArun2v1DBoldDMwLTNew_;
 
 
-vector<float> boostedTauByDeepTau2017v1VSjetraw_;
-vector<float> boostedTauByDeepTau2017v1VSeraw_;
-vector<float> boostedTauByDeepTau2017v1VSmuraw_;
-
-vector<bool> boostedTaubyVVVLooseDeepTau2017v1VSjet_;
-vector<bool> boostedTaubyVLooseDeepTau2017v1VSjet_;
-vector<bool> boostedTaubyLooseDeepTau2017v1VSjet_;
-vector<bool> boostedTaubyMediumDeepTau2017v1VSjet_;
-vector<bool> boostedTaubyTightDeepTau2017v1VSjet_;
-vector<bool> boostedTaubyVVTightDeepTau2017v1VSjet_;
-vector<bool> boostedTaubyVVVLooseDeepTau2017v1VSe_;
-vector<bool> boostedTaubyLooseDeepTau2017v1VSe_;
-vector<bool> boostedTaubyTightDeepTau2017v1VSe_;
-vector<bool> boostedTaubyVVTightDeepTau2017v1VSe_;
-vector<bool> boostedTaubyVVVLooseDeepTau2017v1VSmu_;
-vector<bool> boostedTaubyLooseDeepTau2017v1VSmu_;
-vector<bool> boostedTaubyTightDeepTau2017v1VSmu_;
-vector<bool> boostedTaubyVVTightDeepTau2017v1VSmu_;
+//vector<float> boostedTauByDeepTau2017v1VSjetraw_;
+//vector<float> boostedTauByDeepTau2017v1VSeraw_;
+//vector<float> boostedTauByDeepTau2017v1VSmuraw_;
+//
+//vector<bool> boostedTaubyVVVLooseDeepTau2017v1VSjet_;
+//vector<bool> boostedTaubyVLooseDeepTau2017v1VSjet_;
+//vector<bool> boostedTaubyLooseDeepTau2017v1VSjet_;
+//vector<bool> boostedTaubyMediumDeepTau2017v1VSjet_;
+//vector<bool> boostedTaubyTightDeepTau2017v1VSjet_;
+//vector<bool> boostedTaubyVVTightDeepTau2017v1VSjet_;
+//vector<bool> boostedTaubyVVVLooseDeepTau2017v1VSe_;
+//vector<bool> boostedTaubyLooseDeepTau2017v1VSe_;
+//vector<bool> boostedTaubyTightDeepTau2017v1VSe_;
+//vector<bool> boostedTaubyVVTightDeepTau2017v1VSe_;
+//vector<bool> boostedTaubyVVVLooseDeepTau2017v1VSmu_;
+//vector<bool> boostedTaubyLooseDeepTau2017v1VSmu_;
+//vector<bool> boostedTaubyTightDeepTau2017v1VSmu_;
+//vector<bool> boostedTaubyVVTightDeepTau2017v1VSmu_;
 
 
 //Tau Kinematics
@@ -246,25 +246,25 @@ void ggNtuplizer::branchesBoostedTaus(TTree* tree)
 //    tree->Branch("boostedTauIsolationPFCandsOrig"  ,&boostedTauIsolationPFCandsOrig_);
 //    tree->Branch("boostedTauIsolationPFGammaCandsOrig"  ,&boostedTauIsolationPFGammaCandsOrig_);
     
-    tree->Branch("boostedTauByDeepTau2017v1VSjetraw"  ,&boostedTauByDeepTau2017v1VSjetraw_);
-    tree->Branch("boostedTauByDeepTau2017v1VSeraw"  ,&boostedTauByDeepTau2017v1VSeraw_);
-    tree->Branch("boostedTauByDeepTau2017v1VSmuraw"  ,&boostedTauByDeepTau2017v1VSmuraw_);
-    
-    
-    tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSjet"  ,&boostedTaubyVVVLooseDeepTau2017v1VSjet_);
-    tree->Branch("boostedTaubyVLooseDeepTau2017v1VSjet"  ,&boostedTaubyVLooseDeepTau2017v1VSjet_);
-    tree->Branch("boostedTaubyLooseDeepTau2017v1VSjet"  ,&boostedTaubyLooseDeepTau2017v1VSjet_);
-    tree->Branch("boostedTaubyMediumDeepTau2017v1VSjet"  ,&boostedTaubyMediumDeepTau2017v1VSjet_);
-    tree->Branch("boostedTaubyTightDeepTau2017v1VSjet"  ,&boostedTaubyTightDeepTau2017v1VSjet_);
-    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSjet"  ,&boostedTaubyVVTightDeepTau2017v1VSjet_);
-    tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSe"  ,&boostedTaubyVVVLooseDeepTau2017v1VSe_);
-    tree->Branch("boostedTaubyLooseDeepTau2017v1VSe"  ,&boostedTaubyLooseDeepTau2017v1VSe_);
-    tree->Branch("boostedTaubyTightDeepTau2017v1VSe"  ,&boostedTaubyTightDeepTau2017v1VSe_);
-//    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSe"  ,&boostedTaubyVVTightDeepTau2017v1VSe_);
-    tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSmu"  ,&boostedTaubyVVVLooseDeepTau2017v1VSmu_);
-    tree->Branch("boostedTaubyLooseDeepTau2017v1VSmu"  ,&boostedTaubyLooseDeepTau2017v1VSmu_);
-    tree->Branch("boostedTaubyTightDeepTau2017v1VSmu"  ,&boostedTaubyTightDeepTau2017v1VSmu_);
-//    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSmu"  ,&boostedTaubyVVTightDeepTau2017v1VSmu_);
+//    tree->Branch("boostedTauByDeepTau2017v1VSjetraw"  ,&boostedTauByDeepTau2017v1VSjetraw_);
+//    tree->Branch("boostedTauByDeepTau2017v1VSeraw"  ,&boostedTauByDeepTau2017v1VSeraw_);
+//    tree->Branch("boostedTauByDeepTau2017v1VSmuraw"  ,&boostedTauByDeepTau2017v1VSmuraw_);
+//
+//
+//    tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSjet"  ,&boostedTaubyVVVLooseDeepTau2017v1VSjet_);
+//    tree->Branch("boostedTaubyVLooseDeepTau2017v1VSjet"  ,&boostedTaubyVLooseDeepTau2017v1VSjet_);
+//    tree->Branch("boostedTaubyLooseDeepTau2017v1VSjet"  ,&boostedTaubyLooseDeepTau2017v1VSjet_);
+//    tree->Branch("boostedTaubyMediumDeepTau2017v1VSjet"  ,&boostedTaubyMediumDeepTau2017v1VSjet_);
+//    tree->Branch("boostedTaubyTightDeepTau2017v1VSjet"  ,&boostedTaubyTightDeepTau2017v1VSjet_);
+//    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSjet"  ,&boostedTaubyVVTightDeepTau2017v1VSjet_);
+//    tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSe"  ,&boostedTaubyVVVLooseDeepTau2017v1VSe_);
+//    tree->Branch("boostedTaubyLooseDeepTau2017v1VSe"  ,&boostedTaubyLooseDeepTau2017v1VSe_);
+//    tree->Branch("boostedTaubyTightDeepTau2017v1VSe"  ,&boostedTaubyTightDeepTau2017v1VSe_);
+////    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSe"  ,&boostedTaubyVVTightDeepTau2017v1VSe_);
+//    tree->Branch("boostedTaubyVVVLooseDeepTau2017v1VSmu"  ,&boostedTaubyVVVLooseDeepTau2017v1VSmu_);
+//    tree->Branch("boostedTaubyLooseDeepTau2017v1VSmu"  ,&boostedTaubyLooseDeepTau2017v1VSmu_);
+//    tree->Branch("boostedTaubyTightDeepTau2017v1VSmu"  ,&boostedTaubyTightDeepTau2017v1VSmu_);
+////    tree->Branch("boostedTaubyVVTightDeepTau2017v1VSmu"  ,&boostedTaubyVVTightDeepTau2017v1VSmu_);
     
     tree->Branch("boostedTauagainstElectronVLooseMVA62018"  ,&boostedTauagainstElectronVLooseMVA62018_);
     tree->Branch("boostedTauagainstElectronLooseMVA62018"  ,&boostedTauagainstElectronLooseMVA62018_);
@@ -375,24 +375,24 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
 //    boostedTauIsolationPFGammaCandsOrig_.clear();
     
     
-    boostedTauByDeepTau2017v1VSjetraw_.clear();
-    boostedTauByDeepTau2017v1VSeraw_.clear();
-    boostedTauByDeepTau2017v1VSmuraw_.clear();
-
-    boostedTaubyVVVLooseDeepTau2017v1VSjet_.clear();
-    boostedTaubyVLooseDeepTau2017v1VSjet_.clear();
-    boostedTaubyLooseDeepTau2017v1VSjet_.clear();
-    boostedTaubyMediumDeepTau2017v1VSjet_.clear();
-    boostedTaubyTightDeepTau2017v1VSjet_.clear();
-    boostedTaubyVVTightDeepTau2017v1VSjet_.clear();
-    boostedTaubyVVVLooseDeepTau2017v1VSe_.clear();
-    boostedTaubyLooseDeepTau2017v1VSe_.clear();
-    boostedTaubyTightDeepTau2017v1VSe_.clear();
-    boostedTaubyVVTightDeepTau2017v1VSe_.clear();
-    boostedTaubyVVVLooseDeepTau2017v1VSmu_.clear();
-    boostedTaubyLooseDeepTau2017v1VSmu_.clear();
-    boostedTaubyTightDeepTau2017v1VSmu_.clear();
-    boostedTaubyVVTightDeepTau2017v1VSmu_.clear();
+//    boostedTauByDeepTau2017v1VSjetraw_.clear();
+//    boostedTauByDeepTau2017v1VSeraw_.clear();
+//    boostedTauByDeepTau2017v1VSmuraw_.clear();
+//
+//    boostedTaubyVVVLooseDeepTau2017v1VSjet_.clear();
+//    boostedTaubyVLooseDeepTau2017v1VSjet_.clear();
+//    boostedTaubyLooseDeepTau2017v1VSjet_.clear();
+//    boostedTaubyMediumDeepTau2017v1VSjet_.clear();
+//    boostedTaubyTightDeepTau2017v1VSjet_.clear();
+//    boostedTaubyVVTightDeepTau2017v1VSjet_.clear();
+//    boostedTaubyVVVLooseDeepTau2017v1VSe_.clear();
+//    boostedTaubyLooseDeepTau2017v1VSe_.clear();
+//    boostedTaubyTightDeepTau2017v1VSe_.clear();
+//    boostedTaubyVVTightDeepTau2017v1VSe_.clear();
+//    boostedTaubyVVVLooseDeepTau2017v1VSmu_.clear();
+//    boostedTaubyLooseDeepTau2017v1VSmu_.clear();
+//    boostedTaubyTightDeepTau2017v1VSmu_.clear();
+//    boostedTaubyVVTightDeepTau2017v1VSmu_.clear();
     
     boostedTauagainstElectronVLooseMVA62018_.clear();
     boostedTauagainstElectronLooseMVA62018_.clear();
@@ -485,24 +485,24 @@ void ggNtuplizer::fillBoostedTaus(const edm::Event& e)
         boostedTauByTightIsolationMVArun2v1DBoldDMwLTNew_.push_back(itau->tauID("byTightIsolationMVArun2017v2DBoldDMwLT2017"));
         boostedTauByVTightIsolationMVArun2v1DBoldDMwLTNew_.push_back(itau->tauID("byVTightIsolationMVArun2017v2DBoldDMwLT2017"));
 
-        boostedTauByDeepTau2017v1VSjetraw_.push_back(itau->tauID("byDeepTau2017v1VSjetraw"));
-        boostedTauByDeepTau2017v1VSeraw_.push_back(itau->tauID("byDeepTau2017v1VSeraw"));
-        boostedTauByDeepTau2017v1VSmuraw_.push_back(itau->tauID("byDeepTau2017v1VSmuraw"));
-
-        boostedTaubyVVVLooseDeepTau2017v1VSjet_.push_back(itau->tauID("byVVVLooseDeepTau2017v1VSjet"));
-        boostedTaubyVLooseDeepTau2017v1VSjet_.push_back(itau->tauID("byVLooseDeepTau2017v1VSjet"));
-        boostedTaubyLooseDeepTau2017v1VSjet_.push_back(itau->tauID("byLooseDeepTau2017v1VSjet"));
-        boostedTaubyMediumDeepTau2017v1VSjet_.push_back(itau->tauID("byMediumDeepTau2017v1VSjet"));
-        boostedTaubyTightDeepTau2017v1VSjet_.push_back(itau->tauID("byTightDeepTau2017v1VSjet"));
-        boostedTaubyVVTightDeepTau2017v1VSjet_.push_back(itau->tauID("byVVTightDeepTau2017v1VSjet"));
-        boostedTaubyVVVLooseDeepTau2017v1VSe_.push_back(itau->tauID("byVVVLooseDeepTau2017v1VSe"));
-        boostedTaubyLooseDeepTau2017v1VSe_.push_back(itau->tauID("byLooseDeepTau2017v1VSe"));
-        boostedTaubyTightDeepTau2017v1VSe_.push_back(itau->tauID("byTightDeepTau2017v1VSe"));
-        boostedTaubyVVTightDeepTau2017v1VSe_.push_back(itau->tauID("byVVTightDeepTau2017v1VSe"));
-        boostedTaubyVVVLooseDeepTau2017v1VSmu_.push_back(itau->tauID("byVVVLooseDeepTau2017v1VSmu"));
-        boostedTaubyLooseDeepTau2017v1VSmu_.push_back(itau->tauID("byLooseDeepTau2017v1VSmu"));
-        boostedTaubyTightDeepTau2017v1VSmu_.push_back(itau->tauID("byTightDeepTau2017v1VSmu"));
-        boostedTaubyVVTightDeepTau2017v1VSmu_.push_back(itau->tauID("byVVTightDeepTau2017v1VSmu"));
+//        boostedTauByDeepTau2017v1VSjetraw_.push_back(itau->tauID("byDeepTau2017v1VSjetraw"));
+//        boostedTauByDeepTau2017v1VSeraw_.push_back(itau->tauID("byDeepTau2017v1VSeraw"));
+//        boostedTauByDeepTau2017v1VSmuraw_.push_back(itau->tauID("byDeepTau2017v1VSmuraw"));
+//
+//        boostedTaubyVVVLooseDeepTau2017v1VSjet_.push_back(itau->tauID("byVVVLooseDeepTau2017v1VSjet"));
+//        boostedTaubyVLooseDeepTau2017v1VSjet_.push_back(itau->tauID("byVLooseDeepTau2017v1VSjet"));
+//        boostedTaubyLooseDeepTau2017v1VSjet_.push_back(itau->tauID("byLooseDeepTau2017v1VSjet"));
+//        boostedTaubyMediumDeepTau2017v1VSjet_.push_back(itau->tauID("byMediumDeepTau2017v1VSjet"));
+//        boostedTaubyTightDeepTau2017v1VSjet_.push_back(itau->tauID("byTightDeepTau2017v1VSjet"));
+//        boostedTaubyVVTightDeepTau2017v1VSjet_.push_back(itau->tauID("byVVTightDeepTau2017v1VSjet"));
+//        boostedTaubyVVVLooseDeepTau2017v1VSe_.push_back(itau->tauID("byVVVLooseDeepTau2017v1VSe"));
+//        boostedTaubyLooseDeepTau2017v1VSe_.push_back(itau->tauID("byLooseDeepTau2017v1VSe"));
+//        boostedTaubyTightDeepTau2017v1VSe_.push_back(itau->tauID("byTightDeepTau2017v1VSe"));
+//        boostedTaubyVVTightDeepTau2017v1VSe_.push_back(itau->tauID("byVVTightDeepTau2017v1VSe"));
+//        boostedTaubyVVVLooseDeepTau2017v1VSmu_.push_back(itau->tauID("byVVVLooseDeepTau2017v1VSmu"));
+//        boostedTaubyLooseDeepTau2017v1VSmu_.push_back(itau->tauID("byLooseDeepTau2017v1VSmu"));
+//        boostedTaubyTightDeepTau2017v1VSmu_.push_back(itau->tauID("byTightDeepTau2017v1VSmu"));
+//        boostedTaubyVVTightDeepTau2017v1VSmu_.push_back(itau->tauID("byVVTightDeepTau2017v1VSmu"));
         
         boostedTauagainstElectronVLooseMVA62018_.push_back(itau->tauID("againstElectronVLooseMVA62018"));
         boostedTauagainstElectronLooseMVA62018_.push_back(itau->tauID("againstElectronLooseMVA62018"));
