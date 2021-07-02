@@ -275,8 +275,9 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //    k=k+1;
 //  };
   
-  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak4Name, "Total");
-  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
+//  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak4Name, "Total");
+//  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
+  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*(new JetCorrectorParameters(ak4Name, "Total")));
 
   for (edm::View<pat::Jet>::const_iterator iJet = jetHandle->begin(); iJet != jetHandle->end(); ++iJet) {
 
@@ -325,7 +326,7 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //      jetPtTotUncDown_.push_back(ptminus);
 //    }
 
-
+    if (fabs(iJet->eta()) < 5.2) {
         double unc = 0;
       jecUncTot->setJetEta(iJet->eta());
       jecUncTot->setJetPt(iJet->pt());
@@ -334,7 +335,10 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
       float ptminus=(1-unc)*iJet->pt();
       jetPtTotUncUp_.push_back(ptplus);
       jetPtTotUncDown_.push_back(ptminus);
-    
+    } else {
+      jetPtTotUncUp_.push_back(-1.);
+      jetPtTotUncDown_.push_back(-1);
+    }
 
 
 

@@ -338,8 +338,9 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 //    k=k+1;
 //  };
 
-  JetCorrectorParameters const * JetCorPar = new JetCorrectorParameters(ak8Name, "Total");
-  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorPar);
+//  JetCorrectorParameters const * JetCorPar = new JetCorrectorParameters(ak8Name, "Total");
+//  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorPar);
+  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*(new JetCorrectorParameters(ak8Name, "Total")));
   
   nAK8Jet_ = 0;
   //jet substructure
