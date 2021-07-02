@@ -260,20 +260,24 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //    "RelativeSample",
     "Total"
     };
-    std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
-    std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
+//    std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
+//    std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
 
    // Create the uncertainty tool for each uncert
-  int k=0;
-  for (auto const& name : uncertNames) {
-    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak4Name, name);
-    JetCorParMap[name] = JetCorPar2;
-    JetCorrectionUncertainty * jecUnc2(
-        new JetCorrectionUncertainty(*JetCorParMap[name]));
-    JetUncMap[name] = jecUnc2;
-    k=k+1;
-  };
-
+   // FIXME I am running to a memory issue
+//  int k=0;
+//  for (auto const& name : uncertNames) {
+//    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak4Name, name);
+//    JetCorParMap[name] = JetCorPar2;
+//    JetCorrectionUncertainty * jecUnc2(
+//        new JetCorrectionUncertainty(*JetCorParMap[name]));
+//    JetUncMap[name] = jecUnc2;
+//    k=k+1;
+//  };
+  
+  JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak4Name, "Total");
+//  JetCorrectionUncertainty * jecUnc2(new JetCorrectionUncertainty(*JetCorPar2);
+   JetCorrectionUncertainty *jecUnc2 = new JetCorrectionUncertainty(*JetCorPar2);
 
   for (edm::View<pat::Jet>::const_iterator iJet = jetHandle->begin(); iJet != jetHandle->end(); ++iJet) {
 
@@ -308,20 +312,34 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
       jetJECUnc_.push_back(-1.);
     }
     
-    // JEC uncertainties Cecile
-        int p=-1;
-        for (auto const& name : uncertNames) {
-        p=p+1;
+//    // JEC uncertainties Cecile // Memory issue
+//        int p=-1;
+//        for (auto const& name : uncertNames) {
+//        p=p+1;
+//        double unc = 0;
+//          JetUncMap[name]->setJetEta(iJet->eta());
+//          JetUncMap[name]->setJetPt(iJet->pt());
+//          unc = JetUncMap[name]->getUncertainty(true);
+//      float ptplus=(1+unc)*iJet->pt();
+//      float ptminus=(1-unc)*iJet->pt();
+//      jetPtTotUncUp_.push_back(ptplus);
+//      jetPtTotUncDown_.push_back(ptminus);
+//    }
+
+
         double unc = 0;
-          JetUncMap[name]->setJetEta(iJet->eta());
-          JetUncMap[name]->setJetPt(iJet->pt());
-          unc = JetUncMap[name]->getUncertainty(true);
+      jecUnc2->setJetEta(iJet->eta());
+      jecUnc2->setJetPt(iJet->pt());
+      unc = jecUnc2->getUncertainty(true);
       float ptplus=(1+unc)*iJet->pt();
       float ptminus=(1-unc)*iJet->pt();
       jetPtTotUncUp_.push_back(ptplus);
       jetPtTotUncDown_.push_back(ptminus);
-    }
-      
+    
+
+
+
+
           
     jetFiredTrgs_.push_back(matchJetTriggerFilters(iJet->pt(), iJet->eta(), iJet->phi()));    
 
