@@ -275,8 +275,8 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //    k=k+1;
 //  };
   
-  JetCorrectorParameters const * JetCorPar = new JetCorrectorParameters(ak4Name, "Total");
-  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorPar);
+  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak4Name, "Total");
+  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
 
   for (edm::View<pat::Jet>::const_iterator iJet = jetHandle->begin(); iJet != jetHandle->end(); ++iJet) {
 
