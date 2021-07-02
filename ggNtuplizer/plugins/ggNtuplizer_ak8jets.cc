@@ -17,8 +17,8 @@ typedef ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<double> > LorentzVector;
 
 Int_t         nAK8Jet_;
 vector<float> AK8JetPt_;
-vector<float>  AK8JetPtTotUncUp_;
-vector<float>  AK8JetPtTotUncDown_;
+//vector<float>  AK8JetPtTotUncUp_;
+//vector<float>  AK8JetPtTotUncDown_;
 vector<float> AK8JetEn_;
 vector<float> AK8JetRawPt_;
 vector<float> AK8JetRawEn_;
@@ -100,8 +100,8 @@ void ggNtuplizer::branchesAK8Jets(TTree* tree) {
   
   tree->Branch("nAK8Jet",                  &nAK8Jet_);
   tree->Branch("AK8JetPt",                 &AK8JetPt_);
-  tree->Branch("AK8JetPtTotUncUp",               &AK8JetPtTotUncUp_);
-  tree->Branch("AK8JetPtTotUncDown",               &AK8JetPtTotUncDown_);
+//  tree->Branch("AK8JetPtTotUncUp",               &AK8JetPtTotUncUp_);
+//  tree->Branch("AK8JetPtTotUncDown",               &AK8JetPtTotUncDown_);
   tree->Branch("AK8JetEn",                 &AK8JetEn_);
   tree->Branch("AK8JetRawPt",              &AK8JetRawPt_);
   tree->Branch("AK8JetRawEn",              &AK8JetRawEn_);
@@ -182,8 +182,8 @@ void ggNtuplizer::branchesAK8Jets(TTree* tree) {
 void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 
   AK8JetPt_              .clear();
-  AK8JetPtTotUncUp_                             .clear();
-  AK8JetPtTotUncDown_                            .clear();
+//  AK8JetPtTotUncUp_                             .clear();
+//  AK8JetPtTotUncDown_                            .clear();
   AK8JetEn_              .clear();
   AK8JetRawPt_           .clear();
   AK8JetRawEn_           .clear();
@@ -338,8 +338,9 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 //    k=k+1;
 //  };
 
-  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak8Name, "Total");
-  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
+//test memory
+//  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak8Name, "Total");
+//  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
   
   nAK8Jet_ = 0;
   //jet substructure
@@ -478,15 +479,16 @@ void ggNtuplizer::fillAK8Jets(const edm::Event& e, const edm::EventSetup& es) {
 //    AK8JetPtTotUncDown_.push_back(ptminus);
 //    }
 
-    double unc = 0;
-      jecUncTot->setJetEta(ijetAK8->eta());
-      jecUncTot->setJetPt(ijetAK8->pt());
-      unc = jecUncTot->getUncertainty(true);
-    float ptplus=(1+unc)*ijetAK8->pt();
-    float ptminus=(1-unc)*ijetAK8->pt();
-
-    AK8JetPtTotUncUp_.push_back(ptplus);
-    AK8JetPtTotUncDown_.push_back(ptminus);
+    //test memory
+//    double unc = 0;
+//      jecUncTot->setJetEta(ijetAK8->eta());
+//      jecUncTot->setJetPt(ijetAK8->pt());
+//      unc = jecUncTot->getUncertainty(true);
+//    float ptplus=(1+unc)*ijetAK8->pt();
+//    float ptminus=(1-unc)*ijetAK8->pt();
+//
+//    AK8JetPtTotUncUp_.push_back(ptplus);
+//    AK8JetPtTotUncDown_.push_back(ptminus);
     
     
     //save gen-info for ak8 jets
