@@ -267,17 +267,16 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
    // FIXME I am running to a memory issue
 //  int k=0;
 //  for (auto const& name : uncertNames) {
-//    JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak4Name, name);
-//    JetCorParMap[name] = JetCorPar2;
-//    JetCorrectionUncertainty * jecUnc2(
+//    JetCorrectorParameters const * JetCorPar = new JetCorrectorParameters(ak4Name, name);
+//    JetCorParMap[name] = JetCorPar;
+//    JetCorrectionUncertainty * jecUncTot(
 //        new JetCorrectionUncertainty(*JetCorParMap[name]));
-//    JetUncMap[name] = jecUnc2;
+//    JetUncMap[name] = jecUncTot;
 //    k=k+1;
 //  };
   
-  JetCorrectorParameters const * JetCorPar2 = new JetCorrectorParameters(ak4Name, "Total");
-//  JetCorrectionUncertainty * jecUnc2(new JetCorrectionUncertainty(*JetCorPar2);
-   JetCorrectionUncertainty *jecUnc2 = new JetCorrectionUncertainty(*JetCorPar2);
+  JetCorrectorParameters const * JetCorPar = new JetCorrectorParameters(ak4Name, "Total");
+  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorPar);
 
   for (edm::View<pat::Jet>::const_iterator iJet = jetHandle->begin(); iJet != jetHandle->end(); ++iJet) {
 
@@ -328,9 +327,9 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 
 
         double unc = 0;
-      jecUnc2->setJetEta(iJet->eta());
-      jecUnc2->setJetPt(iJet->pt());
-      unc = jecUnc2->getUncertainty(true);
+      jecUncTot->setJetEta(iJet->eta());
+      jecUncTot->setJetPt(iJet->pt());
+      unc = jecUncTot->getUncertainty(true);
       float ptplus=(1+unc)*iJet->pt();
       float ptminus=(1-unc)*iJet->pt();
       jetPtTotUncUp_.push_back(ptplus);
