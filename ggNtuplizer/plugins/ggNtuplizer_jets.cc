@@ -246,20 +246,20 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
 //https://github.com/uwcms/FinalStateAnalysis/blob/miniAOD_10_2_22/PatTools/plugins/MiniAODJetFullSystematicsEmbedder.cc
 //
 //
-  std::vector< std::string > uncertNames = {
-//    "FlavorQCD", "PileUpPtBB",
-////    "Absolute",
-////    "Absolute2018",
-////    "BBEC1",
-////    "BBEC12018",
-////    "EC2",
-////    "EC22018",
-////    "HF",
-////    "HFyear",
-//    "RelativeBal",
-//    "RelativeSample",
-    "Total"
-    };
+//  std::vector< std::string > uncertNames = {
+////    "FlavorQCD", "PileUpPtBB",
+//////    "Absolute",
+//////    "Absolute2018",
+//////    "BBEC1",
+//////    "BBEC12018",
+//////    "EC2",
+//////    "EC22018",
+//////    "HF",
+//////    "HFyear",
+////    "RelativeBal",
+////    "RelativeSample",
+//    "Total"
+//    };
 //    std::map<std::string, JetCorrectorParameters const *> JetCorParMap;
 //    std::map<std::string, JetCorrectionUncertainty* > JetUncMap;
 
@@ -277,7 +277,7 @@ void ggNtuplizer::fillJets(const edm::Event& e, const edm::EventSetup& es) {
   
 //  JetCorrectorParameters const * JetCorParTot = new JetCorrectorParameters(ak4Name, "Total");
 //  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*JetCorParTot);
-  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*(new JetCorrectorParameters(ak4Name, "Total")));
+  JetCorrectionUncertainty *jecUncTot = new JetCorrectionUncertainty(*(new JetCorrectorParameters("Fall17_17Nov2017_V32_MC_UncertaintySources_AK4PF.txt", "Total")));
 
   for (edm::View<pat::Jet>::const_iterator iJet = jetHandle->begin(); iJet != jetHandle->end(); ++iJet) {
 
